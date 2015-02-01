@@ -26,9 +26,7 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (IBAction)tryToFail:(id)sender {
-    @try{
-        NSString *docDir = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)[0];
+- (IBAction)tryToFail:(id)sender {        NSString *docDir = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)[0];
         NSString *dirName = [docDir stringByAppendingPathComponent:@"MyDir"];
         
         BOOL isDir;
@@ -67,52 +65,44 @@
                 NSLog(@"Create file returned NO");
             }
         }
-        const char *cString = [filePath cStringUsingEncoding:NSUTF8StringEncoding];
-        byte_buffer bb = *bb_new_from_file(cString, "rb");
-        [self tryToSave:bb];
+        [self tryToSave:filePath];
         
-    }
-    @catch(NSException * ex){
-         NSLog(@"%@", [ex callStackSymbols]);
-    }
+    
+    
 }
 
-- (void) tryToSave:(byte_buffer) bb{
+- (void) tryToSave:(NSString *) path{
     NSString* passw = @"1234";
     NSString* allt = @"";
     NSString* outs;
-     NSMutableArray * bouts = [[NSMutableArray alloc] init];
-     NSMutableArray * boutss = [[NSMutableArray alloc] init];
-    
-    byte_buffer allf = bb;
-    DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
-    Date date = new Date();
-    outs = String.format("FendoffP " + dateFormat.format(date) + "\n");
-    allt = allt.concat(outs);
-    allt = allt.concat(passw);
-    allt = allt.concat("\n");
-    int lensh = allt.length();
+    NSData *data = [[NSData alloc] initWithContentsOfFile:path];
+    NSDateFormatter *DateFormatter=[[NSDateFormatter alloc] init];
+    [DateFormatter setDateFormat:@"yyyy/MM/dd HH:mm:ss"];
+    outs = [NSString stringWithFormat:@"%@%@%@", @"FendoffP ", [DateFormatter stringFromDate:[NSDate date]], @"\n"];
+    allt = [NSString stringWithFormat:@"%@%@%@", outs, passw, @"\n"];
+    int lensh = [allt length];
     lensh = lensh + 3;
-    outs = "" + lensh + "\n";
-    allt = allt.concat(outs);
-    boutss = allt.getBytes();
-    ByteArrayOutputStream outst = new ByteArrayOutputStream();
-    outst.write(boutss);
-    outst.write(allf);
-    bouts = outst.toByteArray();
-    Vsem1 em = new Vsem1();
-    long[] sa = em.pastosd(2, passw);
-    int stot = em.stot;
-    bouts = em.evsem1(bouts, sa[0]);
-    bouts = em.evsem2(bouts, sa[1]);
+    outs = [NSString stringWithFormat:@"%d%@", lensh, @"\n"];
+    allt = [NSString stringWithFormat:@"%@%@", allt, outs];
+    NSData *temp = [allt dataUsingEncoding:NSUTF8StringEncoding];
+    
+    NSMutableData *bouts = [NSMutableData data];
+    [bouts appendData:temp];
+    [bouts appendData:data];
+    
+    Vsem1 * em = [[Vsem1 alloc] init];
+    NSMutableArray* sa = [em pastosd:2 pas:passw];
+    long stot = [em getStot];
+    bouts = [em evsem1:bouts seed:[sa[0] integerValue]];
+    bouts = [em evsem2:bouts seed:[sa[1] integerValue]];
     long s3 = 999;
-    if (stot > 2) s3 = sa[2];
-    bouts = em.evsem3(bouts, s3);
+    if (stot > 2) s3 = [sa[2] integerValue];
+    bouts = [em evsem3:bouts seed:s3];
     s3 = -999;
-    if (stot > 3) s3 = sa[3];
-    bouts = em.evsem4(bouts, s3);
-    oS.write(bouts);
-    oS.close();
+    if (stot > 3) s3 = [sa[3] integerValue];
+    bouts = [em evsem4:bouts seed:s3];
+    NSString* newFile =[NSString stringWithFormat:@"%@.ff", path];
+    [NSKeyedArchiver archiveRootObject:bouts toFile:newFile];
 }
 
 

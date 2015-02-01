@@ -3,40 +3,41 @@
 
 @implementation Vsem1
 
-- (NSMutableArray *) evsem1:(NSMutableArray *)bm seed:(NSInteger)seed {
-    NSInteger len = [bm count];
+
+-(NSInteger)getStot{
+    return stot;
+}
+
+- (NSMutableData *) evsem1:(NSMutableData *)bm seed:(NSInteger)seed {
+    NSInteger len = [bm length];
     char rb;
     Rand1 * rnd = [[Rand1 alloc] init];
     [rnd setSeed:seed];
-    
+    char* fileBytes = (char*)[bm mutableBytes];
     for (NSInteger i = 0; i < len; i++) {
         rb = (char)[rnd rand:-127 max:127];
-        NSNumber *tmp1 =[bm objectAtIndex:i];
-        char tmp2 =([tmp1 charValue]^ rb);
-        bm[i] =[NSNumber numberWithInt:tmp2];
+        fileBytes[i] =fileBytes[i]^ rb;
     }
     
     return bm;
 }
 
-- (NSMutableArray *) dvsem1:(NSMutableArray *)bm seed:(NSInteger)seed {
-    NSInteger len = [bm count];
+- (NSMutableData *) dvsem1:(NSMutableData *)bm seed:(NSInteger)seed {
+    NSInteger len = [bm length];
     char rb;
     Rand1 * rnd = [[Rand1 alloc] init];
     [rnd setSeed:seed];
-    
+    char* fileBytes = (char*)[bm mutableBytes];
     for (NSInteger i = 0; i < len; i++) {
         rb = (char)[rnd rand:-127 max:127];
-        NSNumber *tmp1 =[bm objectAtIndex:i];
-        char tmp2 =([tmp1 charValue]^ rb);
-        bm[i] =[NSNumber numberWithInt:tmp2];
+        fileBytes[i] =fileBytes[i]^ rb;
     }
     
     return bm;
 }
 
-- (NSMutableArray *) evsem2:(NSMutableArray *)bm seed:(NSInteger)seed {
-    NSInteger len = [bm count];
+- (NSMutableData *) evsem2:(NSMutableData *)bm seed:(NSInteger)seed {
+    NSInteger len = [bm length];
     NSInteger ip;
     char bc = 0;
     Rand2 * rnd = [[Rand2 alloc] init];
@@ -46,14 +47,14 @@
     for (NSInteger i = 0; i < len; i++)
         bb[i] = @(YES);
     
-    
+    char* fileBytes = (char*)[bm mutableBytes];
     for (NSInteger i = 0; i < len - 1; i++) {
         if ([bb[i] boolValue] == YES) {
             ip =[rnd rand:i + 1 max:len - 1];
             if ([bb[ip] boolValue] == YES) {
-                bc = [bm[ip] charValue];
-                bm[ip] = bm[i];
-                bm[i] = [NSNumber numberWithInt:bc];
+                bc = fileBytes[ip];
+                fileBytes[ip] = fileBytes[i];
+                fileBytes[i] = bc;
                 bb[ip] = @(NO);
             }
             else if ((ip + 1) < len) {
@@ -66,9 +67,9 @@
                 }
                 
                 if (ip < len) {
-                    bc = [bm[ip] charValue];
-                    bm[ip] = bm[i];
-                    bm[i] = [NSNumber numberWithInt:bc];
+                    bc = fileBytes[ip];
+                    fileBytes[ip] = fileBytes[i];
+                    fileBytes[i] = bc;
                     bb[ip] = @(NO);
                 }
             }
@@ -90,8 +91,8 @@
     return bm;
 }
 
-- (NSMutableArray *) dvsem2:(NSMutableArray *)bm seed:(NSInteger)seed {
-    NSInteger len = [bm count];
+- (NSMutableData *) dvsem2:(NSMutableData *)bm seed:(NSInteger)seed {
+    NSInteger len = [bm length];
     NSInteger ip;
     char bc = 0;
     Rand2 * rnd = [[Rand2 alloc] init];
@@ -101,14 +102,14 @@
     for (NSInteger i = 0; i < len; i++)
         bb[i] = @(YES);
     
-    
+    char* fileBytes = (char*)[bm mutableBytes];
     for (NSInteger i = 0; i < len - 1; i++) {
         if ([bb[i] boolValue] == YES) {
             ip = [rnd rand:i + 1 max:len - 1];
             if ([bb[ip] boolValue] == YES) {
-                bc = [bm[ip] charValue];
-                bm[ip] = bm[i];
-                bm[i] = [NSNumber numberWithInt:bc];
+                bc = fileBytes[ip] ;
+                fileBytes[ip] = fileBytes[i];
+                fileBytes[i] = bc;
                 bb[ip] = @(NO);
             }
             else if ((ip + 1) < len) {
@@ -121,9 +122,9 @@
                 }
                 
                 if (ip < len) {
-                    bc = [bm[ip] charValue];
-                    bm[ip] = bm[i];
-                    bm[i] = [NSNumber numberWithInt:bc];
+                    bc = fileBytes[ip] ;
+                    fileBytes[ip] = fileBytes[i];
+                    fileBytes[i] = bc;
                     bb[ip] = @(NO);
                 }
             }
@@ -145,62 +146,63 @@
     return bm;
 }
 
-- (NSMutableArray *) evsem3:(NSMutableArray *)bm seed:(NSInteger)seed {
-    NSInteger len = [bm count];
+- (NSMutableData *) evsem3:(NSMutableData *)bm seed:(NSInteger)seed {
+    NSInteger len = [bm length];
     char rb, tb;
     Rand1 * rnd = [[Rand1 alloc] init];
     [rnd setSeed:seed];
+    char* fileBytes = (char*)[bm mutableBytes];
     for (NSInteger i = 0; i < len; i++) {
         NSInteger j = [rnd rand:0 max:2];
-        rb = [bm[i] charValue];
-        tb = (char)(((rb >> j) ^ (rb >> 5)) & ((1 << 3) - 1));
-        bm[i] =  [NSNumber numberWithInt:(char)(rb ^ ((tb << j) | (tb << 5)))];;
+        rb = fileBytes[i] ;
+        tb = (((rb >> j) ^ (rb >> 5)) & ((1 << 3) - 1));
+        fileBytes[i] =  (char)(rb ^ ((tb << j) | (tb << 5)));
     }
     
     return bm;
 }
 
-- (NSMutableArray *) dvsem3:(NSMutableArray *)bm seed:(NSInteger)seed {
-    NSInteger len = [bm count];
+- (NSMutableData *) dvsem3:(NSMutableData *)bm seed:(NSInteger)seed {
+    NSInteger len = [bm length];
     char rb, tb;
     Rand1 * rnd = [[Rand1 alloc] init];
     [rnd setSeed:seed];
-    
+    char* fileBytes = (char*)[bm mutableBytes];
     for (NSInteger i = 0; i < len; i++) {
         NSInteger j = [rnd rand:0 max:2];
-        rb = [bm[i] charValue];
+        rb = fileBytes[i];
         tb = (char)(((rb >> j) ^ (rb >> 5)) & ((1 << 3) - 1));
-        bm[i] = [NSNumber numberWithInt:(char)(rb ^ ((tb << j) | (tb << 5)))];
+        fileBytes[i] = (char)(rb ^ ((tb << j) | (tb << 5)));
     }
     
     return bm;
 }
 
-- (NSMutableArray *) evsem4:(NSMutableArray *)bm seed:(NSInteger)seed {
-    NSInteger len = [bm count];
+- (NSMutableData *) evsem4:(NSMutableData *)bm seed:(NSInteger)seed {
+    NSInteger len = [bm length];
     char rb;
     Rand2 * rnd = [[Rand2 alloc] init];
     [rnd setSeed:seed];
-    
+    char* fileBytes = (char*)[bm mutableBytes];
     for (NSInteger i = 0; i < len; i++) {
         char j = (char)[rnd rand:-127 max:127];
-        rb = ~[bm[i] charValue];
-        bm[i] = [NSNumber numberWithInt:(char)(rb ^ j)];
+        rb = ~fileBytes[i];
+        fileBytes[i] = (rb ^ j);
     }
     
     return bm;
 }
 
-- (NSMutableArray *) dvsem4:(NSMutableArray *)bm seed:(NSInteger)seed {
-    NSInteger len = [bm count];
+- (NSMutableData *) dvsem4:(NSMutableData *)bm seed:(NSInteger)seed {
+    NSInteger len = [bm length];
     char rb;
     Rand2 * rnd = [[Rand2 alloc] init];
     [rnd setSeed:seed];
-    
+    char* fileBytes = (char*)[bm mutableBytes];
     for (NSInteger i = 0; i < len; i++) {
         char j = (char)[rnd rand:-127 max:127];
-        rb = (char)([bm[i] charValue] ^ j);
-        bm[i] = [NSNumber numberWithInt:(char)~rb];
+        rb = (char)(fileBytes[i]  ^ j);
+        fileBytes[i] = ~rb;
     }
     
     return bm;
@@ -308,7 +310,7 @@
         NSString * s =[NSString stringWithFormat:@"%@%@", pad, [pas substringWithRange:NSMakeRange(i * ls,(i + 1) * ls)]];
         spa[i] =  s;
         NSData *bytes = [s dataUsingEncoding:NSUTF8StringEncoding];
-        uint8_t *rawBytes = [bytes bytes];
+        uint8_t *rawBytes = (uint8_t *)[bytes bytes];
         byte_buffer bb = *bb_new_wrap(rawBytes, [bytes length]);
         // [bb order:ByteOrder.LITTLE_ENDIAN];
         if (ls <= 4)
@@ -330,7 +332,7 @@
         NSString* s =[NSString stringWithFormat:@"%@%@", pad, [pas substringFromIndex:numc * ls]];
         spa[num - 1] = s;
         NSData *bytes = [s dataUsingEncoding:NSUTF8StringEncoding];
-        uint8_t *rawBytes = [bytes bytes];
+        uint8_t *rawBytes = (uint8_t *)[bytes bytes];
         byte_buffer bb = *bb_new_wrap(rawBytes, [bytes length]);
         
         //[bb order:ByteOrder.BIG_ENDIAN];

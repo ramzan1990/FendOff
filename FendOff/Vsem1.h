@@ -6,14 +6,15 @@
   NSInteger stot;
 }
 
-- (NSMutableArray *) evsem1:(NSMutableArray *)bm seed:(NSInteger)seed;
-- (NSMutableArray *) dvsem1:(NSMutableArray *)bm seed:(NSInteger)seed;
-- (NSMutableArray *) evsem2:(NSMutableArray *)bm seed:(NSInteger)seed;
-- (NSMutableArray *) dvsem2:(NSMutableArray *)bm seed:(NSInteger)seed;
-- (NSMutableArray *) evsem3:(NSMutableArray *)bm seed:(NSInteger)seed;
-- (NSMutableArray *) dvsem3:(NSMutableArray *)bm seed:(NSInteger)seed;
-- (NSMutableArray *) evsem4:(NSMutableArray *)bm seed:(NSInteger)seed;
-- (NSMutableArray *) dvsem4:(NSMutableArray *)bm seed:(NSInteger)seed;
+- (NSInteger) getStot;
+- (NSMutableData *) evsem1:(NSMutableData *)bm seed:(NSInteger)seed;
+- (NSMutableData *) dvsem1:(NSMutableData *)bm seed:(NSInteger)seed;
+- (NSMutableData *) evsem2:(NSMutableData *)bm seed:(NSInteger)seed;
+- (NSMutableData *) dvsem2:(NSMutableData *)bm seed:(NSInteger)seed;
+- (NSMutableData *) evsem3:(NSMutableData *)bm seed:(NSInteger)seed;
+- (NSMutableData *) dvsem3:(NSMutableData *)bm seed:(NSInteger)seed;
+- (NSMutableData *) evsem4:(NSMutableData *)bm seed:(NSInteger)seed;
+- (NSMutableData *) dvsem4:(NSMutableData *)bm seed:(NSInteger)seed;
 - (NSMutableArray *) pastosd:(NSInteger)num pas:(NSString *)pas;
 + (NSMutableArray *) pass16:(NSInteger)num pas:(NSString *)pas;
 @end
