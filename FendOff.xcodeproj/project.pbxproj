@@ -10,10 +10,14 @@
 		932924781A7CEA370082E087 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 932924771A7CEA370082E087 /* main.m */; };
 		9329247B1A7CEA370082E087 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9329247A1A7CEA370082E087 /* AppDelegate.m */; };
 		9329247E1A7CEA370082E087 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9329247D1A7CEA370082E087 /* ViewController.m */; };
-		932924811A7CEA370082E087 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9329247F1A7CEA370082E087 /* Main.storyboard */; };
 		932924831A7CEA370082E087 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 932924821A7CEA370082E087 /* Images.xcassets */; };
 		932924861A7CEA370082E087 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 932924841A7CEA370082E087 /* LaunchScreen.xib */; };
 		932924921A7CEA370082E087 /* FendOffTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 932924911A7CEA370082E087 /* FendOffTests.m */; };
+		932924A21A7CEA730082E087 /* Rand1.m in Sources */ = {isa = PBXBuildFile; fileRef = 9329249D1A7CEA730082E087 /* Rand1.m */; };
+		932924A31A7CEA730082E087 /* Rand2.m in Sources */ = {isa = PBXBuildFile; fileRef = 9329249F1A7CEA730082E087 /* Rand2.m */; };
+		932924A41A7CEA730082E087 /* Vsem1.m in Sources */ = {isa = PBXBuildFile; fileRef = 932924A11A7CEA730082E087 /* Vsem1.m */; };
+		932924D91A7E09A40082E087 /* bytebuffer.c in Sources */ = {isa = PBXBuildFile; fileRef = 932924D71A7E09A40082E087 /* bytebuffer.c */; };
+		932924DC1A7E158E0082E087 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 932924DA1A7E158E0082E087 /* Main.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,12 +38,20 @@
 		9329247A1A7CEA370082E087 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		9329247C1A7CEA370082E087 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		9329247D1A7CEA370082E087 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		932924801A7CEA370082E087 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		932924821A7CEA370082E087 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		932924851A7CEA370082E087 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		9329248B1A7CEA370082E087 /* FendOffTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FendOffTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		932924901A7CEA370082E087 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		932924911A7CEA370082E087 /* FendOffTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FendOffTests.m; sourceTree = "<group>"; };
+		9329249C1A7CEA730082E087 /* Rand1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Rand1.h; sourceTree = "<group>"; };
+		9329249D1A7CEA730082E087 /* Rand1.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Rand1.m; sourceTree = "<group>"; };
+		9329249E1A7CEA730082E087 /* Rand2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Rand2.h; sourceTree = "<group>"; };
+		9329249F1A7CEA730082E087 /* Rand2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Rand2.m; sourceTree = "<group>"; };
+		932924A01A7CEA730082E087 /* Vsem1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Vsem1.h; sourceTree = "<group>"; };
+		932924A11A7CEA730082E087 /* Vsem1.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Vsem1.m; sourceTree = "<group>"; };
+		932924D71A7E09A40082E087 /* bytebuffer.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = bytebuffer.c; sourceTree = "<group>"; };
+		932924D81A7E09A40082E087 /* bytebuffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = bytebuffer.h; sourceTree = "<group>"; };
+		932924DB1A7E158E0082E087 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,11 +93,12 @@
 		932924741A7CEA370082E087 /* FendOff */ = {
 			isa = PBXGroup;
 			children = (
+				9329249B1A7CEA530082E087 /* VSEM */,
 				932924791A7CEA370082E087 /* AppDelegate.h */,
 				9329247A1A7CEA370082E087 /* AppDelegate.m */,
 				9329247C1A7CEA370082E087 /* ViewController.h */,
 				9329247D1A7CEA370082E087 /* ViewController.m */,
-				9329247F1A7CEA370082E087 /* Main.storyboard */,
+				932924DA1A7E158E0082E087 /* Main.storyboard */,
 				932924821A7CEA370082E087 /* Images.xcassets */,
 				932924841A7CEA370082E087 /* LaunchScreen.xib */,
 				932924751A7CEA370082E087 /* Supporting Files */,
@@ -117,6 +130,21 @@
 				932924901A7CEA370082E087 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		9329249B1A7CEA530082E087 /* VSEM */ = {
+			isa = PBXGroup;
+			children = (
+				932924D71A7E09A40082E087 /* bytebuffer.c */,
+				932924D81A7E09A40082E087 /* bytebuffer.h */,
+				9329249C1A7CEA730082E087 /* Rand1.h */,
+				9329249D1A7CEA730082E087 /* Rand1.m */,
+				9329249E1A7CEA730082E087 /* Rand2.h */,
+				9329249F1A7CEA730082E087 /* Rand2.m */,
+				932924A01A7CEA730082E087 /* Vsem1.h */,
+				932924A11A7CEA730082E087 /* Vsem1.m */,
+			);
+			name = VSEM;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -199,7 +227,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				932924811A7CEA370082E087 /* Main.storyboard in Resources */,
+				932924DC1A7E158E0082E087 /* Main.storyboard in Resources */,
 				932924861A7CEA370082E087 /* LaunchScreen.xib in Resources */,
 				932924831A7CEA370082E087 /* Images.xcassets in Resources */,
 			);
@@ -219,7 +247,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				932924A41A7CEA730082E087 /* Vsem1.m in Sources */,
+				932924A21A7CEA730082E087 /* Rand1.m in Sources */,
 				9329247E1A7CEA370082E087 /* ViewController.m in Sources */,
+				932924D91A7E09A40082E087 /* bytebuffer.c in Sources */,
+				932924A31A7CEA730082E087 /* Rand2.m in Sources */,
 				9329247B1A7CEA370082E087 /* AppDelegate.m in Sources */,
 				932924781A7CEA370082E087 /* main.m in Sources */,
 			);
@@ -244,20 +276,20 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		9329247F1A7CEA370082E087 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				932924801A7CEA370082E087 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		932924841A7CEA370082E087 /* LaunchScreen.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
 				932924851A7CEA370082E087 /* Base */,
 			);
 			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+		932924DA1A7E158E0082E087 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				932924DB1A7E158E0082E087 /* Base */,
+			);
+			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -344,6 +376,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = FendOff/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -354,6 +387,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = FendOff/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -412,6 +446,7 @@
 				932924971A7CEA370082E087 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		932924981A7CEA370082E087 /* Build configuration list for PBXNativeTarget "FendOffTests" */ = {
 			isa = XCConfigurationList;
@@ -420,6 +455,7 @@
 				9329249A1A7CEA370082E087 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

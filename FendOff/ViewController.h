@@ -10,6 +10,8 @@
 
 @interface ViewController : UIViewController
 
+@property (weak, nonatomic) IBOutlet UIButton *button1;
+- (IBAction)tryToFail:(id)sender;
 
 @end
 
