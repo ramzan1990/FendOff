@@ -9,7 +9,7 @@
   return self;
 }
 
-- (NSInteger) rand {
+- (unsigned long) rand {
   seed ^= (seed << 21);
   seed ^= (seed >> 35);
   seed ^= (seed << 4);
@@ -31,10 +31,11 @@
   return out;
 }
 
-- (void) setSeed:(NSInteger)seedP {
-  seedP = seedP + 0xCAFDBCDE;
+- (void) setSeed:(unsigned long)seedP {
+  unsigned long t= 0xCAFEBCDE;
+  seedP = seedP + t;
   if (seedP == 0)
-    seedP = 0xCADDBCDE;
+    seedP =t;
   seed = seedP;
 }
 

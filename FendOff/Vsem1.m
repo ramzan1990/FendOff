@@ -16,7 +16,7 @@
     char* fileBytes = (char*)[bm mutableBytes];
     for (NSInteger i = 0; i < len; i++) {
         rb = (char)[rnd rand:-127 max:127];
-        fileBytes[i] =fileBytes[i]^ rb;
+        fileBytes[i] =fileBytes[i] ^ rb;
     }
     
     return bm;
@@ -30,9 +30,8 @@
     char* fileBytes = (char*)[bm mutableBytes];
     for (NSInteger i = 0; i < len; i++) {
         rb = (char)[rnd rand:-127 max:127];
-        fileBytes[i] =fileBytes[i]^ rb;
+        fileBytes[i] =fileBytes[i] ^ rb;
     }
-    
     return bm;
 }
 
@@ -242,7 +241,7 @@
             if (len <= 32)
                 ppas = [pas substringFromIndex:16];
             else
-                ppas = [pas substringWithRange:NSMakeRange(16,32)];
+                ppas = [pas substringWithRange:NSMakeRange(16,16)];
             sa = [Vsem1 pass16:num pas:ppas];
             lc = num;
             lp = [ppas length];
@@ -307,40 +306,19 @@
             pad = @"&^";
         else if (ls == 3 || ls == 7)
             pad = @"$";
-        NSString * s =[NSString stringWithFormat:@"%@%@", pad, [pas substringWithRange:NSMakeRange(i * ls,(i + 1) * ls)]];
+        long r1 =i * ls;
+        long r2 =(i + 1) * ls;
+        NSString * s =[NSString stringWithFormat:@"%@%@", pad, [pas substringWithRange:NSMakeRange(r1,r2-r1)]];
         spa[i] =  s;
         NSData *bytes = [s dataUsingEncoding:NSUTF8StringEncoding];
-        uint8_t *rawBytes = (uint8_t *)[bytes bytes];
-        byte_buffer bb = *bb_new_wrap(rawBytes, [bytes length]);
-        // [bb order:ByteOrder.LITTLE_ENDIAN];
-        if (ls <= 4)
-            sa[i] =[NSNumber numberWithInt:bb_get_int(&bb)];
-        else
-            sa[i] = [NSNumber numberWithLong:bb_get_long(&bb)];
+        char *rawBytes = (char *)[bytes bytes];
+        sa[i] =[NSNumber numberWithInt:OSReadLittleInt32(rawBytes, 0)];
+        
         if (numc < num)
             sa[num - 1] = sa[num - 2];
     }
     
-    if (lsl > 0 && len > num) {
-        pad = @"";
-        if (lso == 1 || lso == 5)
-            pad = @"123";
-        else if (lso == 2 || lso == 6)
-            pad = @"45";
-        else if (lso == 3 || lso == 7)
-            pad = @"6";
-        NSString* s =[NSString stringWithFormat:@"%@%@", pad, [pas substringFromIndex:numc * ls]];
-        spa[num - 1] = s;
-        NSData *bytes = [s dataUsingEncoding:NSUTF8StringEncoding];
-        uint8_t *rawBytes = (uint8_t *)[bytes bytes];
-        byte_buffer bb = *bb_new_wrap(rawBytes, [bytes length]);
-        
-        //[bb order:ByteOrder.BIG_ENDIAN];
-        if (ls <= 4)
-            sa[num - 1] = [NSNumber numberWithInt:bb_get_int(&bb)];
-        else
-            sa[num - 1] = [NSNumber numberWithLong:bb_get_long(&bb)];
-    }
+   
     return sa;
 }
 

@@ -65,13 +65,13 @@
                 NSLog(@"Create file returned NO");
             }
         }
-        [self tryToSave:filePath];
+       NSString* newFile =  [self tryToSave:filePath];
         
-    
+    [self tryToSaveAgain:filePath];
     
 }
 
-- (void) tryToSave:(NSString *) path{
+- (NSString *) tryToSave:(NSString *) path{
     NSString* passw = @"1234";
     NSString* allt = @"";
     NSString* outs;
@@ -94,16 +94,53 @@
     NSMutableArray* sa = [em pastosd:2 pas:passw];
     long stot = [em getStot];
     bouts = [em evsem1:bouts seed:[sa[0] integerValue]];
+    [self printData:bouts];
     bouts = [em evsem2:bouts seed:[sa[1] integerValue]];
+    [self printData:bouts];
     long s3 = 999;
     if (stot > 2) s3 = [sa[2] integerValue];
     bouts = [em evsem3:bouts seed:s3];
+    [self printData:bouts];
     s3 = -999;
     if (stot > 3) s3 = [sa[3] integerValue];
     bouts = [em evsem4:bouts seed:s3];
+    [self printData:bouts];
     NSString* newFile =[NSString stringWithFormat:@"%@.ff", path];
-    [NSKeyedArchiver archiveRootObject:bouts toFile:newFile];
+    [bouts writeToFile:newFile atomically:YES];
+    return newFile;
 }
 
+-(void) printData:(NSMutableData *) data{
+    char* bytes = (char *) [data bytes];
+    for(int i = 0; i<[data length]; i++){
+        int t = bytes[i];
+        NSLog([NSString stringWithFormat:@" %d ", t]);
+    }
+}
+
+- (void) tryToSaveAgain:(NSString *) path
+{
+    NSString* passw = @"1234";
+     NSData *data = [[NSData alloc] initWithContentsOfFile:path];
+    NSMutableData *mData = [NSMutableData data];
+    [mData appendData:data];
+    
+    Vsem1 * em = [[Vsem1 alloc] init];
+    
+    NSMutableArray* sa = [em pastosd:2 pas:passw];
+    
+    long stot = [em getStot];
+    
+    long s3 = -999;
+    if (stot > 3) s3 = [sa[3] integerValue];
+    mData = [em dvsem4:mData seed:s3];
+    s3 = 999;
+    if (stot > 2) s3 = [sa[2] integerValue];
+    mData = [em dvsem3:mData seed:s3];
+    mData = [em dvsem2:mData seed:[sa[1] integerValue]];
+    mData = [em dvsem1:mData seed:[sa[0] integerValue]];
+    NSString* newFile =[NSString stringWithFormat:@"%@ff.txt", path];
+    [mData writeToFile:newFile atomically:YES];
+}
 
 @end

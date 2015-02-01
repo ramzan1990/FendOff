@@ -1,11 +1,11 @@
 #include <UIKit/UIKit.h>
 
 @interface Rand2 : NSObject {
-  NSUInteger seed;
+  unsigned long seed;
 }
 
 - (id) init;
-- (NSInteger) rand;
+- (unsigned long) rand;
 - (NSInteger) rand:(NSInteger)min max:(NSInteger)max;
-- (void) setSeed:(NSInteger)seed;
+- (void) setSeed:(unsigned long)seed;
 @end
