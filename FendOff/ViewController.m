@@ -60,14 +60,14 @@
         }else {
             NSLog (@"File not found, file will be created");
             NSData *file;
-            file =  [@"rrrrjgkgdjfgkl;jd dfk j;glkdfg ;ldfkgjdflk;" dataUsingEncoding:NSUTF8StringEncoding];
+            file =  [@"I am a text file with important information, for example password 4515. Thats it." dataUsingEncoding:NSUTF8StringEncoding];
             if (![filemgr createFileAtPath:filePath contents:file attributes:nil]){
                 NSLog(@"Create file returned NO");
             }
         }
        NSString* newFile =  [self tryToSave:filePath];
         
-    [self tryToSaveAgain:filePath];
+    [self tryToSaveAgain:newFile];
     
 }
 
@@ -94,17 +94,13 @@
     NSMutableArray* sa = [em pastosd:2 pas:passw];
     long stot = [em getStot];
     bouts = [em evsem1:bouts seed:[sa[0] integerValue]];
-    [self printData:bouts];
     bouts = [em evsem2:bouts seed:[sa[1] integerValue]];
-    [self printData:bouts];
     long s3 = 999;
     if (stot > 2) s3 = [sa[2] integerValue];
     bouts = [em evsem3:bouts seed:s3];
-    [self printData:bouts];
     s3 = -999;
     if (stot > 3) s3 = [sa[3] integerValue];
     bouts = [em evsem4:bouts seed:s3];
-    [self printData:bouts];
     NSString* newFile =[NSString stringWithFormat:@"%@.ff", path];
     [bouts writeToFile:newFile atomically:YES];
     return newFile;

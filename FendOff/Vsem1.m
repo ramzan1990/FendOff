@@ -43,11 +43,11 @@
     [rnd setSeed:seed];
     NSMutableArray * bb = [[NSMutableArray alloc] init];
     
-    for (NSInteger i = 0; i < len; i++)
+    for (int i = 0; i < len; i++)
         bb[i] = @(YES);
     
     char* fileBytes = (char*)[bm mutableBytes];
-    for (NSInteger i = 0; i < len - 1; i++) {
+    for (int i = 0; i < len - 1; i++) {
         if ([bb[i] boolValue] == YES) {
             ip =[rnd rand:i + 1 max:len - 1];
             if ([bb[ip] boolValue] == YES) {
@@ -59,7 +59,7 @@
             else if ((ip + 1) < len) {
                 ip++;
                 
-                while (!bb[ip]) {
+                while (!([bb[ip] boolValue] == YES)) {
                     ip++;
                     if (ip >= len)
                         break;
@@ -75,7 +75,7 @@
             else {
                 ip--;
                 
-                while (!bb[ip] && (ip > i)) {
+                while (!([bb[ip] boolValue] == YES) && (ip > i)) {
                     if (ip >= len)
                         break;
                     ip--;
@@ -114,7 +114,7 @@
             else if ((ip + 1) < len) {
                 ip++;
                 
-                while (!bb[ip]) {
+                while (!([bb[ip] boolValue] == YES)) {
                     ip++;
                     if (ip >= len)
                         break;
@@ -130,7 +130,7 @@
             else {
                 ip--;
                 
-                while (!bb[ip] && (ip > i)) {
+                while (!([bb[ip] boolValue] == YES) && (ip > i)) {
                     if (ip >= len)
                         break;
                     ip--;
