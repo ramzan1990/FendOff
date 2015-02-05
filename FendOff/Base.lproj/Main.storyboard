@@ -118,27 +118,57 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7vb-NG-ykW">
-                                <rect key="frame" x="100" y="98" width="66" height="30"/>
-                                <state key="normal" title="Open File">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7vb-NG-ykW">
+                                <rect key="frame" x="16" y="216" width="100" height="30"/>
+                                <state key="normal" title="Choose Image">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
                                     <action selector="btnGalleryClicked:" destination="Bs7-ze-cRs" eventType="touchUpInside" id="hde-S4-hjv"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="KML-Dc-7eT">
-                                <rect key="frame" x="180" y="236" width="240" height="128"/>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jwu-hJ-o26">
+                                <rect key="frame" x="16" y="321" width="37" height="30"/>
+                                <state key="normal" title="Done">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="doneClicked:" destination="Bs7-ze-cRs" eventType="touchUpInside" id="cos-EF-rc7"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Password" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2yG-bG-w7K">
+                                <rect key="frame" x="16" y="254" width="76" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="IZ0-NR-g5k">
+                                <rect key="frame" x="16" y="283" width="229" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="done" enablesReturnKeyAutomatically="YES" secureTextEntry="YES"/>
+                            </textField>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KML-Dc-7eT">
+                                <rect key="frame" x="16" y="72" width="229" height="136"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="128" id="o14-It-eG2"/>
-                                    <constraint firstAttribute="width" constant="240" id="xGR-Rh-zxc"/>
+                                    <constraint firstAttribute="height" constant="136" id="g98-DE-8Fr"/>
                                 </constraints>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="centerX" secondItem="KML-Dc-7eT" secondAttribute="centerX" id="1cp-5T-Jcu"/>
-                            <constraint firstAttribute="centerY" secondItem="KML-Dc-7eT" secondAttribute="centerY" id="wDN-Rk-P0g"/>
+                            <constraint firstItem="KML-Dc-7eT" firstAttribute="top" secondItem="qRP-KX-PPd" secondAttribute="bottom" constant="8" id="2MZ-F0-RCo"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="KML-Dc-7eT" secondAttribute="trailing" constant="8" id="8aA-N0-jlF"/>
+                            <constraint firstItem="IZ0-NR-g5k" firstAttribute="top" secondItem="2yG-bG-w7K" secondAttribute="bottom" constant="8" id="Ani-aP-5DL"/>
+                            <constraint firstItem="7vb-NG-ykW" firstAttribute="leading" secondItem="Sj0-I8-uVO" secondAttribute="leadingMargin" constant="8" id="MY1-gN-zJq"/>
+                            <constraint firstItem="KML-Dc-7eT" firstAttribute="leading" secondItem="Sj0-I8-uVO" secondAttribute="leadingMargin" constant="8" id="Pqf-sf-AKS"/>
+                            <constraint firstItem="IZ0-NR-g5k" firstAttribute="leading" secondItem="Sj0-I8-uVO" secondAttribute="leadingMargin" constant="8" id="a78-XA-fXl"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="IZ0-NR-g5k" secondAttribute="trailing" constant="8" id="gjZ-pR-hY2"/>
+                            <constraint firstItem="2yG-bG-w7K" firstAttribute="top" secondItem="7vb-NG-ykW" secondAttribute="bottom" constant="8" id="ikD-4T-nij"/>
+                            <constraint firstItem="Jwu-hJ-o26" firstAttribute="top" secondItem="IZ0-NR-g5k" secondAttribute="bottom" constant="8" id="jbj-VW-3EY"/>
+                            <constraint firstItem="2yG-bG-w7K" firstAttribute="leading" secondItem="Sj0-I8-uVO" secondAttribute="leadingMargin" constant="8" id="rfW-6k-7CX"/>
+                            <constraint firstItem="7vb-NG-ykW" firstAttribute="top" secondItem="KML-Dc-7eT" secondAttribute="bottom" constant="8" id="sdT-Jv-sud"/>
+                            <constraint firstItem="Jwu-hJ-o26" firstAttribute="leading" secondItem="Sj0-I8-uVO" secondAttribute="leadingMargin" constant="8" id="w5h-vS-lqc"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="7Ks-60-waq">
@@ -151,6 +181,7 @@
                     <connections>
                         <outlet property="btnGallery" destination="7vb-NG-ykW" id="Oz3-Qy-khW"/>
                         <outlet property="ivPickedImage" destination="KML-Dc-7eT" id="6UH-Em-b2E"/>
+                        <outlet property="pass" destination="IZ0-NR-g5k" id="wKx-Jz-07C"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="v8T-Av-M7F" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -431,6 +462,6 @@ Developed by Victor Solovyev: victorsolov@gmail.com</string>
         <image name="about" width="114" height="131"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="XXE-0S-IH2"/>
+        <segue reference="xL7-YS-elt"/>
     </inferredMetricsTieBreakers>
 </document>
