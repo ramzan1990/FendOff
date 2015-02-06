@@ -25,12 +25,18 @@
     // Dispose of any resources that can be recreated.
 }
 - (IBAction)doneClicked:(id)sender {
-    NSString* name = @"1.jpg";
-    NSString* path = [self getPath:name];
+    if(_ivPickedImage.image == nil || _pass.text.length==0){
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"FendOff"
+                                                        message:@"Enter password and choose image first."
+                                                       delegate:nil
+                                              cancelButtonTitle:@"OK"
+                                              otherButtonTitles:nil];
+        [alert show];
+    }
+    NSString* path = [self getPath:imageName];
     CGDataProviderRef provider = CGImageGetDataProvider(_ivPickedImage.image.CGImage);
     NSData* data = (id)CFBridgingRelease(CGDataProviderCopyData(provider));
     [self tryToSave:path image:data pass:_pass.text];
-    
 }
 
 -(NSString *) getPath:(NSString *) name {
@@ -39,7 +45,7 @@
     (NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *documentsDirectory = [paths objectAtIndex:0];
     
-    NSString *dirName = [documentsDirectory stringByAppendingPathComponent:@"MyDir"];
+    NSString *dirName = [documentsDirectory stringByAppendingPathComponent:@"EncryptedPhotos"];
     
     BOOL isDir;
     if(![fm fileExistsAtPath:dirName isDirectory:&isDir])
@@ -110,7 +116,9 @@
         [popover dismissPopoverAnimated:YES];
     }
     _ivPickedImage.image = [info objectForKey:UIImagePickerControllerOriginalImage];
-}
+    
+    NSURL *imagePath = [info objectForKey:UIImagePickerControllerReferenceURL];
+    imageName = [imagePath lastPathComponent];}
 
 -(void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
 {

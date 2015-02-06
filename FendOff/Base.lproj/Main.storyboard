@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
     <dependencies>
-        <deployment defaultVersion="1792" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
@@ -255,16 +254,16 @@ Developed by Victor Solovyev: victorsolov@gmail.com</string>
             </objects>
             <point key="canvasLocation" x="122" y="-381"/>
         </scene>
-        <!--Table View Controller-->
+        <!--Decrypt Controller-->
         <scene sceneID="upi-B0-viq">
             <objects>
-                <tableViewController id="aUC-BF-wBh" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="DecryptView" id="aUC-BF-wBh" customClass="DecryptController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="79" sectionHeaderHeight="22" sectionFooterHeight="22" id="B8D-ZM-0vi">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="1xF-2l-oyj" detailTextLabel="Klg-YM-xCZ" rowHeight="79" style="IBUITableViewCellStyleSubtitle" id="Inh-nd-GJs">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="FileCell" textLabel="1xF-2l-oyj" rowHeight="79" style="IBUITableViewCellStyleDefault" id="Inh-nd-GJs">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Inh-nd-GJs" id="dBW-dh-bpY">
                                     <autoresizingMask key="autoresizingMask"/>
@@ -272,12 +271,6 @@ Developed by Victor Solovyev: victorsolov@gmail.com</string>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="1xF-2l-oyj">
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Klg-YM-xCZ">
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
@@ -291,17 +284,24 @@ Developed by Victor Solovyev: victorsolov@gmail.com</string>
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="JaQ-xw-0kX">
-                        <barButtonItem key="leftBarButtonItem" title="Back" id="VQn-9A-UtI"/>
+                        <barButtonItem key="leftBarButtonItem" title="Back" id="VQn-9A-UtI">
+                            <connections>
+                                <segue destination="vXZ-lx-hvc" kind="presentation" modalTransitionStyle="crossDissolve" id="Bqc-Tk-1LY"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <segue destination="Vvc-FY-z7M" kind="presentation" identifier="ShowPhoto" modalTransitionStyle="crossDissolve" id="h8f-2g-020"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aNi-iN-Fsd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="934" y="480"/>
         </scene>
-        <!--View Controller-->
+        <!--Photo Controller-->
         <scene sceneID="syJ-9a-W7B">
             <objects>
-                <viewController id="xFK-pK-gs0" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PhotoDisplay" id="xFK-pK-gs0" customClass="PhotoController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="gPB-7W-gvA"/>
                         <viewControllerLayoutGuide type="bottom" id="WKM-AF-LES"/>
@@ -310,19 +310,46 @@ Developed by Victor Solovyev: victorsolov@gmail.com</string>
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="znn-1I-WnT">
-                                <rect key="frame" x="125" y="72" width="351" height="319"/>
-                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Enter password:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kls-em-hLN">
+                                <rect key="frame" x="16" y="72" width="125" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="S61-Lg-0ld">
+                                <rect key="frame" x="16" y="101" width="97" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YLS-TC-Hzt">
+                                <rect key="frame" x="16" y="177" width="44" height="30"/>
+                                <state key="normal" title="Delete">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="delete:" destination="xFK-pK-gs0" eventType="touchUpInside" id="EDT-Xb-ksR"/>
+                                </connections>
+                            </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nnr-bZ-xuq">
-                                <rect key="frame" x="249" y="472" width="102" height="30"/>
+                                <rect key="frame" x="16" y="139" width="102" height="30"/>
                                 <state key="normal" title="Save to gallery">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="save:" destination="xFK-pK-gs0" eventType="touchUpInside" id="qcx-MF-gwd"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="S61-Lg-0ld" secondAttribute="trailing" constant="8" id="6Ny-9q-hFJ"/>
+                            <constraint firstItem="S61-Lg-0ld" firstAttribute="leading" secondItem="x5s-I7-Kw3" secondAttribute="leadingMargin" constant="8" id="toY-I5-ZxT"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="mvD-du-KKN"/>
+                    <connections>
+                        <outlet property="pass" destination="S61-Lg-0ld" id="fbe-E0-0HB"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PwF-aM-5xf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -462,6 +489,6 @@ Developed by Victor Solovyev: victorsolov@gmail.com</string>
         <image name="about" width="114" height="131"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="xL7-YS-elt"/>
+        <segue reference="Bqc-Tk-1LY"/>
     </inferredMetricsTieBreakers>
 </document>

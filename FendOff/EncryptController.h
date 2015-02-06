@@ -12,6 +12,7 @@
 {
     UIImagePickerController *ipc;
     UIPopoverController *popover;
+    NSString *imageName;
 }
 
 @property (weak, nonatomic) IBOutlet UIButton *btnGallery;
