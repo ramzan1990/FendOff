@@ -102,8 +102,11 @@
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    PhotoController* pc = (PhotoController* )[segue destinationViewController];
+    if([segue.identifier isEqualToString:@"ShowPhoto"]){
+    UINavigationController* nav = (UINavigationController*)[segue destinationViewController];
+    PhotoController* pc = (PhotoController* )[nav viewControllers][0];
     [pc setFile:selectedFile];
+    }
 }
 
 

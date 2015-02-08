@@ -20,23 +20,21 @@
     // Do any additional setup after loading the view.
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
+
 - (IBAction)doneClicked:(id)sender {
-    if(_ivPickedImage.image == nil || _pass.text.length==0){
+    if(_ivPickedImage.image == nil || _pass.text.length==0 || _name.text.length==0){
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"FendOff"
-                                                        message:@"Enter password and choose image first."
+                                                        message:@"Choose image and enter name and password."
                                                        delegate:nil
                                               cancelButtonTitle:@"OK"
                                               otherButtonTitles:nil];
         [alert show];
     }
-    NSString* path = [self getPath:imageName];
-    CGDataProviderRef provider = CGImageGetDataProvider(_ivPickedImage.image.CGImage);
-    NSData* data = (id)CFBridgingRelease(CGDataProviderCopyData(provider));
-    [self tryToSave:path image:data pass:_pass.text];
+    NSString* path = [self getPath:_name.text];
+    NSData* data = UIImagePNGRepresentation(_ivPickedImage.image);
+    NSMutableData* encData = [Vsem1 encryptData:data passw:_pass.text];
+    NSString* newFile =[NSString stringWithFormat:@"%@.ff", path];
+    [encData writeToFile:newFile atomically:YES];
 }
 
 -(NSString *) getPath:(NSString *) name {
@@ -58,38 +56,6 @@
     return filePath;
 }
 
-- (NSString *) tryToSave:(NSString *) path image: (NSData*)data pass: (NSString *) passw {
-    NSString* allt = @"";
-    NSString* outs;
-    NSDateFormatter *DateFormatter=[[NSDateFormatter alloc] init];
-    [DateFormatter setDateFormat:@"yyyy/MM/dd HH:mm:ss"];
-    outs = [NSString stringWithFormat:@"%@%@%@", @"FendoffP ", [DateFormatter stringFromDate:[NSDate date]], @"\n"];
-    allt = [NSString stringWithFormat:@"%@%@%@", outs, passw, @"\n"];
-    int length = (int) [allt length];
-    length +=  3;
-    outs = [NSString stringWithFormat:@"%d%@", length, @"\n"];
-    allt = [NSString stringWithFormat:@"%@%@", allt, outs];
-    NSData *temp = [allt dataUsingEncoding:NSUTF8StringEncoding];
-    
-    NSMutableData *bouts = [NSMutableData data];
-    [bouts appendData:temp];
-    [bouts appendData:data];
-    
-    Vsem1 * em = [[Vsem1 alloc] init];
-    NSMutableArray* sa = [em pastosd:2 pas:passw];
-    long stot = [em getStot];
-    bouts = [em evsem1:bouts seed:[sa[0] integerValue]];
-    bouts = [em evsem2:bouts seed:[sa[1] integerValue]];
-    long s3 = 999;
-    if (stot > 2) s3 = [sa[2] integerValue];
-    bouts = [em evsem3:bouts seed:s3];
-    s3 = -999;
-    if (stot > 3) s3 = [sa[3] integerValue];
-    bouts = [em evsem4:bouts seed:s3];
-    NSString* newFile =[NSString stringWithFormat:@"%@.ff", path];
-    [bouts writeToFile:newFile atomically:YES];
-    return newFile;
-}
 
 - (IBAction)btnGalleryClicked:(id)sender
 {
@@ -116,9 +82,7 @@
         [popover dismissPopoverAnimated:YES];
     }
     _ivPickedImage.image = [info objectForKey:UIImagePickerControllerOriginalImage];
-    
-    NSURL *imagePath = [info objectForKey:UIImagePickerControllerReferenceURL];
-    imageName = [imagePath lastPathComponent];}
+}
 
 -(void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
 {

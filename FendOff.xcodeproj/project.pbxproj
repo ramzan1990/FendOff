@@ -16,8 +16,10 @@
 		932924A21A7CEA730082E087 /* Rand1.m in Sources */ = {isa = PBXBuildFile; fileRef = 9329249D1A7CEA730082E087 /* Rand1.m */; };
 		932924A31A7CEA730082E087 /* Rand2.m in Sources */ = {isa = PBXBuildFile; fileRef = 9329249F1A7CEA730082E087 /* Rand2.m */; };
 		932924A41A7CEA730082E087 /* Vsem1.m in Sources */ = {isa = PBXBuildFile; fileRef = 932924A11A7CEA730082E087 /* Vsem1.m */; };
-		932924D91A7E09A40082E087 /* bytebuffer.c in Sources */ = {isa = PBXBuildFile; fileRef = 932924D71A7E09A40082E087 /* bytebuffer.c */; };
 		932924DC1A7E158E0082E087 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 932924DA1A7E158E0082E087 /* Main.storyboard */; };
+		937F63B21A87644400EA238D /* VaultController.m in Sources */ = {isa = PBXBuildFile; fileRef = 937F63B11A87644400EA238D /* VaultController.m */; };
+		937F63B51A87646500EA238D /* OpenVaultController.m in Sources */ = {isa = PBXBuildFile; fileRef = 937F63B41A87646500EA238D /* OpenVaultController.m */; };
+		937F63B81A8776BB00EA238D /* VaultCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 937F63B71A8776BB00EA238D /* VaultCategory.m */; };
 		93FAFE461A84E448002547D8 /* DecryptController.m in Sources */ = {isa = PBXBuildFile; fileRef = 93FAFE451A84E448002547D8 /* DecryptController.m */; };
 		93FAFE491A84E9E8002547D8 /* PhotoController.m in Sources */ = {isa = PBXBuildFile; fileRef = 93FAFE481A84E9E8002547D8 /* PhotoController.m */; };
 		93FBA0E11A836F8200172105 /* EncryptController.m in Sources */ = {isa = PBXBuildFile; fileRef = 93FBA0E01A836F8200172105 /* EncryptController.m */; };
@@ -52,9 +54,13 @@
 		9329249F1A7CEA730082E087 /* Rand2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Rand2.m; sourceTree = "<group>"; };
 		932924A01A7CEA730082E087 /* Vsem1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Vsem1.h; sourceTree = "<group>"; };
 		932924A11A7CEA730082E087 /* Vsem1.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Vsem1.m; sourceTree = "<group>"; };
-		932924D71A7E09A40082E087 /* bytebuffer.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = bytebuffer.c; sourceTree = "<group>"; };
-		932924D81A7E09A40082E087 /* bytebuffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = bytebuffer.h; sourceTree = "<group>"; };
 		932924DB1A7E158E0082E087 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		937F63B01A87644400EA238D /* VaultController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VaultController.h; sourceTree = "<group>"; };
+		937F63B11A87644400EA238D /* VaultController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VaultController.m; sourceTree = "<group>"; };
+		937F63B31A87646500EA238D /* OpenVaultController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OpenVaultController.h; sourceTree = "<group>"; };
+		937F63B41A87646500EA238D /* OpenVaultController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OpenVaultController.m; sourceTree = "<group>"; };
+		937F63B61A8776BB00EA238D /* VaultCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VaultCategory.h; sourceTree = "<group>"; };
+		937F63B71A8776BB00EA238D /* VaultCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VaultCategory.m; sourceTree = "<group>"; };
 		93FAFE441A84E448002547D8 /* DecryptController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DecryptController.h; sourceTree = "<group>"; };
 		93FAFE451A84E448002547D8 /* DecryptController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DecryptController.m; sourceTree = "<group>"; };
 		93FAFE471A84E9E8002547D8 /* PhotoController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoController.h; sourceTree = "<group>"; };
@@ -117,6 +123,12 @@
 				93FAFE451A84E448002547D8 /* DecryptController.m */,
 				93FAFE471A84E9E8002547D8 /* PhotoController.h */,
 				93FAFE481A84E9E8002547D8 /* PhotoController.m */,
+				937F63B01A87644400EA238D /* VaultController.h */,
+				937F63B11A87644400EA238D /* VaultController.m */,
+				937F63B31A87646500EA238D /* OpenVaultController.h */,
+				937F63B41A87646500EA238D /* OpenVaultController.m */,
+				937F63B61A8776BB00EA238D /* VaultCategory.h */,
+				937F63B71A8776BB00EA238D /* VaultCategory.m */,
 			);
 			path = FendOff;
 			sourceTree = "<group>";
@@ -150,8 +162,6 @@
 		9329249B1A7CEA530082E087 /* VSEM */ = {
 			isa = PBXGroup;
 			children = (
-				932924D71A7E09A40082E087 /* bytebuffer.c */,
-				932924D81A7E09A40082E087 /* bytebuffer.h */,
 				9329249C1A7CEA730082E087 /* Rand1.h */,
 				9329249D1A7CEA730082E087 /* Rand1.m */,
 				9329249E1A7CEA730082E087 /* Rand2.h */,
@@ -262,15 +272,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				937F63B21A87644400EA238D /* VaultController.m in Sources */,
 				932924A41A7CEA730082E087 /* Vsem1.m in Sources */,
 				932924A21A7CEA730082E087 /* Rand1.m in Sources */,
 				9329247E1A7CEA370082E087 /* ViewController.m in Sources */,
-				932924D91A7E09A40082E087 /* bytebuffer.c in Sources */,
 				93FAFE491A84E9E8002547D8 /* PhotoController.m in Sources */,
+				937F63B51A87646500EA238D /* OpenVaultController.m in Sources */,
 				932924A31A7CEA730082E087 /* Rand2.m in Sources */,
 				9329247B1A7CEA370082E087 /* AppDelegate.m in Sources */,
 				93FAFE461A84E448002547D8 /* DecryptController.m in Sources */,
 				932924781A7CEA370082E087 /* main.m in Sources */,
+				937F63B81A8776BB00EA238D /* VaultCategory.m in Sources */,
 				93FBA0E11A836F8200172105 /* EncryptController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
