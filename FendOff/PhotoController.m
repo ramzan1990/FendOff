@@ -31,6 +31,7 @@
 - (IBAction)save:(id)sender {
     NSData *data = [[NSData alloc] initWithContentsOfFile:filePath];
     NSMutableData *mData = [Vsem1 decryptData:data passw:_pass.text];
+    @try{
     UIImage * img = [UIImage imageWithData:mData];
     _iv.image = img;
     UIImageWriteToSavedPhotosAlbum(img,nil,nil,nil);
@@ -40,6 +41,15 @@
                                           cancelButtonTitle:@"OK"
                                           otherButtonTitles:nil];
     [alert show];
+    }
+    @catch(NSException *){
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"FendOff"
+                                                        message:@"Error."
+                                                       delegate:nil
+                                              cancelButtonTitle:@"OK"
+                                              otherButtonTitles:nil];
+        [alert show];
+    }
 }
 
 

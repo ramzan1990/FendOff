@@ -1,7 +1,7 @@
 #import <UIKit/UIKit.h>
 #import "VaultCategory.h"
 
-@interface VaultController : UITableViewController{
+@interface VaultController : UITableViewController <UIAlertViewDelegate>{
     NSString* password;
     NSString* vaultFile;
     VaultCategory* selectedCategory;

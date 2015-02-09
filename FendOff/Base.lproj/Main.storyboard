@@ -411,13 +411,13 @@ Developed by Victor Solovyev: victorsolov@gmail.com</string>
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Enter password" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="miw-ZI-2Tp">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Enter password" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="miw-ZI-2Tp">
                                 <rect key="frame" x="16" y="72" width="120" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ujj-Jz-j0G">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ujj-Jz-j0G">
                                 <rect key="frame" x="16" y="139" width="37" height="30"/>
                                 <state key="normal" title="Done">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -426,28 +426,85 @@ Developed by Victor Solovyev: victorsolov@gmail.com</string>
                                     <action selector="doneClicked:" destination="LbI-bb-Mpn" eventType="touchUpInside" id="cIa-Ey-ys5"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" tag="100" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Reset with new password" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dlt-Qy-Koa">
-                                <rect key="frame" x="16" y="177" width="197" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" tag="101" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AZo-4f-6od">
-                                <rect key="frame" x="16" y="206" width="40" height="30"/>
-                                <state key="normal" title="Reset">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="resetClicked:" destination="LbI-bb-Mpn" eventType="touchUpInside" id="Bk7-l5-cPP"/>
-                                </connections>
-                            </button>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="71Y-MZ-B97">
-                                <rect key="frame" x="16" y="101" width="568" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="71Y-MZ-B97">
+                                <rect key="frame" x="16" y="101" width="539" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Djw-xP-vjM">
+                                <rect key="frame" x="0.0" y="177" width="600" height="169"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" tag="100" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="New password" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dlt-Qy-Koa">
+                                        <rect key="frame" x="8" y="8" width="115" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" tag="101" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AZo-4f-6od">
+                                        <rect key="frame" x="520" y="75" width="40" height="30"/>
+                                        <state key="normal" title="Reset">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="resetClicked:" destination="LbI-bb-Mpn" eventType="touchUpInside" id="Bk7-l5-cPP"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" tag="103" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sc7-38-x6G">
+                                        <rect key="frame" x="8" y="75" width="54" height="30"/>
+                                        <state key="normal" title="Change">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="changeClicked:" destination="LbI-bb-Mpn" eventType="touchUpInside" id="Xod-6S-jLA"/>
+                                        </connections>
+                                    </button>
+                                    <textField opaque="NO" clipsSubviews="YES" tag="102" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="P5r-7h-u7S">
+                                        <rect key="frame" x="8" y="37" width="552" height="30"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="AZo-4f-6od" firstAttribute="top" secondItem="P5r-7h-u7S" secondAttribute="bottom" constant="8" id="4zx-Fm-R1v"/>
+                                    <constraint firstItem="sc7-38-x6G" firstAttribute="leading" secondItem="Djw-xP-vjM" secondAttribute="leading" constant="8" id="6Kf-fr-Ike"/>
+                                    <constraint firstItem="P5r-7h-u7S" firstAttribute="top" secondItem="Dlt-Qy-Koa" secondAttribute="bottom" constant="8" id="JKc-an-7lx"/>
+                                    <constraint firstItem="Dlt-Qy-Koa" firstAttribute="leading" secondItem="Djw-xP-vjM" secondAttribute="leading" constant="8" id="Rx8-yh-XqU"/>
+                                    <constraint firstItem="Dlt-Qy-Koa" firstAttribute="top" secondItem="Djw-xP-vjM" secondAttribute="top" constant="8" id="Tr2-UO-TLN"/>
+                                    <constraint firstItem="Dlt-Qy-Koa" firstAttribute="top" relation="greaterThanOrEqual" secondItem="Djw-xP-vjM" secondAttribute="top" constant="8" id="Uwv-jN-Vns"/>
+                                    <constraint firstAttribute="trailing" secondItem="AZo-4f-6od" secondAttribute="trailing" constant="8" id="VNs-k5-ipf"/>
+                                    <constraint firstAttribute="trailing" secondItem="P5r-7h-u7S" secondAttribute="trailing" constant="8" id="ZuF-Sk-UM6"/>
+                                    <constraint firstItem="sc7-38-x6G" firstAttribute="top" secondItem="P5r-7h-u7S" secondAttribute="bottom" constant="8" id="o8v-cN-OYg"/>
+                                    <constraint firstItem="P5r-7h-u7S" firstAttribute="top" secondItem="Dlt-Qy-Koa" secondAttribute="bottom" constant="8" id="wp7-ux-KPE"/>
+                                    <constraint firstItem="P5r-7h-u7S" firstAttribute="leading" secondItem="Djw-xP-vjM" secondAttribute="leading" constant="8" id="yyR-Zc-EMC"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="Uwv-jN-Vns"/>
+                                        <exclude reference="wp7-ux-KPE"/>
+                                    </mask>
+                                </variation>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Djw-xP-vjM" firstAttribute="leading" secondItem="wQI-lJ-MEq" secondAttribute="leadingMargin" id="1ZM-zY-gTm"/>
+                            <constraint firstItem="Ujj-Jz-j0G" firstAttribute="top" secondItem="71Y-MZ-B97" secondAttribute="bottom" constant="8" id="35R-kT-92z"/>
+                            <constraint firstItem="71Y-MZ-B97" firstAttribute="top" secondItem="miw-ZI-2Tp" secondAttribute="bottom" constant="8" id="5hD-R1-rBy"/>
+                            <constraint firstItem="miw-ZI-2Tp" firstAttribute="top" secondItem="UjX-5m-xxs" secondAttribute="bottom" constant="8" id="6mG-C8-0OT"/>
+                            <constraint firstItem="71Y-MZ-B97" firstAttribute="leading" secondItem="wQI-lJ-MEq" secondAttribute="leadingMargin" constant="8" id="EWq-Q5-go3"/>
+                            <constraint firstItem="miw-ZI-2Tp" firstAttribute="leading" secondItem="wQI-lJ-MEq" secondAttribute="leadingMargin" constant="8" id="MZz-xt-zmm"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Djw-xP-vjM" secondAttribute="trailing" id="UMh-8O-1JZ"/>
+                            <constraint firstItem="71Y-MZ-B97" firstAttribute="trailing" secondItem="wQI-lJ-MEq" secondAttribute="trailingMargin" constant="8" id="ecW-Jr-h9G"/>
+                            <constraint firstItem="Ujj-Jz-j0G" firstAttribute="leading" secondItem="wQI-lJ-MEq" secondAttribute="leadingMargin" constant="8" id="nL9-9C-2i8"/>
+                            <constraint firstItem="Djw-xP-vjM" firstAttribute="top" secondItem="Ujj-Jz-j0G" secondAttribute="bottom" constant="8" id="qJP-OS-5wH"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="71Y-MZ-B97" secondAttribute="trailing" constant="8" id="x5Y-Er-t8U"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="ecW-Jr-h9G"/>
+                            </mask>
+                        </variation>
                     </view>
                     <navigationItem key="navigationItem" id="eX7-Ov-BtG">
                         <barButtonItem key="leftBarButtonItem" title="Back" id="Dcz-Gk-FF1">
@@ -458,6 +515,8 @@ Developed by Victor Solovyev: victorsolov@gmail.com</string>
                     </navigationItem>
                     <connections>
                         <outlet property="pass" destination="71Y-MZ-B97" id="K9y-ei-fIL"/>
+                        <outlet property="pass2" destination="P5r-7h-u7S" id="cpv-Cp-Pc5"/>
+                        <outlet property="passview" destination="Djw-xP-vjM" id="anH-nj-kLx"/>
                         <segue destination="zak-cO-etD" kind="presentation" identifier="OpenVault" modalTransitionStyle="crossDissolve" id="5Lt-75-tsg"/>
                     </connections>
                 </viewController>
@@ -585,7 +644,7 @@ Developed by Victor Solovyev: victorsolov@gmail.com</string>
         <image name="about" width="114" height="131"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="xL7-YS-elt"/>
+        <segue reference="zjw-d0-tUK"/>
         <segue reference="ZpL-Rr-BMp"/>
     </inferredMetricsTieBreakers>
 </document>
