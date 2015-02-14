@@ -13,20 +13,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    
+    vaultList = [ViewController getVaultList];
     self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
-- (void) setPass:(NSString *)pass{
-    password= pass;
-}
-- (void) setVaultFile:(NSString *)vaultFileP{
-    vaultFile = vaultFileP;
-}
 
-- (void) setVaultList:(NSMutableArray *)vaultListP{
-    vaultList = vaultListP;
-}
+
 
 - (IBAction)backClicked:(id)sender {
     if(selectedCategory != nil){
@@ -34,8 +26,8 @@
         [self.tableView reloadData];
     }else{
         NSData *data = [NSKeyedArchiver archivedDataWithRootObject:vaultList];
-        NSMutableData* mData = [Vsem1 encryptData:data passw:password];
-        [mData writeToFile:vaultFile atomically:YES];
+        NSMutableData* mData = [Vsem1 encryptData:data passw:[ViewController getPass]];
+        [mData writeToFile:[ViewController getVaultFile] atomically:YES];
         
         ViewController *vc =[self.storyboard instantiateViewControllerWithIdentifier:@"MainView"];
         [vc setModalTransitionStyle:UIModalTransitionStyleCrossDissolve];

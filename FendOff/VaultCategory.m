@@ -2,7 +2,7 @@
 
 @implementation VaultCategory
 
-- (id) initWithName:(NSString *)name{
+- (id) initWithName:(NSString *)name {
     catName = name;
     catEntries = [[NSMutableArray alloc] init];
     return self;

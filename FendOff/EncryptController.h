@@ -16,7 +16,6 @@
 
 @property (weak, nonatomic) IBOutlet UIButton *btnGallery;
 @property (weak, nonatomic) IBOutlet UIImageView *ivPickedImage;
-@property (weak, nonatomic) IBOutlet UITextField *pass;
 @property (weak, nonatomic) IBOutlet UITextField *name;
 
 @end

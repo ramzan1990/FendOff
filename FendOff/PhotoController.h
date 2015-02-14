@@ -1,13 +1,12 @@
 #import <UIKit/UIKit.h>
+#import "EncryptedEntry.h"
 
 @interface PhotoController : UIViewController{
-    NSString* file;
-    NSString* filePath;
+    EncryptedEntry* selectedEntry;
 }
 
-- (void) setFile:(NSString *)pFile;
+- (void) setEntry:(EncryptedEntry *)pEntry;
 
-@property (weak, nonatomic) IBOutlet UITextField *pass;
 @property (weak, nonatomic) IBOutlet UIImageView *iv;
 
 @end

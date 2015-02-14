@@ -8,6 +8,8 @@
 
 #import "EncryptController.h"
 #import "Vsem1.h"
+#import "ViewController.h"
+#import "EncryptedEntry.h"
 
 @interface EncryptController ()
 
@@ -22,9 +24,9 @@
 
 
 - (IBAction)doneClicked:(id)sender {
-    if(_ivPickedImage.image == nil || _pass.text.length==0 || _name.text.length==0){
+    if(_ivPickedImage.image == nil || _name.text.length==0){
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"FendOff"
-                                                        message:@"Choose image and enter name and password."
+                                                        message:@"Choose image and enter name."
                                                        delegate:nil
                                               cancelButtonTitle:@"OK"
                                               otherButtonTitles:nil];
@@ -32,9 +34,54 @@
     }
     NSString* path = [self getPath:_name.text];
     NSData* data = UIImagePNGRepresentation(_ivPickedImage.image);
-    NSMutableData* encData = [Vsem1 encryptData:data passw:_pass.text];
-    NSString* newFile =[NSString stringWithFormat:@"%@.ff", path];
-    [encData writeToFile:newFile atomically:YES];
+    NSString * p = [self randomStringWithLength:10];
+    NSMutableData* encData = [Vsem1 encryptData:data passw:p];
+    [encData writeToFile:path atomically:YES];
+    EncryptedEntry* ee = [[EncryptedEntry alloc] init:_name.text file:path password:p preview:[self resizeImage:_ivPickedImage.image newSize:CGSizeMake(40, 40)]];
+    [ViewController addEncryptedEntry:ee];
+    
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"FendOff"
+                                                    message:@"File was successfully encrypted."
+                                                   delegate:nil
+                                          cancelButtonTitle:@"OK"
+                                          otherButtonTitles:nil];
+    [alert show];
+}
+
+- (UIImage *)resizeImage:(UIImage*)image newSize:(CGSize)newSize {
+    CGRect newRect = CGRectIntegral(CGRectMake(0, 0, newSize.width, newSize.height));
+    CGImageRef imageRef = image.CGImage;
+    
+    UIGraphicsBeginImageContextWithOptions(newSize, NO, 0);
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    
+    // Set the quality level to use when rescaling
+    CGContextSetInterpolationQuality(context, kCGInterpolationHigh);
+    CGAffineTransform flipVertical = CGAffineTransformMake(1, 0, 0, -1, 0, newSize.height);
+    
+    CGContextConcatCTM(context, flipVertical);
+    // Draw into the context; this scales the image
+    CGContextDrawImage(context, newRect, imageRef);
+    
+    // Get the resized image from the context and a UIImage
+    CGImageRef newImageRef = CGBitmapContextCreateImage(context);
+    UIImage *newImage = [UIImage imageWithCGImage:newImageRef];
+    
+    CGImageRelease(newImageRef);
+    UIGraphicsEndImageContext();
+    
+    return newImage;
+}
+
+-(NSString *) randomStringWithLength: (int) len {
+    NSString *letters = @"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+    NSMutableString *randomString = [NSMutableString stringWithCapacity: len];
+    
+    for (int i=0; i<len; i++) {
+        [randomString appendFormat: @"%C", [letters characterAtIndex: arc4random_uniform([letters length])]];
+    }
+    
+    return randomString;
 }
 
 -(NSString *) getPath:(NSString *) name {

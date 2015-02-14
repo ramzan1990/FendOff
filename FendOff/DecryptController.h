@@ -7,10 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "EncryptedEntry.h"
 
 @interface DecryptController : UITableViewController{
-    NSMutableArray *files;
-    NSString* selectedFile;
+    EncryptedEntry* selectedEntry;
 }
 
 @end

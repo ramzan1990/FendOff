@@ -7,11 +7,19 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "EncryptedEntry.h"
 
-@interface ViewController : UIViewController
+@interface ViewController : UIViewController{
+    BOOL fileExists;
+}
 
-@property (weak, nonatomic) IBOutlet UIButton *button1;
-- (IBAction)tryToFail:(id)sender;
-
+- (void) setPass:(NSString *)pass;
+- (void) setVaultFile:(NSString *)vaultFileP;
+- (void) setVaultList:(NSMutableArray *)vaultListP;
++(NSString *) getPass;
++(NSString *) getVaultFile;
++(NSMutableArray *) getVaultList;
++ (NSMutableArray *) getImagesList;
++ (void) addEncryptedEntry:(EncryptedEntry*) ee;
 @end
 

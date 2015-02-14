@@ -20,6 +20,7 @@
 		937F63B21A87644400EA238D /* VaultController.m in Sources */ = {isa = PBXBuildFile; fileRef = 937F63B11A87644400EA238D /* VaultController.m */; };
 		937F63B51A87646500EA238D /* OpenVaultController.m in Sources */ = {isa = PBXBuildFile; fileRef = 937F63B41A87646500EA238D /* OpenVaultController.m */; };
 		937F63B81A8776BB00EA238D /* VaultCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 937F63B71A8776BB00EA238D /* VaultCategory.m */; };
+		937F63BB1A8FAD9900EA238D /* EncryptedEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = 937F63BA1A8FAD9900EA238D /* EncryptedEntry.m */; };
 		93FAFE461A84E448002547D8 /* DecryptController.m in Sources */ = {isa = PBXBuildFile; fileRef = 93FAFE451A84E448002547D8 /* DecryptController.m */; };
 		93FAFE491A84E9E8002547D8 /* PhotoController.m in Sources */ = {isa = PBXBuildFile; fileRef = 93FAFE481A84E9E8002547D8 /* PhotoController.m */; };
 		93FBA0E11A836F8200172105 /* EncryptController.m in Sources */ = {isa = PBXBuildFile; fileRef = 93FBA0E01A836F8200172105 /* EncryptController.m */; };
@@ -61,6 +62,8 @@
 		937F63B41A87646500EA238D /* OpenVaultController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OpenVaultController.m; sourceTree = "<group>"; };
 		937F63B61A8776BB00EA238D /* VaultCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VaultCategory.h; sourceTree = "<group>"; };
 		937F63B71A8776BB00EA238D /* VaultCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VaultCategory.m; sourceTree = "<group>"; };
+		937F63B91A8FAD9900EA238D /* EncryptedEntry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EncryptedEntry.h; sourceTree = "<group>"; };
+		937F63BA1A8FAD9900EA238D /* EncryptedEntry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EncryptedEntry.m; sourceTree = "<group>"; };
 		93FAFE441A84E448002547D8 /* DecryptController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DecryptController.h; sourceTree = "<group>"; };
 		93FAFE451A84E448002547D8 /* DecryptController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DecryptController.m; sourceTree = "<group>"; };
 		93FAFE471A84E9E8002547D8 /* PhotoController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoController.h; sourceTree = "<group>"; };
@@ -129,6 +132,8 @@
 				937F63B41A87646500EA238D /* OpenVaultController.m */,
 				937F63B61A8776BB00EA238D /* VaultCategory.h */,
 				937F63B71A8776BB00EA238D /* VaultCategory.m */,
+				937F63B91A8FAD9900EA238D /* EncryptedEntry.h */,
+				937F63BA1A8FAD9900EA238D /* EncryptedEntry.m */,
 			);
 			path = FendOff;
 			sourceTree = "<group>";
@@ -284,6 +289,7 @@
 				932924781A7CEA370082E087 /* main.m in Sources */,
 				937F63B81A8776BB00EA238D /* VaultCategory.m in Sources */,
 				93FBA0E11A836F8200172105 /* EncryptController.m in Sources */,
+				937F63BB1A8FAD9900EA238D /* EncryptedEntry.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

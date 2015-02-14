@@ -8,6 +8,7 @@
 
 #import "DecryptController.h"
 #import "PhotoController.h"
+#import "ViewController.h"
 
 @interface DecryptController ()
 
@@ -18,24 +19,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    files = [[NSMutableArray alloc]init];
-    NSFileManager *fManager = [NSFileManager defaultManager];
-    NSString *item;
-    NSArray *contents = [fManager contentsOfDirectoryAtPath:[NSHomeDirectory() stringByAppendingPathComponent:@"Documents/EncryptedPhotos"] error:nil];
-    
-    // >>> this section here adds all files with the chosen extension to an array
-    for (item in contents){
-        if ([[item pathExtension] isEqualToString:@"ff"]) {
-            [files addObject:item];
-        }
     }
-    
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-}
 
 
 
@@ -46,15 +30,17 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [files count];
+    return [[ViewController getImagesList] count];
 }
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"FileCell" forIndexPath:indexPath];
-    
-    cell.textLabel.text = [files objectAtIndex:indexPath.row];
-    
+    EncryptedEntry* ee = [[ViewController getImagesList] objectAtIndex:indexPath.row];
+    UILabel* name = (UILabel *)[cell viewWithTag:100];
+    UIImageView *imageView = (UIImageView *)[cell viewWithTag:101];
+    name.text = [ee getName];
+    imageView.image = [ee getPreview];
     return cell;
 }
 
@@ -94,7 +80,7 @@
 */
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    selectedFile = [files objectAtIndex:indexPath.row];
+    selectedEntry = [[ViewController getImagesList] objectAtIndex:indexPath.row];
      [self performSegueWithIdentifier:@"ShowPhoto" sender:self];
 }
 
@@ -105,7 +91,7 @@
     if([segue.identifier isEqualToString:@"ShowPhoto"]){
     UINavigationController* nav = (UINavigationController*)[segue destinationViewController];
     PhotoController* pc = (PhotoController* )[nav viewControllers][0];
-    [pc setFile:selectedFile];
+    [pc setEntry:selectedEntry];
     }
 }
 
