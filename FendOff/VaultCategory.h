@@ -2,7 +2,6 @@
 
 @interface VaultCategory : NSObject <NSCoding>{
     NSString* catName;
-    int catType;
     NSMutableArray* catEntries;
 }
 

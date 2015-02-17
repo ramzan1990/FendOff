@@ -7,5 +7,6 @@
     NSString* password;
 }
 @property (weak, nonatomic) IBOutlet UITextField *pass;
+@property (weak, nonatomic) IBOutlet UIButton *doneButton;
 
 @end
