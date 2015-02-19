@@ -8,7 +8,7 @@
 
 #import "ViewController.h"
 #import "Vsem1.h"
-
+#import "EncryptController.h"
 
 @interface ViewController ()
 
@@ -92,6 +92,50 @@ static NSMutableArray* imagesList;
     mData = [Vsem1 encryptData:data passw:password];
     [mData writeToFile:vaultFile atomically:YES];
     
+}
+
+- (IBAction)encryptClicked:(id)sender
+{
+    UIButton* s = (UIButton *) sender;
+    ipc= [[UIImagePickerController alloc] init];
+    ipc.delegate = self;
+    ipc.sourceType = UIImagePickerControllerSourceTypeSavedPhotosAlbum;
+    
+    if(UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPhone)
+        [self presentViewController:ipc animated:YES completion:nil];
+    else
+    {
+        popover=[[UIPopoverController alloc]initWithContentViewController:ipc];
+        [popover presentPopoverFromRect:s.frame inView:self.view permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+    }
+}
+
+#pragma mark - ImagePickerController Delegate
+
+-(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
+{
+    if(UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPhone) {
+        [picker dismissViewControllerAnimated:YES completion:nil];
+    } else {
+        [popover dismissPopoverAnimated:YES];
+    }
+    pickedImage = [info objectForKey:UIImagePickerControllerOriginalImage];
+    [self performSegueWithIdentifier:@"Encrypt" sender:self];
+}
+
+-(void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
+{
+    [picker dismissViewControllerAnimated:YES completion:nil];
+}
+
+#pragma mark - Navigation
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if([segue.identifier isEqualToString:@"Encrypt"]){
+    UINavigationController* nav = (UINavigationController*)[segue destinationViewController];
+    EncryptController* ec = (EncryptController* )[nav viewControllers][0];
+    [ec setImage:pickedImage];
+    }
 }
 
 @end

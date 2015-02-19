@@ -80,6 +80,10 @@
 */
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    UIActivityIndicatorView *ai = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:ai];
+    [ai startAnimating];
+    
     selectedEntry = [[ViewController getImagesList] objectAtIndex:indexPath.row];
      [self performSegueWithIdentifier:@"ShowPhoto" sender:self];
 }

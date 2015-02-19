@@ -9,8 +9,11 @@
 #import <UIKit/UIKit.h>
 #import "EncryptedEntry.h"
 
-@interface ViewController : UIViewController{
+@interface ViewController : UIViewController <UIImagePickerControllerDelegate, UINavigationControllerDelegate>{
     BOOL fileExists;
+    UIImagePickerController *ipc;
+    UIPopoverController *popover;
+    UIImage* pickedImage;
 }
 
 - (void) setPass:(NSString *)pass;

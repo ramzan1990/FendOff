@@ -19,19 +19,21 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    _ivPickedImage.image = image;
 }
 
 
 - (IBAction)doneClicked:(id)sender {
-    if(_ivPickedImage.image == nil || _name.text.length==0){
+   
+
+    if(_name.text.length==0){
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"FendOff"
-                                                        message:@"Choose image and enter name."
+                                                        message:@"Enter name first."
                                                        delegate:nil
                                               cancelButtonTitle:@"OK"
                                               otherButtonTitles:nil];
         [alert show];
-    }
+    }else{
     NSString* path = [self getPath:_name.text];
     NSData* data = UIImagePNGRepresentation(_ivPickedImage.image);
     NSString * p = [self randomStringWithLength:10];
@@ -42,10 +44,16 @@
     
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"FendOff"
                                                     message:@"File was successfully encrypted."
-                                                   delegate:nil
+                                                   delegate:self
                                           cancelButtonTitle:@"OK"
                                           otherButtonTitles:nil];
     [alert show];
+    }
+    
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+     [self performSegueWithIdentifier:@"Back" sender:self];
 }
 
 - (UIImage *)resizeImage:(UIImage*)image newSize:(CGSize)newSize {
@@ -103,38 +111,10 @@
     return filePath;
 }
 
-
-- (IBAction)btnGalleryClicked:(id)sender
-{
-    ipc= [[UIImagePickerController alloc] init];
-    ipc.delegate = self;
-    ipc.sourceType = UIImagePickerControllerSourceTypeSavedPhotosAlbum;
-    
-    if(UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPhone)
-    [self presentViewController:ipc animated:YES completion:nil];
-    else
-    {
-        popover=[[UIPopoverController alloc]initWithContentViewController:ipc];
-        [popover presentPopoverFromRect:_btnGallery.frame inView:self.view permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
-    }
+- (void) setImage:(UIImage *) pickedImage{
+    image = pickedImage;
 }
 
-#pragma mark - ImagePickerController Delegate
-
--(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
-{
-    if(UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPhone) {
-        [picker dismissViewControllerAnimated:YES completion:nil];
-    } else {
-        [popover dismissPopoverAnimated:YES];
-    }
-    _ivPickedImage.image = [info objectForKey:UIImagePickerControllerOriginalImage];
-}
-
--(void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
-{
-    [picker dismissViewControllerAnimated:YES completion:nil];
-}
 
 @end
 

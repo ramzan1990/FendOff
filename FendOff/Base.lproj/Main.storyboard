@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="LbI-bb-Mpn">
     <dependencies>
+        <deployment defaultVersion="1808" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
@@ -28,9 +29,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <inset key="titleEdgeInsets" minX="-70" minY="100" maxX="0.0" maxY="0.0"/>
                                 <inset key="imageEdgeInsets" minX="20" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                <state key="normal" title="Encrypt File" image="Encrypt">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
+                                <state key="normal" title="Encrypt File" image="Encrypt"/>
                                 <variation key="default">
                                     <mask key="constraints">
                                         <exclude reference="PIw-5E-kvu"/>
@@ -38,7 +37,7 @@
                                     </mask>
                                 </variation>
                                 <connections>
-                                    <segue destination="wuc-0C-FQ7" kind="presentation" modalTransitionStyle="crossDissolve" id="o2C-Cf-ud8"/>
+                                    <action selector="encryptClicked:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="g8A-M0-B9c"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Em9-BN-RFx">
@@ -149,12 +148,15 @@
                             </mask>
                         </variation>
                     </view>
+                    <connections>
+                        <segue destination="wuc-0C-FQ7" kind="presentation" identifier="Encrypt" modalTransitionStyle="crossDissolve" id="hqU-S5-s98"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-837" y="-381"/>
         </scene>
-        <!--Encrypt Controller-->
+        <!--Encrypt-->
         <scene sceneID="ITk-4H-PPW">
             <objects>
                 <viewController id="Bs7-ze-cRs" customClass="EncryptController" sceneMemberID="viewController">
@@ -166,15 +168,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7vb-NG-ykW">
-                                <rect key="frame" x="16" y="216" width="100" height="30"/>
-                                <state key="normal" title="Choose Image">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="btnGalleryClicked:" destination="Bs7-ze-cRs" eventType="touchUpInside" id="hde-S4-hjv"/>
-                                </connections>
-                            </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KML-Dc-7eT">
                                 <rect key="frame" x="16" y="72" width="229" height="136"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
@@ -207,25 +200,23 @@
                         <constraints>
                             <constraint firstItem="iWI-YQ-xvw" firstAttribute="top" secondItem="b5s-4N-LFw" secondAttribute="bottom" constant="8" id="1Im-Z5-HCQ"/>
                             <constraint firstItem="KML-Dc-7eT" firstAttribute="top" secondItem="qRP-KX-PPd" secondAttribute="bottom" constant="8" id="2MZ-F0-RCo"/>
+                            <constraint firstItem="b5s-4N-LFw" firstAttribute="top" secondItem="KML-Dc-7eT" secondAttribute="bottom" constant="20" id="6Cx-Ql-cac"/>
                             <constraint firstAttribute="trailingMargin" secondItem="KML-Dc-7eT" secondAttribute="trailing" constant="8" id="8aA-N0-jlF"/>
-                            <constraint firstItem="7vb-NG-ykW" firstAttribute="leading" secondItem="Sj0-I8-uVO" secondAttribute="leadingMargin" constant="8" id="MY1-gN-zJq"/>
                             <constraint firstItem="KML-Dc-7eT" firstAttribute="leading" secondItem="Sj0-I8-uVO" secondAttribute="leadingMargin" constant="8" id="Pqf-sf-AKS"/>
                             <constraint firstItem="iWI-YQ-xvw" firstAttribute="leading" secondItem="Sj0-I8-uVO" secondAttribute="leadingMargin" constant="8" id="T86-7a-tB0"/>
-                            <constraint firstItem="b5s-4N-LFw" firstAttribute="top" secondItem="7vb-NG-ykW" secondAttribute="bottom" constant="8" id="hW2-9B-sYE"/>
-                            <constraint firstItem="7vb-NG-ykW" firstAttribute="top" secondItem="KML-Dc-7eT" secondAttribute="bottom" constant="8" id="sdT-Jv-sud"/>
                             <constraint firstAttribute="trailingMargin" secondItem="iWI-YQ-xvw" secondAttribute="trailing" constant="8" id="tIV-8q-F5S"/>
                             <constraint firstItem="Jwu-hJ-o26" firstAttribute="leading" secondItem="Sj0-I8-uVO" secondAttribute="leadingMargin" constant="8" id="w5h-vS-lqc"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="7Ks-60-waq">
-                        <barButtonItem key="leftBarButtonItem" title="Back" id="3Qh-gK-wOO">
+                    <navigationItem key="navigationItem" title="Encrypt" id="7Ks-60-waq">
+                        <barButtonItem key="leftBarButtonItem" image="Back" id="3Qh-gK-wOO">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
-                                <segue destination="vXZ-lx-hvc" kind="presentation" modalTransitionStyle="crossDissolve" id="xL7-YS-elt"/>
+                                <segue destination="vXZ-lx-hvc" kind="presentation" identifier="Back" modalTransitionStyle="crossDissolve" id="xL7-YS-elt"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="btnGallery" destination="7vb-NG-ykW" id="Oz3-Qy-khW"/>
                         <outlet property="ivPickedImage" destination="KML-Dc-7eT" id="6UH-Em-b2E"/>
                         <outlet property="name" destination="iWI-YQ-xvw" id="Mmw-8b-4UO"/>
                     </connections>
@@ -429,6 +420,10 @@ Developed by Victor Solovyev: victorsolov@gmail.com iOS version by Ramzan Umar
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="cSc-cm-Hkx">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="1" green="0.49803921569999998" blue="0.43137254899999999" alpha="1" colorSpace="calibratedRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -472,7 +467,7 @@ Developed by Victor Solovyev: victorsolov@gmail.com iOS version by Ramzan Umar
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Decrypt" id="JaQ-xw-0kX">
-                        <barButtonItem key="leftBarButtonItem" title="Back" id="VQn-9A-UtI">
+                        <barButtonItem key="leftBarButtonItem" image="Back" id="VQn-9A-UtI">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
                                 <segue destination="vXZ-lx-hvc" kind="presentation" modalTransitionStyle="crossDissolve" id="Bqc-Tk-1LY"/>
@@ -499,10 +494,13 @@ Developed by Victor Solovyev: victorsolov@gmail.com iOS version by Ramzan Umar
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5pp-Yc-6Hh">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5pp-Yc-6Hh">
                                 <rect key="frame" x="16" y="72" width="350" height="278"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="278" id="ldm-mi-1re"/>
+                                </constraints>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nnr-bZ-xuq">
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nnr-bZ-xuq">
                                 <rect key="frame" x="16" y="358" width="102" height="30"/>
                                 <state key="normal" title="Save to gallery">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -513,9 +511,16 @@ Developed by Victor Solovyev: victorsolov@gmail.com iOS version by Ramzan Umar
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="5pp-Yc-6Hh" firstAttribute="leading" secondItem="x5s-I7-Kw3" secondAttribute="leadingMargin" constant="16" id="1yf-IS-SzZ"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="5pp-Yc-6Hh" secondAttribute="trailing" constant="16" id="iRv-m4-mpt"/>
+                            <constraint firstItem="Nnr-bZ-xuq" firstAttribute="top" secondItem="5pp-Yc-6Hh" secondAttribute="bottom" constant="16" id="nkH-vw-mbL"/>
+                            <constraint firstItem="5pp-Yc-6Hh" firstAttribute="top" secondItem="gPB-7W-gvA" secondAttribute="bottom" constant="16" id="rPc-pr-USW"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="mvD-du-KKN">
-                        <barButtonItem key="leftBarButtonItem" title="Back" id="fE1-Re-KIX">
+                        <barButtonItem key="leftBarButtonItem" image="Back" id="fE1-Re-KIX">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
                                 <segue destination="wZd-5P-EYL" kind="presentation" modalTransitionStyle="crossDissolve" id="7HI-VY-0fo"/>
                             </connections>
@@ -678,7 +683,7 @@ Developed by Victor Solovyev: victorsolov@gmail.com iOS version by Ramzan Umar
                     <connections>
                         <outlet property="doneButton" destination="Ujj-Jz-j0G" id="Gyu-ZM-rqB"/>
                         <outlet property="pass" destination="71Y-MZ-B97" id="6SV-H5-aMa"/>
-                        <segue destination="vXZ-lx-hvc" kind="presentation" identifier="Enter" modalTransitionStyle="crossDissolve" id="zyA-rF-mav"/>
+                        <segue destination="vXZ-lx-hvc" kind="presentation" identifier="Enter" modalTransitionStyle="coverVertical" id="zyA-rF-mav"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Z6H-ZL-Y3c" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -754,9 +759,9 @@ Developed by Victor Solovyev: victorsolov@gmail.com iOS version by Ramzan Umar
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="D9P-D9-d2J" firstAttribute="top" secondItem="m8F-hQ-mBH" secondAttribute="bottom" id="mjU-cV-KDK"/>
-                            <constraint firstItem="D9P-D9-d2J" firstAttribute="leading" secondItem="9c3-iK-pvw" secondAttribute="leadingMargin" id="nNH-75-wLJ"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="D9P-D9-d2J" secondAttribute="trailing" id="pcD-sj-Cnh"/>
+                            <constraint firstItem="D9P-D9-d2J" firstAttribute="top" secondItem="m8F-hQ-mBH" secondAttribute="bottom" constant="-44" id="mjU-cV-KDK"/>
+                            <constraint firstItem="D9P-D9-d2J" firstAttribute="leading" secondItem="9c3-iK-pvw" secondAttribute="leadingMargin" constant="-8" id="nNH-75-wLJ"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="D9P-D9-d2J" secondAttribute="trailing" constant="-8" id="pcD-sj-Cnh"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Ufe-N5-sR0">
@@ -805,6 +810,10 @@ Developed by Victor Solovyev: victorsolov@gmail.com iOS version by Ramzan Umar
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="CmE-YK-KLX">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="1" green="0.49803921569999998" blue="0.43137254899999999" alpha="1" colorSpace="calibratedRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -871,8 +880,8 @@ Developed by Victor Solovyev: victorsolov@gmail.com iOS version by Ramzan Umar
         <image name="about" width="114" height="131"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="zyA-rF-mav"/>
-        <segue reference="yQ9-wr-jSL"/>
-        <segue reference="wO5-R5-BDr"/>
+        <segue reference="xL7-YS-elt"/>
+        <segue reference="lGy-QA-3vR"/>
+        <segue reference="7HI-VY-0fo"/>
     </inferredMetricsTieBreakers>
 </document>

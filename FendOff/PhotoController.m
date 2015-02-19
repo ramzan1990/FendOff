@@ -30,6 +30,7 @@
         [alert show];
     }
     
+    self.navigationItem.title = [selectedEntry getName];
 }
 
 

@@ -8,14 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
-@interface EncryptController : UIViewController<UIImagePickerControllerDelegate, UINavigationControllerDelegate>
-{
-    UIImagePickerController *ipc;
-    UIPopoverController *popover;
+@interface EncryptController : UIViewController <UIAlertViewDelegate>{
+    UIImage* image;
 }
 
-@property (weak, nonatomic) IBOutlet UIButton *btnGallery;
+
 @property (weak, nonatomic) IBOutlet UIImageView *ivPickedImage;
 @property (weak, nonatomic) IBOutlet UITextField *name;
+- (void) setImage:(UIImage *) pickedImage;
 
 @end
