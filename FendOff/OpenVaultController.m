@@ -37,6 +37,7 @@
     _pass.layer.borderColor=[[UIColor whiteColor]CGColor];
     _pass.layer.borderWidth= 1.0f;
     
+    [_pass setDelegate:self];
     
     //[fm removeItemAtPath:vaultFile error:nil];
 }
@@ -78,7 +79,11 @@
         
     }
 }
-
+-(BOOL) textFieldShouldReturn:(UITextField *)textField{
+    
+    [textField resignFirstResponder];
+    return YES;
+}
 
 
 #pragma mark - Navigation

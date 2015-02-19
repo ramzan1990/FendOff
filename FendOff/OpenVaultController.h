@@ -1,6 +1,6 @@
 #import <UIKit/UIKit.h>
 
-@interface OpenVaultController : UIViewController{
+@interface OpenVaultController : UIViewController  <UITextFieldDelegate>{
     NSString* vaultFile;
     NSMutableArray* vaultList;
     BOOL fileExists;

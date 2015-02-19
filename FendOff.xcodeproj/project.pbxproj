@@ -17,6 +17,7 @@
 		932924A31A7CEA730082E087 /* Rand2.m in Sources */ = {isa = PBXBuildFile; fileRef = 9329249F1A7CEA730082E087 /* Rand2.m */; };
 		932924A41A7CEA730082E087 /* Vsem1.m in Sources */ = {isa = PBXBuildFile; fileRef = 932924A11A7CEA730082E087 /* Vsem1.m */; };
 		932924DC1A7E158E0082E087 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 932924DA1A7E158E0082E087 /* Main.storyboard */; };
+		936A46C51A95E0C40009D225 /* SettingsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 936A46C41A95E0C40009D225 /* SettingsController.m */; };
 		937F63B21A87644400EA238D /* VaultController.m in Sources */ = {isa = PBXBuildFile; fileRef = 937F63B11A87644400EA238D /* VaultController.m */; };
 		937F63B51A87646500EA238D /* OpenVaultController.m in Sources */ = {isa = PBXBuildFile; fileRef = 937F63B41A87646500EA238D /* OpenVaultController.m */; };
 		937F63B81A8776BB00EA238D /* VaultCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 937F63B71A8776BB00EA238D /* VaultCategory.m */; };
@@ -56,6 +57,8 @@
 		932924A01A7CEA730082E087 /* Vsem1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Vsem1.h; sourceTree = "<group>"; };
 		932924A11A7CEA730082E087 /* Vsem1.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Vsem1.m; sourceTree = "<group>"; };
 		932924DB1A7E158E0082E087 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		936A46C31A95E0C40009D225 /* SettingsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsController.h; sourceTree = "<group>"; };
+		936A46C41A95E0C40009D225 /* SettingsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsController.m; sourceTree = "<group>"; };
 		937F63B01A87644400EA238D /* VaultController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VaultController.h; sourceTree = "<group>"; };
 		937F63B11A87644400EA238D /* VaultController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VaultController.m; sourceTree = "<group>"; };
 		937F63B31A87646500EA238D /* OpenVaultController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OpenVaultController.h; sourceTree = "<group>"; };
@@ -134,6 +137,8 @@
 				937F63B71A8776BB00EA238D /* VaultCategory.m */,
 				937F63B91A8FAD9900EA238D /* EncryptedEntry.h */,
 				937F63BA1A8FAD9900EA238D /* EncryptedEntry.m */,
+				936A46C31A95E0C40009D225 /* SettingsController.h */,
+				936A46C41A95E0C40009D225 /* SettingsController.m */,
 			);
 			path = FendOff;
 			sourceTree = "<group>";
@@ -280,6 +285,7 @@
 			files = (
 				937F63B21A87644400EA238D /* VaultController.m in Sources */,
 				932924A41A7CEA730082E087 /* Vsem1.m in Sources */,
+				936A46C51A95E0C40009D225 /* SettingsController.m in Sources */,
 				932924A21A7CEA730082E087 /* Rand1.m in Sources */,
 				9329247E1A7CEA370082E087 /* ViewController.m in Sources */,
 				93FAFE491A84E9E8002547D8 /* PhotoController.m in Sources */,
@@ -412,11 +418,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = FendOff/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -424,11 +433,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = FendOff/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="LbI-bb-Mpn">
     <dependencies>
-        <deployment defaultVersion="1792" identifier="iOS"/>
+        <deployment defaultVersion="1808" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
@@ -238,7 +238,7 @@
         <!--Settings-->
         <scene sceneID="Ibx-bA-bQQ">
             <objects>
-                <viewController id="hqd-dR-lo1" sceneMemberID="viewController">
+                <viewController id="hqd-dR-lo1" customClass="SettingsController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="T5E-pm-Tkd"/>
                         <viewControllerLayoutGuide type="bottom" id="flM-Gh-6SX"/>
@@ -247,29 +247,88 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c3e-1E-osy">
-                                <rect key="frame" x="16" y="72" width="1088" height="87"/>
-                                <string key="text">FendOff is an application to encrypt your files using an original encryption (VSEM 1.0).
-Developed by Victor Solovyev: victorsolov@gmail.com</string>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="about" translatesAutoresizingMaskIntoConstraints="NO" id="gUz-GI-RBq">
-                                <rect key="frame" x="167" y="195" width="267" height="210"/>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Vit-Rd-0rC">
+                                <rect key="frame" x="226" y="552" width="149" height="29"/>
+                                <segments>
+                                    <segment title="Password"/>
+                                    <segment title="About"/>
+                                </segments>
+                                <color key="tintColor" red="1" green="0.49803921569999998" blue="0.43137254899999999" alpha="1" colorSpace="calibratedRGB"/>
+                            </segmentedControl>
+                            <view hidden="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ySN-nE-bU0">
+                                <rect key="frame" x="50" y="89" width="500" height="115"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="about" translatesAutoresizingMaskIntoConstraints="NO" id="gUz-GI-RBq">
+                                        <rect key="frame" x="117" y="-4" width="267" height="210"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="267" id="2kH-qe-q3U"/>
+                                            <constraint firstAttribute="width" constant="267" id="NHf-iA-QTQ"/>
+                                            <constraint firstAttribute="height" constant="210" id="b64-fR-S1G"/>
+                                            <constraint firstAttribute="height" constant="210" id="uwa-dc-8ER"/>
+                                        </constraints>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="2kH-qe-q3U"/>
+                                                <exclude reference="b64-fR-S1G"/>
+                                            </mask>
+                                        </variation>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c3e-1E-osy">
+                                        <rect key="frame" x="8" y="8" width="1088" height="87"/>
+                                        <string key="text">FendOff is an application to encrypt your files using an original encryption (VSEM 1.0).
+Developed by Victor Solovyev: victorsolov@gmail.com iOS version by Ramzan Umarov: umarov256@mail.ru</string>
+                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.96078431369999995" green="0.96078431369999995" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="267" id="2kH-qe-q3U"/>
-                                    <constraint firstAttribute="height" constant="210" id="b64-fR-S1G"/>
+                                    <constraint firstAttribute="centerX" secondItem="gUz-GI-RBq" secondAttribute="centerX" constant="-0.5" id="I4v-xh-Mon"/>
+                                    <constraint firstItem="c3e-1E-osy" firstAttribute="top" secondItem="ySN-nE-bU0" secondAttribute="top" constant="8" id="L99-tl-ntm"/>
+                                    <constraint firstItem="c3e-1E-osy" firstAttribute="leading" secondItem="ySN-nE-bU0" secondAttribute="leading" constant="8" id="PQv-xN-r9D"/>
+                                    <constraint firstAttribute="trailing" secondItem="c3e-1E-osy" secondAttribute="trailing" constant="8" id="l4Z-D2-Ltt"/>
+                                    <constraint firstAttribute="centerY" secondItem="gUz-GI-RBq" secondAttribute="centerY" constant="-43.5" id="nXV-I0-3cy"/>
                                 </constraints>
-                            </imageView>
+                            </view>
+                            <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XFA-Lh-tSa">
+                                <rect key="frame" x="50" y="225" width="500" height="296"/>
+                                <subviews>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0pj-lc-yVg">
+                                        <rect key="frame" x="-11" y="27" width="517" height="30"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KBD-K1-ptY">
+                                        <rect key="frame" x="-6" y="59" width="512" height="30"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xdt-GK-fiG">
+                                        <rect key="frame" x="227" y="103" width="84" height="44"/>
+                                        <state key="normal" title="Save"/>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="0pj-lc-yVg" firstAttribute="top" secondItem="XFA-Lh-tSa" secondAttribute="top" constant="16" id="2Mt-7d-zlP"/>
+                                    <constraint firstItem="KBD-K1-ptY" firstAttribute="leading" secondItem="XFA-Lh-tSa" secondAttribute="leading" constant="-8" id="Bq7-rR-Q1q"/>
+                                    <constraint firstAttribute="trailing" secondItem="0pj-lc-yVg" secondAttribute="trailing" constant="-8" id="Xwc-I8-Esj"/>
+                                    <constraint firstItem="0pj-lc-yVg" firstAttribute="leading" secondItem="XFA-Lh-tSa" secondAttribute="leading" constant="-8" id="h9c-4E-zov"/>
+                                    <constraint firstItem="KBD-K1-ptY" firstAttribute="top" secondItem="0pj-lc-yVg" secondAttribute="bottom" id="qBt-0q-ow1"/>
+                                    <constraint firstAttribute="trailing" secondItem="KBD-K1-ptY" secondAttribute="trailing" constant="-8" id="uBD-ll-UR8"/>
+                                </constraints>
+                            </view>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.96078431372549022" green="0.96078431372549022" blue="0.96862745098039216" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="c3e-1E-osy" firstAttribute="leading" secondItem="pEr-i0-cUw" secondAttribute="leadingMargin" constant="8" id="2s7-Sq-64o"/>
-                            <constraint firstItem="c3e-1E-osy" firstAttribute="top" secondItem="T5E-pm-Tkd" secondAttribute="bottom" constant="8" id="AEb-Ic-0ib"/>
-                            <constraint firstAttribute="centerY" secondItem="gUz-GI-RBq" secondAttribute="centerY" id="PO6-gq-Dgv"/>
-                            <constraint firstAttribute="centerX" secondItem="gUz-GI-RBq" secondAttribute="centerX" constant="-0.5" id="WwC-OW-Yft"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="c3e-1E-osy" secondAttribute="trailing" constant="8" id="ftx-Rz-VzV"/>
+                            <constraint firstAttribute="trailing" secondItem="ySN-nE-bU0" secondAttribute="trailing" id="DBE-mg-reE"/>
+                            <constraint firstItem="ySN-nE-bU0" firstAttribute="leading" secondItem="pEr-i0-cUw" secondAttribute="leading" id="HFY-T1-BDR"/>
+                            <constraint firstItem="ySN-nE-bU0" firstAttribute="top" secondItem="T5E-pm-Tkd" secondAttribute="bottom" id="Hzx-rR-K3H"/>
+                            <constraint firstItem="flM-Gh-6SX" firstAttribute="top" secondItem="Vit-Rd-0rC" secondAttribute="bottom" constant="20" id="Yuz-vT-fbf"/>
+                            <constraint firstItem="Vit-Rd-0rC" firstAttribute="top" secondItem="ySN-nE-bU0" secondAttribute="bottom" constant="10" id="aW7-Jv-0Eb"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Vit-Rd-0rC" secondAttribute="trailing" constant="8" id="gP6-YJ-2q0"/>
+                            <constraint firstItem="Vit-Rd-0rC" firstAttribute="leading" secondItem="pEr-i0-cUw" secondAttribute="leadingMargin" constant="8" id="q5N-8n-V0d"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Settings" id="Y1M-dR-Kuf">
