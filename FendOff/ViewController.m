@@ -82,4 +82,16 @@ static NSMutableArray* imagesList;
     [mData writeToFile:imagesFile atomically:YES];
 }
 
++ (void) changePassword:(NSString *) newPass{
+    password = newPass;
+    NSData *data = [NSKeyedArchiver archivedDataWithRootObject:imagesList];
+    NSMutableData* mData = [Vsem1 encryptData:data passw:password];
+    [mData writeToFile:imagesFile atomically:YES];
+    
+    data = [NSKeyedArchiver archivedDataWithRootObject:vaultList];
+    mData = [Vsem1 encryptData:data passw:password];
+    [mData writeToFile:vaultFile atomically:YES];
+    
+}
+
 @end

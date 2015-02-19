@@ -1,5 +1,6 @@
 #import "VaultController.h"
 #import "ViewController.h"
+#import "EntryController.h"
 #import "Vsem1.h"
 
 @interface VaultController (){
@@ -10,11 +11,18 @@
 
 @implementation VaultController
 
+    static CategoryEntry* selectedEntry;
+    static VaultCategory* selectedCategory;
+
+
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
     vaultList = [ViewController getVaultList];
     self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    [self.navigationItem.rightBarButtonItem setTintColor:[UIColor whiteColor]];
+    self.navigationItem.title = @"Categories";
 }
 
 
@@ -23,6 +31,7 @@
 - (IBAction)backClicked:(id)sender {
     if(selectedCategory != nil){
         selectedCategory = nil;
+        self.navigationItem.title = @"Categories";
         [self.tableView reloadData];
     }else{
         NSData *data = [NSKeyedArchiver archivedDataWithRootObject:vaultList];
@@ -42,14 +51,37 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     if(selectedCategory == nil){
-        return [vaultList count] + 1;
+        if([self.tableView isEditing]){
+            return [vaultList count]+1;
+        }else{
+            return [vaultList count];
+        }
     }else{
-        return [[selectedCategory getEntries] count]+1;
+        if([self.tableView isEditing]){
+            return [[selectedCategory getEntries] count]+1;
+        }else{
+            return [[selectedCategory getEntries] count];
+        }
     }
 }
 
 - (void)setEditing:(BOOL)editing animated:(BOOL)animated {
     [super setEditing:editing animated:animated];
+    NSInteger n = 0;
+    if(selectedCategory == nil){
+        n = [vaultList count];
+    }else{
+        n = [[selectedCategory getEntries] count];
+    }
+    NSArray *indexPaths = [NSArray arrayWithObjects:
+                           [NSIndexPath indexPathForRow:n inSection:0],
+                           nil];
+    UITableView *tv = (UITableView *)self.view;
+    if(editing){
+        [tv insertRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationBottom];
+    }else{
+        [tv deleteRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationBottom];
+    }
     [self.tableView setEditing:editing animated:YES];
 }
 
@@ -101,7 +133,7 @@ forRowAtIndexPath:(NSIndexPath *)indexPath {
     if(alertView.tag == 100){
         [vaultList addObject:[[VaultCategory alloc] initWithName:detailString]];
     }else{
-        [[selectedCategory getEntries] addObject:detailString];
+        [[selectedCategory getEntries] addObject:[[CategoryEntry alloc] initWithName:detailString]];
     }
     [self.tableView reloadData];
 }
@@ -112,13 +144,17 @@ forRowAtIndexPath:(NSIndexPath *)indexPath {
         if(indexPath.row<[vaultList count]){
             cell.textLabel.text = [[vaultList objectAtIndex:indexPath.row] getName];
         }else{
-            cell.textLabel.text =@"New Category...";
+            if([self.tableView isEditing]){
+                cell.textLabel.text =@"New category";
+            }
         }
     }else{
         if(indexPath.row<[[selectedCategory getEntries] count]){
-            cell.textLabel.text = [[selectedCategory getEntries] objectAtIndex:indexPath.row];
+            cell.textLabel.text = [[[selectedCategory getEntries] objectAtIndex:indexPath.row] getName];
         }else{
-            cell.textLabel.text =@"New Entry...";
+            if([self.tableView isEditing]){
+                cell.textLabel.text =@"New entry";
+            }
         }
     }
     return cell;
@@ -129,23 +165,26 @@ forRowAtIndexPath:(NSIndexPath *)indexPath {
     if(selectedCategory == nil){
         if(indexPath.row<[vaultList count]){
             selectedCategory = (VaultCategory* )[vaultList objectAtIndex:indexPath.row];
+            self.navigationItem.title = [selectedCategory getName];
             [self.tableView reloadData];
         }
     }else{
-       
+        selectedEntry = [[selectedCategory getEntries] objectAtIndex:indexPath.row];
+         [self performSegueWithIdentifier:@"ShowEntry" sender:self];
     }
     
 }
 
 
 
-/*
+
  #pragma mark - Navigation
  
  - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
- // Get the new view controller using [segue destinationViewController].
- // Pass the selected object to the new view controller.
+     UINavigationController* nav = (UINavigationController*)[segue destinationViewController];
+     EntryController* ec = (EntryController* )[nav viewControllers][0];
+     [ec setEntry:selectedEntry];
  }
- */
+
 
 @end

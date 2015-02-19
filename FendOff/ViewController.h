@@ -21,5 +21,6 @@
 +(NSMutableArray *) getVaultList;
 + (NSMutableArray *) getImagesList;
 + (void) addEncryptedEntry:(EncryptedEntry*) ee;
++ (void) changePassword:(NSString *) newPass;
 @end
 

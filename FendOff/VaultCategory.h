@@ -3,6 +3,7 @@
 @interface VaultCategory : NSObject <NSCoding>{
     NSString* catName;
     NSMutableArray* catEntries;
+
 }
 
 -  (id) initWithName:(NSString *)name;

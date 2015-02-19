@@ -27,7 +27,7 @@
     
     fileExists = [fm fileExistsAtPath: vaultFile];
     if (fileExists){
-        [_doneButton setTitle:@"Done" forState:UIControlStateNormal];
+        [_doneButton setTitle:@"Enter" forState:UIControlStateNormal];
     }else{
         
     }
@@ -53,8 +53,8 @@
             [self performSegueWithIdentifier:@"Enter" sender:self];
         }
         @catch(NSException * exception){
-            NSLog( @"Name: %@", exception.name);
-            NSLog( @"Reason: %@", exception.reason );
+            //NSLog( @"Name: %@", exception.name);
+            //NSLog( @"Reason: %@", exception.reason );
             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"FendOff"
                                                             message:@"Wrong password!"
                                                            delegate:nil
