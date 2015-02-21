@@ -10,6 +10,7 @@
 #import "Vsem1.h"
 #import "ViewController.h"
 #import "EncryptedEntry.h"
+#import "SVProgressHUD.h"
 
 @interface EncryptController ()
 
@@ -24,31 +25,40 @@
 
 
 - (IBAction)doneClicked:(id)sender {
-   
+    [SVProgressHUD showWithMaskType:SVProgressHUDMaskTypeBlack];
 
-    if(_name.text.length==0){
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"FendOff"
-                                                        message:@"Enter name first."
-                                                       delegate:nil
-                                              cancelButtonTitle:@"OK"
-                                              otherButtonTitles:nil];
-        [alert show];
-    }else{
-    NSString* path = [self getPath:_name.text];
-    NSData* data = UIImagePNGRepresentation(_ivPickedImage.image);
-    NSString * p = [self randomStringWithLength:10];
-    NSMutableData* encData = [Vsem1 encryptData:data passw:p];
-    [encData writeToFile:path atomically:YES];
-    EncryptedEntry* ee = [[EncryptedEntry alloc] init:_name.text file:path password:p preview:[self resizeImage:_ivPickedImage.image newSize:CGSizeMake(40, 40)]];
-    [ViewController addEncryptedEntry:ee];
-    
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"FendOff"
-                                                    message:@"File was successfully encrypted."
-                                                   delegate:self
-                                          cancelButtonTitle:@"OK"
-                                          otherButtonTitles:nil];
-    [alert show];
-    }
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        if(_name.text.length==0){
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"FendOff"
+                                                            message:@"Enter name first."
+                                                           delegate:nil
+                                                  cancelButtonTitle:@"OK"
+                                                  otherButtonTitles:nil];
+            [alert show];
+        }else{
+            NSString* path = [self getPath:_name.text];
+            NSData* data = UIImagePNGRepresentation(_ivPickedImage.image);
+            NSString * p = [self randomStringWithLength:10];
+            NSMutableData* encData = [Vsem1 encryptData:data passw:p];
+            [encData writeToFile:path atomically:YES];
+            EncryptedEntry* ee = [[EncryptedEntry alloc] init:_name.text password:p preview:[self resizeImage:_ivPickedImage.image newSize:CGSizeMake(40, 40)]];
+            [ViewController addEncryptedEntry:ee];
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [SVProgressHUD dismiss];
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"FendOff"
+                                                                message:@"File was successfully encrypted."
+                                                               delegate:self
+                                                      cancelButtonTitle:@"OK"
+                                                      otherButtonTitles:nil];
+                [alert show];
+            });
+            
+           
+        }
+       
+    });
+ 
     
 }
 

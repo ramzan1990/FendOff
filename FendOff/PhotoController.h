@@ -2,7 +2,7 @@
 #import "EncryptedEntry.h"
 
 @interface PhotoController : UIViewController{
-    EncryptedEntry* selectedEntry;
+    EncryptedEntry* selectedPhoto;
 }
 
 - (void) setEntry:(EncryptedEntry *)pEntry;

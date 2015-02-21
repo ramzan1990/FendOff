@@ -19,6 +19,9 @@
 		932924DC1A7E158E0082E087 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 932924DA1A7E158E0082E087 /* Main.storyboard */; };
 		936590E11A95FED100AFBB12 /* EntryController.m in Sources */ = {isa = PBXBuildFile; fileRef = 936590E01A95FED100AFBB12 /* EntryController.m */; };
 		936590E61A95FF4A00AFBB12 /* CategoryEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = 936590E51A95FF4A00AFBB12 /* CategoryEntry.m */; };
+		936590EE1A98C30B00AFBB12 /* SVIndefiniteAnimatedView.m in Sources */ = {isa = PBXBuildFile; fileRef = 936590E91A98C30B00AFBB12 /* SVIndefiniteAnimatedView.m */; };
+		936590EF1A98C30B00AFBB12 /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 936590EB1A98C30B00AFBB12 /* SVProgressHUD.bundle */; };
+		936590F01A98C30B00AFBB12 /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 936590ED1A98C30B00AFBB12 /* SVProgressHUD.m */; };
 		936A46C51A95E0C40009D225 /* SettingsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 936A46C41A95E0C40009D225 /* SettingsController.m */; };
 		937F63B21A87644400EA238D /* VaultController.m in Sources */ = {isa = PBXBuildFile; fileRef = 937F63B11A87644400EA238D /* VaultController.m */; };
 		937F63B51A87646500EA238D /* OpenVaultController.m in Sources */ = {isa = PBXBuildFile; fileRef = 937F63B41A87646500EA238D /* OpenVaultController.m */; };
@@ -63,6 +66,12 @@
 		936590E01A95FED100AFBB12 /* EntryController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EntryController.m; sourceTree = "<group>"; };
 		936590E41A95FF4A00AFBB12 /* CategoryEntry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CategoryEntry.h; sourceTree = "<group>"; };
 		936590E51A95FF4A00AFBB12 /* CategoryEntry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CategoryEntry.m; sourceTree = "<group>"; };
+		936590E81A98C30B00AFBB12 /* SVIndefiniteAnimatedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVIndefiniteAnimatedView.h; sourceTree = "<group>"; };
+		936590E91A98C30B00AFBB12 /* SVIndefiniteAnimatedView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVIndefiniteAnimatedView.m; sourceTree = "<group>"; };
+		936590EA1A98C30B00AFBB12 /* SVProgressHUD-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SVProgressHUD-Prefix.pch"; sourceTree = "<group>"; };
+		936590EB1A98C30B00AFBB12 /* SVProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SVProgressHUD.bundle; sourceTree = "<group>"; };
+		936590EC1A98C30B00AFBB12 /* SVProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressHUD.h; sourceTree = "<group>"; };
+		936590ED1A98C30B00AFBB12 /* SVProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressHUD.m; sourceTree = "<group>"; };
 		936A46C31A95E0C40009D225 /* SettingsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsController.h; sourceTree = "<group>"; };
 		936A46C41A95E0C40009D225 /* SettingsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsController.m; sourceTree = "<group>"; };
 		937F63B01A87644400EA238D /* VaultController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VaultController.h; sourceTree = "<group>"; };
@@ -120,6 +129,7 @@
 		932924741A7CEA370082E087 /* FendOff */ = {
 			isa = PBXGroup;
 			children = (
+				936590E71A98C30B00AFBB12 /* SVProgressHUD */,
 				9329249B1A7CEA530082E087 /* VSEM */,
 				932924791A7CEA370082E087 /* AppDelegate.h */,
 				9329247A1A7CEA370082E087 /* AppDelegate.m */,
@@ -190,6 +200,19 @@
 				932924A11A7CEA730082E087 /* Vsem1.m */,
 			);
 			name = VSEM;
+			sourceTree = "<group>";
+		};
+		936590E71A98C30B00AFBB12 /* SVProgressHUD */ = {
+			isa = PBXGroup;
+			children = (
+				936590E81A98C30B00AFBB12 /* SVIndefiniteAnimatedView.h */,
+				936590E91A98C30B00AFBB12 /* SVIndefiniteAnimatedView.m */,
+				936590EA1A98C30B00AFBB12 /* SVProgressHUD-Prefix.pch */,
+				936590EB1A98C30B00AFBB12 /* SVProgressHUD.bundle */,
+				936590EC1A98C30B00AFBB12 /* SVProgressHUD.h */,
+				936590ED1A98C30B00AFBB12 /* SVProgressHUD.m */,
+			);
+			path = SVProgressHUD;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -276,6 +299,7 @@
 				932924DC1A7E158E0082E087 /* Main.storyboard in Resources */,
 				932924861A7CEA370082E087 /* LaunchScreen.xib in Resources */,
 				932924831A7CEA370082E087 /* Images.xcassets in Resources */,
+				936590EF1A98C30B00AFBB12 /* SVProgressHUD.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -298,7 +322,9 @@
 				936A46C51A95E0C40009D225 /* SettingsController.m in Sources */,
 				932924A21A7CEA730082E087 /* Rand1.m in Sources */,
 				9329247E1A7CEA370082E087 /* ViewController.m in Sources */,
+				936590F01A98C30B00AFBB12 /* SVProgressHUD.m in Sources */,
 				936590E11A95FED100AFBB12 /* EntryController.m in Sources */,
+				936590EE1A98C30B00AFBB12 /* SVIndefiniteAnimatedView.m in Sources */,
 				93FAFE491A84E9E8002547D8 /* PhotoController.m in Sources */,
 				937F63B51A87646500EA238D /* OpenVaultController.m in Sources */,
 				932924A31A7CEA730082E087 /* Rand2.m in Sources */,
