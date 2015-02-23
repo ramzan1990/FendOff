@@ -42,7 +42,15 @@
             NSString * p = [self randomStringWithLength:10];
             NSMutableData* encData = [Vsem1 encryptData:data passw:p];
             [encData writeToFile:path atomically:YES];
-            EncryptedEntry* ee = [[EncryptedEntry alloc] init:_name.text password:p preview:[self resizeImage:_ivPickedImage.image newSize:CGSizeMake(40, 40)]];
+            
+            UIImage *originalImage = _ivPickedImage.image;
+            CGSize destinationSize = CGSizeMake(40, 40);
+            UIGraphicsBeginImageContext(destinationSize);
+            [originalImage drawInRect:CGRectMake(0,0,destinationSize.width,destinationSize.height)];
+            UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
+            UIGraphicsEndImageContext();
+            
+            EncryptedEntry* ee = [[EncryptedEntry alloc] init:_name.text password:p preview:newImage];
             [ViewController addEncryptedEntry:ee];
             
             dispatch_async(dispatch_get_main_queue(), ^{

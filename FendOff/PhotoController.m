@@ -1,6 +1,7 @@
 #import "PhotoController.h"
 #import "DecryptController.h"
 #import "Vsem1.h"
+#import "SVProgressHUD.h"
 
 @interface PhotoController ()<UIScrollViewDelegate>
 @end
@@ -35,8 +36,10 @@
     
 
     
-    self.scrollView.contentSize = self.iv.image.size;
-    //self.iv.frame = CGRectMake(0, 0, self.iv.image.size.width, self.iv.image.size.height);
+    //self.scrollView.contentSize = self.iv.image.size;
+    
+    [SVProgressHUD dismiss];
+
 }
 
 

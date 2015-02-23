@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="LbI-bb-Mpn">
     <dependencies>
+        <deployment defaultVersion="1808" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
@@ -18,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yrv-YZ-aV3">
-                                <rect key="frame" x="240" y="231" width="120" height="120"/>
+                                <rect key="frame" x="240" y="241" width="120" height="120"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="PIw-5E-kvu"/>
                                     <constraint firstAttribute="height" constant="120" id="R1j-Ii-twG"/>
@@ -45,7 +46,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Em9-BN-RFx">
-                                <rect key="frame" x="240" y="103" width="120" height="120"/>
+                                <rect key="frame" x="240" y="81" width="120" height="120"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="76" id="MH6-LQ-wNg"/>
                                     <constraint firstAttribute="height" constant="120" id="ePQ-Un-cck"/>
@@ -74,8 +75,23 @@
                                     <segue destination="zak-cO-etD" kind="presentation" modalTransitionStyle="crossDissolve" id="lGy-QA-3vR"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jfD-i1-8gQ">
+                                <rect key="frame" x="16" y="28" width="31" height="25"/>
+                                <state key="normal" image="Settings">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="adjustsImageWhenHighlighted" value="NO"/>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="touched:" destination="vXZ-lx-hvc" eventType="touchDown" id="3Fs-ux-XgC"/>
+                                    <action selector="touchedUp:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="gMc-JL-P4k"/>
+                                    <action selector="touchedUp:" destination="vXZ-lx-hvc" eventType="touchDragOutside" id="krc-hx-kev"/>
+                                    <segue destination="aFW-UI-kYR" kind="presentation" modalTransitionStyle="crossDissolve" id="8Ae-Tq-J44"/>
+                                </connections>
+                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oxe-HJ-T0n">
-                                <rect key="frame" x="240" y="359" width="120" height="120"/>
+                                <rect key="frame" x="240" y="401" width="120" height="120"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="83" id="F61-Bq-2u8"/>
                                     <constraint firstAttribute="height" constant="30" id="J4X-SR-nsN"/>
@@ -104,46 +120,31 @@
                                     <segue destination="wZd-5P-EYL" kind="presentation" id="yQ9-wr-jSL"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jfD-i1-8gQ">
-                                <rect key="frame" x="16" y="28" width="31" height="25"/>
-                                <state key="normal" image="Settings">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="boolean" keyPath="adjustsImageWhenHighlighted" value="NO"/>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <action selector="touched:" destination="vXZ-lx-hvc" eventType="touchDown" id="3Fs-ux-XgC"/>
-                                    <action selector="touchedUp:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="gMc-JL-P4k"/>
-                                    <action selector="touchedUp:" destination="vXZ-lx-hvc" eventType="touchDragOutside" id="krc-hx-kev"/>
-                                    <segue destination="aFW-UI-kYR" kind="presentation" modalTransitionStyle="crossDissolve" id="8Ae-Tq-J44"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="0.49803921568627452" blue="0.43137254901960786" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailingMargin" secondItem="Yrv-YZ-aV3" secondAttribute="trailing" constant="234" id="5eQ-fi-ySq"/>
-                            <constraint firstAttribute="centerX" secondItem="oxe-HJ-T0n" secondAttribute="centerX" id="7uF-AR-AZV"/>
-                            <constraint firstAttribute="centerY" secondItem="oxe-HJ-T0n" secondAttribute="centerY" constant="-119" id="DgK-Tu-E19"/>
                             <constraint firstAttribute="centerX" secondItem="Yrv-YZ-aV3" secondAttribute="centerX" constant="-0.5" id="I7b-v5-Y3A"/>
                             <constraint firstAttribute="centerY" secondItem="Yrv-YZ-aV3" secondAttribute="centerY" id="I9P-XM-zSA"/>
-                            <constraint firstAttribute="centerX" secondItem="Yrv-YZ-aV3" secondAttribute="centerX" id="IAB-Zy-pMp"/>
                             <constraint firstItem="jfD-i1-8gQ" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="8" id="KRO-pA-tjw"/>
+                            <constraint firstAttribute="centerY" secondItem="oxe-HJ-T0n" secondAttribute="centerY" constant="-161" id="Ky1-NL-kL3"/>
                             <constraint firstAttribute="centerX" secondItem="Em9-BN-RFx" secondAttribute="centerX" id="L9Y-28-WrV"/>
                             <constraint firstItem="Yrv-YZ-aV3" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="253" id="LvU-l5-Lug"/>
                             <constraint firstAttribute="centerY" secondItem="Em9-BN-RFx" secondAttribute="centerY" constant="88" id="M6I-s7-WP3"/>
+                            <constraint firstAttribute="centerX" secondItem="oxe-HJ-T0n" secondAttribute="centerX" id="Nza-Bv-Xgv"/>
                             <constraint firstAttribute="centerX" secondItem="oxe-HJ-T0n" secondAttribute="centerX" constant="-0.5" id="ORd-6z-sFM"/>
-                            <constraint firstAttribute="centerY" secondItem="Em9-BN-RFx" secondAttribute="centerY" constant="137" id="W8o-5b-NSj"/>
+                            <constraint firstAttribute="centerY" secondItem="Em9-BN-RFx" secondAttribute="centerY" constant="159" id="YdL-S7-GqI"/>
                             <constraint firstAttribute="centerY" secondItem="oxe-HJ-T0n" secondAttribute="centerY" constant="-52" id="agD-Wo-csW"/>
                             <constraint firstAttribute="centerX" secondItem="Yrv-YZ-aV3" secondAttribute="centerX" id="d16-UC-m3c"/>
                             <constraint firstAttribute="trailingMargin" secondItem="oxe-HJ-T0n" secondAttribute="trailing" constant="228" id="dPJ-gd-Bja"/>
-                            <constraint firstAttribute="centerY" secondItem="Yrv-YZ-aV3" secondAttribute="centerY" constant="9" id="hCL-Xl-JuI"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Em9-BN-RFx" secondAttribute="trailing" constant="222" id="hEt-Zc-lzS"/>
                             <constraint firstAttribute="centerY" secondItem="Yrv-YZ-aV3" secondAttribute="centerY" constant="19" id="hqs-dY-rVx"/>
                             <constraint firstAttribute="centerX" secondItem="oxe-HJ-T0n" secondAttribute="centerX" constant="-14.5" id="laV-cv-svv"/>
-                            <constraint firstAttribute="centerX" secondItem="Em9-BN-RFx" secondAttribute="centerX" id="nk6-2G-obZ"/>
-                            <constraint firstItem="jfD-i1-8gQ" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="8" id="pFV-LA-eJ0"/>
+                            <constraint firstItem="jfD-i1-8gQ" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" id="pFV-LA-eJ0"/>
+                            <constraint firstAttribute="centerX" secondItem="Yrv-YZ-aV3" secondAttribute="centerX" id="pTn-Vf-Ikh"/>
                             <constraint firstAttribute="centerX" secondItem="Yrv-YZ-aV3" secondAttribute="centerX" constant="-9.5" id="qXk-DM-ysR"/>
+                            <constraint firstAttribute="centerY" secondItem="Yrv-YZ-aV3" secondAttribute="centerY" constant="-1" id="qx8-V7-OBR"/>
+                            <constraint firstAttribute="centerX" secondItem="Em9-BN-RFx" secondAttribute="centerX" id="seH-Pd-Zvi"/>
                             <constraint firstAttribute="centerX" secondItem="Em9-BN-RFx" secondAttribute="centerX" constant="-24" id="u20-4h-vL8"/>
                             <constraint firstItem="oxe-HJ-T0n" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="257" id="v7L-QE-aaD"/>
                             <constraint firstItem="Em9-BN-RFx" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="270" id="w8w-Jm-dRi"/>
@@ -456,7 +457,7 @@ Developed by Victor Solovyev: victorsolov@gmail.com iOS version by Ramzan Umar
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="1" green="0.49803921569999998" blue="0.43137254899999999" alpha="1" colorSpace="calibratedRGB"/>
                         <textAttributes key="titleTextAttributes">
-                            <fontDescription key="fontDescription" type="system" pointSize="0.0"/>
+                            <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="20"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </textAttributes>
                     </navigationBar>
@@ -477,21 +478,28 @@ Developed by Victor Solovyev: victorsolov@gmail.com iOS version by Ramzan Umar
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <inset key="separatorInset" minX="60" minY="0.0" maxX="0.0" maxY="0.0"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="FileCell" rowHeight="79" id="Inh-nd-GJs">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="FileCell" rowHeight="60" id="Inh-nd-GJs">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Inh-nd-GJs" id="dBW-dh-bpY">
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
+                                        <imageView userInteractionEnabled="NO" tag="101" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="h6N-5y-TiD">
+                                            <rect key="frame" x="8" y="10" width="40" height="40"/>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                    <integer key="value" value="3"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                            </userDefinedRuntimeAttributes>
+                                        </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" tag="100" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tkn-Sb-Sd7">
-                                            <rect key="frame" x="61" y="30" width="531" height="21"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <rect key="frame" x="58" y="10" width="531" height="40"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <imageView userInteractionEnabled="NO" tag="101" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="h6N-5y-TiD">
-                                            <rect key="frame" x="8" y="17" width="45" height="45"/>
-                                        </imageView>
                                     </subviews>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -515,7 +523,7 @@ Developed by Victor Solovyev: victorsolov@gmail.com iOS version by Ramzan Umar
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aNi-iN-Fsd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="934" y="476"/>
+            <point key="canvasLocation" x="934" y="475"/>
         </scene>
         <!--Photo Controller-->
         <scene sceneID="syJ-9a-W7B">
@@ -587,7 +595,7 @@ Developed by Victor Solovyev: victorsolov@gmail.com iOS version by Ramzan Umar
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="1" green="0.49803921569999998" blue="0.43137254899999999" alpha="1" colorSpace="calibratedRGB"/>
                         <textAttributes key="titleTextAttributes">
-                            <fontDescription key="fontDescription" type="system" pointSize="1"/>
+                            <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="20"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </textAttributes>
                     </navigationBar>
@@ -911,7 +919,7 @@ Developed by Victor Solovyev: victorsolov@gmail.com iOS version by Ramzan Umar
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="1" green="0.49803921569999998" blue="0.43137254899999999" alpha="1" colorSpace="calibratedRGB"/>
                         <textAttributes key="titleTextAttributes">
-                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="0.0"/>
+                            <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="20"/>
                         </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -933,6 +941,7 @@ Developed by Victor Solovyev: victorsolov@gmail.com iOS version by Ramzan Umar
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="1" green="0.49803921569999998" blue="0.43137254899999999" alpha="1" colorSpace="calibratedRGB"/>
                         <textAttributes key="titleTextAttributes">
+                            <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="20"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </textAttributes>
                     </navigationBar>
@@ -955,7 +964,7 @@ Developed by Victor Solovyev: victorsolov@gmail.com iOS version by Ramzan Umar
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="1" green="0.49803921569999998" blue="0.43137254899999999" alpha="1" colorSpace="calibratedRGB"/>
                         <textAttributes key="titleTextAttributes">
-                            <fontDescription key="fontDescription" type="system" pointSize="0.0"/>
+                            <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="20"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </textAttributes>
                     </navigationBar>
@@ -978,7 +987,7 @@ Developed by Victor Solovyev: victorsolov@gmail.com iOS version by Ramzan Umar
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="1" green="0.49803921569999998" blue="0.43137254899999999" alpha="1" colorSpace="calibratedRGB"/>
                         <textAttributes key="titleTextAttributes">
-                            <fontDescription key="fontDescription" type="system" pointSize="0.0"/>
+                            <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="20"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </textAttributes>
                     </navigationBar>
@@ -997,12 +1006,12 @@ Developed by Victor Solovyev: victorsolov@gmail.com iOS version by Ramzan Umar
         <image name="Categories" width="65" height="65"/>
         <image name="Decrypt" width="82" height="39"/>
         <image name="Encrypt" width="82" height="46"/>
-        <image name="Settings" width="14" height="14"/>
+        <image name="Settings" width="18" height="18"/>
         <image name="about" width="114" height="131"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="zyA-rF-mav"/>
+        <segue reference="Bqc-Tk-1LY"/>
         <segue reference="yQ9-wr-jSL"/>
-        <segue reference="wO5-R5-BDr"/>
+        <segue reference="lGy-QA-3vR"/>
     </inferredMetricsTieBreakers>
 </document>
