@@ -37,7 +37,7 @@
         [self saveData];
         
         ViewController *vc =[self.storyboard instantiateViewControllerWithIdentifier:@"MainView"];
-        [vc setModalTransitionStyle:UIModalTransitionStyleCrossDissolve];
+        [vc setModalTransitionStyle:UIModalTransitionStyleFlipHorizontal];
         [self presentViewController:vc animated:YES completion:nil];
     }
 }

@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		93113F631A9B02E900CDC688 /* CRC65.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 93113F621A9B029200CDC688 /* CRC65.ttf */; };
+		93113F691A9B532B00CDC688 /* HorizontalLeftSeque.m in Sources */ = {isa = PBXBuildFile; fileRef = 93113F681A9B532B00CDC688 /* HorizontalLeftSeque.m */; };
+		93113F6C1A9B535C00CDC688 /* HorizontalRightSeque.m in Sources */ = {isa = PBXBuildFile; fileRef = 93113F6B1A9B535C00CDC688 /* HorizontalRightSeque.m */; };
 		932924781A7CEA370082E087 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 932924771A7CEA370082E087 /* main.m */; };
 		9329247B1A7CEA370082E087 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9329247A1A7CEA370082E087 /* AppDelegate.m */; };
 		9329247E1A7CEA370082E087 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9329247D1A7CEA370082E087 /* ViewController.m */; };
@@ -45,6 +47,10 @@
 
 /* Begin PBXFileReference section */
 		93113F621A9B029200CDC688 /* CRC65.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = CRC65.ttf; sourceTree = "<group>"; };
+		93113F671A9B532B00CDC688 /* HorizontalLeftSeque.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HorizontalLeftSeque.h; sourceTree = "<group>"; };
+		93113F681A9B532B00CDC688 /* HorizontalLeftSeque.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HorizontalLeftSeque.m; sourceTree = "<group>"; };
+		93113F6A1A9B535C00CDC688 /* HorizontalRightSeque.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HorizontalRightSeque.h; sourceTree = "<group>"; };
+		93113F6B1A9B535C00CDC688 /* HorizontalRightSeque.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HorizontalRightSeque.m; sourceTree = "<group>"; };
 		932924721A7CEA370082E087 /* FendOff.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FendOff.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		932924761A7CEA370082E087 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		932924771A7CEA370082E087 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -161,6 +167,10 @@
 				936590E01A95FED100AFBB12 /* EntryController.m */,
 				936590E41A95FF4A00AFBB12 /* CategoryEntry.h */,
 				936590E51A95FF4A00AFBB12 /* CategoryEntry.m */,
+				93113F671A9B532B00CDC688 /* HorizontalLeftSeque.h */,
+				93113F681A9B532B00CDC688 /* HorizontalLeftSeque.m */,
+				93113F6A1A9B535C00CDC688 /* HorizontalRightSeque.h */,
+				93113F6B1A9B535C00CDC688 /* HorizontalRightSeque.m */,
 			);
 			path = FendOff;
 			sourceTree = "<group>";
@@ -321,6 +331,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				93113F6C1A9B535C00CDC688 /* HorizontalRightSeque.m in Sources */,
 				937F63B21A87644400EA238D /* VaultController.m in Sources */,
 				932924A41A7CEA730082E087 /* Vsem1.m in Sources */,
 				936A46C51A95E0C40009D225 /* SettingsController.m in Sources */,
@@ -335,6 +346,7 @@
 				9329247B1A7CEA370082E087 /* AppDelegate.m in Sources */,
 				936590E61A95FF4A00AFBB12 /* CategoryEntry.m in Sources */,
 				93FAFE461A84E448002547D8 /* DecryptController.m in Sources */,
+				93113F691A9B532B00CDC688 /* HorizontalLeftSeque.m in Sources */,
 				932924781A7CEA370082E087 /* main.m in Sources */,
 				937F63B81A8776BB00EA238D /* VaultCategory.m in Sources */,
 				93FBA0E11A836F8200172105 /* EncryptController.m in Sources */,
@@ -467,7 +479,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "167fbd97-bd35-44cb-80cc-87fa4642d0e0";
+				PROVISIONING_PROFILE = "29e9cc36-b49c-4168-b1b4-09fa913f9031";
 			};
 			name = Debug;
 		};
@@ -482,7 +494,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "167fbd97-bd35-44cb-80cc-87fa4642d0e0";
+				PROVISIONING_PROFILE = "29e9cc36-b49c-4168-b1b4-09fa913f9031";
 			};
 			name = Release;
 		};
