@@ -11,8 +11,8 @@
 
 @implementation VaultController
 
-    static CategoryEntry* selectedEntry;
-    static VaultCategory* selectedCategory;
+static CategoryEntry* selectedEntry;
+static VaultCategory* selectedCategory;
 
 
 
@@ -36,9 +36,7 @@
     }else{
         [self saveData];
         
-        ViewController *vc =[self.storyboard instantiateViewControllerWithIdentifier:@"MainView"];
-        [vc setModalTransitionStyle:UIModalTransitionStyleFlipHorizontal];
-        [self presentViewController:vc animated:YES completion:nil];
+        [self performSegueWithIdentifier:@"Back" sender:self];
     }
 }
 
@@ -175,7 +173,7 @@ forRowAtIndexPath:(NSIndexPath *)indexPath {
         }
     }else{
         selectedEntry = [[selectedCategory getEntries] objectAtIndex:indexPath.row];
-         [self performSegueWithIdentifier:@"ShowEntry" sender:self];
+        [self performSegueWithIdentifier:@"ShowEntry" sender:self];
     }
     
 }
@@ -186,13 +184,14 @@ forRowAtIndexPath:(NSIndexPath *)indexPath {
 }
 
 
- #pragma mark - Navigation
- 
- - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-     UINavigationController* nav = (UINavigationController*)[segue destinationViewController];
-     EntryController* ec = (EntryController* )[nav viewControllers][0];
-     [ec setEntry:selectedEntry];
- }
+#pragma mark - Navigation
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if([segue.identifier isEqualToString:@"ShowEntry"] ){
+        EntryController* ec = (EntryController* )[segue destinationViewController];
+        [ec setEntry:selectedEntry];
+    }
+}
 
 
 @end

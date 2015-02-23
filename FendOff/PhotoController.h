@@ -1,13 +1,12 @@
 #import <UIKit/UIKit.h>
 #import "EncryptedEntry.h"
 
-@interface PhotoController : UIViewController <UIScrollViewDelegate>{
+@interface PhotoController : UIViewController {
     EncryptedEntry* selectedPhoto;
 }
 
 - (void) setEntry:(EncryptedEntry *)pEntry;
 
 @property (weak, nonatomic) IBOutlet UIImageView *iv;
-@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 
 @end

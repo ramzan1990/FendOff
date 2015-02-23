@@ -109,9 +109,9 @@ static NSMutableArray* imagesList;
     UIButton* s = (UIButton *) sender;
     ipc= [[UIImagePickerController alloc] init];
     ipc.delegate = self;
-    if([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypePhotoLibrary])
+    if([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera])
     {
-        ipc.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+        ipc.sourceType = UIImagePickerControllerSourceTypeCamera;
     }
     else
     {

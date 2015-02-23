@@ -20,15 +20,16 @@
     entry = selectedEntry;
 }
 
+- (IBAction)backClicked:(id)sender {
+    [entry setNote:_entryNote.text];
+    VaultController* vc = (VaultController* )[self.navigationController.viewControllers objectAtIndex:0];
+    [vc saveData];
+    [self.navigationController popViewControllerAnimated:YES];
+}
 
 #pragma mark - Navigation
 
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    [entry setNote:_entryNote.text];
-    UINavigationController* nav = (UINavigationController*)[segue destinationViewController];
-    VaultController* vc = (VaultController* )[nav viewControllers][0];
-    [vc saveData];
-}
+
 
 
 @end

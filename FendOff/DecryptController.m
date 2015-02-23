@@ -80,10 +80,7 @@
 }
 */
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    [SVProgressHUD showWithMaskType:SVProgressHUDMaskTypeBlack];
-
-    
+{    
     selectedEntry = [[ViewController getImagesList] objectAtIndex:indexPath.row];
      [self performSegueWithIdentifier:@"ShowPhoto" sender:self];
 }
@@ -98,9 +95,8 @@
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if([segue.identifier isEqualToString:@"ShowPhoto"]){
-    UINavigationController* nav = (UINavigationController*)[segue destinationViewController];
-    PhotoController* pc = (PhotoController* )[nav viewControllers][0];
-    [pc setEntry:selectedEntry];
+        PhotoController* pc = (PhotoController* )[segue destinationViewController];
+        [pc setEntry:selectedEntry];
     }
 }
 
