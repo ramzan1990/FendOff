@@ -25,17 +25,18 @@
 
 
 - (IBAction)doneClicked:(id)sender {
-    [SVProgressHUD showWithMaskType:SVProgressHUDMaskTypeBlack];
-
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        if(_name.text.length==0){
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"FendOff"
-                                                            message:@"Enter name first."
-                                                           delegate:nil
-                                                  cancelButtonTitle:@"OK"
-                                                  otherButtonTitles:nil];
-            [alert show];
-        }else{
+    if(_name.text.length==0){
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"FendOff"
+                                                        message:@"Enter name first."
+                                                       delegate:nil
+                                              cancelButtonTitle:@"OK"
+                                              otherButtonTitles:nil];
+        [alert show];
+    }else{
+        [SVProgressHUD showWithMaskType:SVProgressHUDMaskTypeBlack];
+        
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+            
             NSString* path = [self getPath:_name.text];
             NSData* data = UIImagePNGRepresentation(_ivPickedImage.image);
             NSString * p = [self randomStringWithLength:10];
@@ -54,16 +55,16 @@
                 [alert show];
             });
             
-           
-        }
-       
-    });
- 
+            
+            
+            
+        });
+    }
     
 }
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
-     [self performSegueWithIdentifier:@"Back" sender:self];
+    [self performSegueWithIdentifier:@"Back" sender:self];
 }
 
 - (UIImage *)resizeImage:(UIImage*)image newSize:(CGSize)newSize {

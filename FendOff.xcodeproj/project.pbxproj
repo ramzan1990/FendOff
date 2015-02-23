@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		93113F631A9B02E900CDC688 /* CRC65.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 93113F621A9B029200CDC688 /* CRC65.ttf */; };
 		932924781A7CEA370082E087 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 932924771A7CEA370082E087 /* main.m */; };
 		9329247B1A7CEA370082E087 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9329247A1A7CEA370082E087 /* AppDelegate.m */; };
 		9329247E1A7CEA370082E087 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9329247D1A7CEA370082E087 /* ViewController.m */; };
@@ -43,6 +44,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		93113F621A9B029200CDC688 /* CRC65.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = CRC65.ttf; sourceTree = "<group>"; };
 		932924721A7CEA370082E087 /* FendOff.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FendOff.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		932924761A7CEA370082E087 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		932924771A7CEA370082E087 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -166,6 +168,7 @@
 		932924751A7CEA370082E087 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				93113F621A9B029200CDC688 /* CRC65.ttf */,
 				932924761A7CEA370082E087 /* Info.plist */,
 				932924771A7CEA370082E087 /* main.m */,
 			);
@@ -296,6 +299,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				93113F631A9B02E900CDC688 /* CRC65.ttf in Resources */,
 				932924DC1A7E158E0082E087 /* Main.storyboard in Resources */,
 				932924861A7CEA370082E087 /* LaunchScreen.xib in Resources */,
 				932924831A7CEA370082E087 /* Images.xcassets in Resources */,
@@ -457,13 +461,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Funuts Inc.";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = FendOff/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "167fbd97-bd35-44cb-80cc-87fa4642d0e0";
 			};
 			name = Debug;
 		};
@@ -472,13 +476,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Funuts Inc.";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = FendOff/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "167fbd97-bd35-44cb-80cc-87fa4642d0e0";
 			};
 			name = Release;
 		};

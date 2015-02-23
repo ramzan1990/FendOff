@@ -45,6 +45,15 @@ static NSMutableArray* imagesList;
         }
     }
     }
+    
+}
+- (IBAction)touched:(id)sender {
+    UIButton* b = (UIButton*) sender;
+    b.alpha = 0.7;
+}
+- (IBAction)touchedUp:(id)sender {
+    UIButton* b = (UIButton*) sender;
+    b.alpha =1.0;
 }
 
 - (void) setPass:(NSString *)pass{
@@ -96,11 +105,18 @@ static NSMutableArray* imagesList;
 
 - (IBAction)encryptClicked:(id)sender
 {
+    [self touchedUp:sender];
     UIButton* s = (UIButton *) sender;
     ipc= [[UIImagePickerController alloc] init];
     ipc.delegate = self;
-    ipc.sourceType = UIImagePickerControllerSourceTypeSavedPhotosAlbum;
-    
+    if([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypePhotoLibrary])
+    {
+        ipc.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+    }
+    else
+    {
+        ipc.sourceType = UIImagePickerControllerSourceTypeSavedPhotosAlbum;
+    }
     if(UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPhone)
         [self presentViewController:ipc animated:YES completion:nil];
     else

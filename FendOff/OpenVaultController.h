@@ -8,5 +8,7 @@
 }
 @property (weak, nonatomic) IBOutlet UITextField *pass;
 @property (weak, nonatomic) IBOutlet UIButton *doneButton;
+@property (weak, nonatomic) IBOutlet UILabel *mainLabel;
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 
 @end

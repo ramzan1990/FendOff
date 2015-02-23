@@ -34,14 +34,18 @@
         self.navigationItem.title = @"Categories";
         [self.tableView reloadData];
     }else{
-        NSData *data = [NSKeyedArchiver archivedDataWithRootObject:vaultList];
-        NSMutableData* mData = [Vsem1 encryptData:data passw:[ViewController getPass]];
-        [mData writeToFile:[ViewController getVaultFile] atomically:YES];
+        [self saveData];
         
         ViewController *vc =[self.storyboard instantiateViewControllerWithIdentifier:@"MainView"];
         [vc setModalTransitionStyle:UIModalTransitionStyleCrossDissolve];
         [self presentViewController:vc animated:YES completion:nil];
     }
+}
+
+- (void) saveData{
+    NSData *data = [NSKeyedArchiver archivedDataWithRootObject:vaultList];
+    NSMutableData* mData = [Vsem1 encryptData:data passw:[ViewController getPass]];
+    [mData writeToFile:[ViewController getVaultFile] atomically:YES];
 }
 #pragma mark - Table view data source
 
@@ -135,6 +139,7 @@ forRowAtIndexPath:(NSIndexPath *)indexPath {
     }else{
         [[selectedCategory getEntries] addObject:[[CategoryEntry alloc] initWithName:detailString]];
     }
+    [self saveData];
     [self.tableView reloadData];
 }
 
@@ -175,7 +180,10 @@ forRowAtIndexPath:(NSIndexPath *)indexPath {
     
 }
 
-
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 50;
+}
 
 
  #pragma mark - Navigation

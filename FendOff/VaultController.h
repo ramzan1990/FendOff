@@ -4,5 +4,6 @@
 
 @interface VaultController : UITableViewController <UIAlertViewDelegate>
 
+- (void) saveData;
 
 @end

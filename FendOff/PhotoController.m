@@ -2,8 +2,7 @@
 #import "DecryptController.h"
 #import "Vsem1.h"
 
-@interface PhotoController ()
-
+@interface PhotoController ()<UIScrollViewDelegate>
 @end
 
 @implementation PhotoController
@@ -31,7 +30,15 @@
     }
     
     self.navigationItem.title = [selectedPhoto getName];
+    self.scrollView.delegate=self;
+    
+    
+
+    
+    self.scrollView.contentSize = self.iv.image.size;
+    //self.iv.frame = CGRectMake(0, 0, self.iv.image.size.width, self.iv.image.size.height);
 }
+
 
 -(NSString *) getPath:(NSString *) name {
     NSFileManager *fm  = [NSFileManager defaultManager];
@@ -72,6 +79,17 @@
     }
 }
 
+#pragma mark - UIScrollViewDelegate methods
+
+- (UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView {
+    return self.iv;
+}
+
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
+    if (self.scrollView.zoomScale == self.scrollView.minimumZoomScale) {
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }
+}
 
 
 

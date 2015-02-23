@@ -39,6 +39,17 @@
     
     [_pass setDelegate:self];
     
+  
+    
+    UIFont *customFont = [UIFont fontWithName:@"Circe-Bold" size:48];
+    _mainLabel.font = customFont;
+    
+    [_scrollView setContentSize:CGSizeMake(600, 321)];
+    
+    [self registerForKeyboardNotifications];
+    
+    _pass.layer.sublayerTransform = CATransform3DMakeTranslation(5, 0, 0);
+    
     //[fm removeItemAtPath:vaultFile error:nil];
 }
 
@@ -66,6 +77,7 @@
             
         }
     }else{
+        if(_pass.text.length >=4){
         vaultList = [[NSMutableArray alloc] init];
         vaultList[0] = [[VaultCategory alloc] initWithName:@"General"];
         vaultList[1] = [[VaultCategory alloc] initWithName:@"Phones"];
@@ -76,7 +88,14 @@
         [mData writeToFile:vaultFile atomically:YES];
         
         [self performSegueWithIdentifier:@"Enter" sender:self];
-        
+        }else{
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"FendOff"
+                                                            message:@"Password should be at least 4 characters."
+                                                           delegate:self
+                                                  cancelButtonTitle:@"OK"
+                                                  otherButtonTitles:nil];
+            [alert show];
+        }
     }
 }
 -(BOOL) textFieldShouldReturn:(UITextField *)textField{
@@ -85,6 +104,49 @@
     return YES;
 }
 
+// Call this method somewhere in your view controller setup code.
+- (void)registerForKeyboardNotifications
+{
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardWasShown:)
+                                                 name:UIKeyboardDidShowNotification object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardWillBeHidden:)
+                                                 name:UIKeyboardWillHideNotification object:nil];
+    
+}
+
+// Called when the UIKeyboardDidShowNotification is sent.
+- (void)keyboardWasShown:(NSNotification*)aNotification
+{
+    NSDictionary* info = [aNotification userInfo];
+    CGRect keyPadFrame=[[UIApplication sharedApplication].keyWindow convertRect:[[info objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue] fromView:self.view];
+    CGSize kbSize =keyPadFrame.size;
+    CGRect activeRect=[self.view convertRect:_doneButton.frame fromView:_doneButton.superview];
+    CGRect aRect = self.view.bounds;
+    aRect.size.height -= (kbSize.height);
+    
+    
+    //_doneButton.frame.origin.y + self.activeField.frame.size.height
+    
+    CGPoint origin =  activeRect.origin;
+    origin.y -= _scrollView.contentOffset.y;
+    origin.y += _doneButton.frame.size.height;
+    
+    if (!CGRectContainsPoint(aRect, origin)) {
+        CGPoint scrollPoint = CGPointMake(0.0,CGRectGetMaxY(activeRect)-(aRect.size.height) + _doneButton.frame.size.height);
+        [_scrollView setContentOffset:scrollPoint animated:YES];
+    }
+}
+
+// Called when the UIKeyboardWillHideNotification is sent
+- (void)keyboardWillBeHidden:(NSNotification*)aNotification
+{
+    //UIEdgeInsets contentInsets = UIEdgeInsetsZero;
+    _scrollView.contentOffset = CGPointZero;
+    //_scrollView.scrollIndicatorInsets = contentInsets;
+}
 
 #pragma mark - Navigation
 

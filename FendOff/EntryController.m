@@ -1,4 +1,5 @@
 #import "EntryController.h"
+#import "VaultController.h"
 
 @interface EntryController ()
 
@@ -12,6 +13,7 @@
     if(_entryNote.text.length >0){
         _entryNote.text =[entry getNote];
     }
+    [_entryNote becomeFirstResponder];
 }
 
 - (void) setEntry:(CategoryEntry *) selectedEntry{
@@ -23,6 +25,9 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     [entry setNote:_entryNote.text];
+    UINavigationController* nav = (UINavigationController*)[segue destinationViewController];
+    VaultController* vc = (VaultController* )[nav viewControllers][0];
+    [vc saveData];
 }
 
 
