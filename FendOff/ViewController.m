@@ -109,14 +109,7 @@ static NSMutableArray* imagesList;
     UIButton* s = (UIButton *) sender;
     ipc= [[UIImagePickerController alloc] init];
     ipc.delegate = self;
-    if([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera])
-    {
-        ipc.sourceType = UIImagePickerControllerSourceTypeCamera;
-    }
-    else
-    {
-        ipc.sourceType = UIImagePickerControllerSourceTypeSavedPhotosAlbum;
-    }
+    ipc.sourceType = UIImagePickerControllerSourceTypeSavedPhotosAlbum;
     if(UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPhone)
         [self presentViewController:ipc animated:YES completion:nil];
     else

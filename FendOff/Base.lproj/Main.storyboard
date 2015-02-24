@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="LbI-bb-Mpn">
     <dependencies>
+        <deployment defaultVersion="1808" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
@@ -211,7 +212,7 @@
                                 </variation>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.96078431369999995" green="0.96078431369999995" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="KML-Dc-7eT" firstAttribute="top" secondItem="qRP-KX-PPd" secondAttribute="bottom" constant="8" id="2MZ-F0-RCo"/>
                             <constraint firstAttribute="trailingMargin" secondItem="KML-Dc-7eT" secondAttribute="trailing" constant="8" id="8aA-N0-jlF"/>
@@ -268,7 +269,7 @@
                         <viewControllerLayoutGuide type="bottom" id="flM-Gh-6SX"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="pEr-i0-cUw">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="536"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Vit-Rd-0rC">
@@ -474,7 +475,7 @@ Developed by Victor Solovyev: victorsolov@gmail.com iOS version by Ramzan Umar
             <objects>
                 <tableViewController storyboardIdentifier="DecryptView" id="aUC-BF-wBh" customClass="DecryptController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="79" sectionHeaderHeight="22" sectionFooterHeight="22" id="B8D-ZM-0vi">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="536"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <inset key="separatorInset" minX="60" minY="0.0" maxX="0.0" maxY="0.0"/>
@@ -536,24 +537,29 @@ Developed by Victor Solovyev: victorsolov@gmail.com iOS version by Ramzan Umar
                         <rect key="frame" x="0.0" y="0.0" width="600" height="536"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qxw-I1-9eK">
-                                <rect key="frame" x="125" y="129" width="350" height="278"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="278" id="5Dj-Zr-751"/>
-                                </constraints>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="5Dj-Zr-751"/>
-                                    </mask>
-                                </variation>
-                            </imageView>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" bounces="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GEN-7I-uxm">
+                                <rect key="frame" x="105" y="109" width="390" height="318"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qxw-I1-9eK">
+                                        <rect key="frame" x="20" y="20" width="350" height="278"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="278" id="5Dj-Zr-751"/>
+                                        </constraints>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="5Dj-Zr-751"/>
+                                            </mask>
+                                        </variation>
+                                    </imageView>
+                                </subviews>
+                            </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="WKM-AF-LES" firstAttribute="top" secondItem="qxw-I1-9eK" secondAttribute="bottom" id="1to-Mz-SQM"/>
-                            <constraint firstItem="qxw-I1-9eK" firstAttribute="top" secondItem="gPB-7W-gvA" secondAttribute="bottom" id="3op-uZ-As5"/>
-                            <constraint firstAttribute="trailing" secondItem="qxw-I1-9eK" secondAttribute="trailing" id="Idg-jj-9vX"/>
-                            <constraint firstItem="qxw-I1-9eK" firstAttribute="leading" secondItem="x5s-I7-Kw3" secondAttribute="leading" id="Q2R-ph-RiN"/>
+                            <constraint firstItem="WKM-AF-LES" firstAttribute="top" secondItem="GEN-7I-uxm" secondAttribute="bottom" id="WtE-14-6XB"/>
+                            <constraint firstItem="GEN-7I-uxm" firstAttribute="top" secondItem="gPB-7W-gvA" secondAttribute="bottom" id="irG-Ye-rru"/>
+                            <constraint firstAttribute="trailing" secondItem="GEN-7I-uxm" secondAttribute="trailing" id="ufG-EG-rJX"/>
+                            <constraint firstItem="GEN-7I-uxm" firstAttribute="leading" secondItem="x5s-I7-Kw3" secondAttribute="leading" id="zo8-Gv-Yo7"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="mvD-du-KKN">
@@ -573,6 +579,7 @@ Developed by Victor Solovyev: victorsolov@gmail.com iOS version by Ramzan Umar
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="black" translucent="NO" prompted="NO"/>
                     <connections>
                         <outlet property="iv" destination="qxw-I1-9eK" id="fs2-SZ-Zvc"/>
+                        <outlet property="scrollView" destination="GEN-7I-uxm" id="yZs-vJ-KZ0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PwF-aM-5xf" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -818,7 +825,7 @@ Developed by Victor Solovyev: victorsolov@gmail.com iOS version by Ramzan Umar
             <objects>
                 <tableViewController id="lwf-LQ-io5" customClass="VaultController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="50" sectionHeaderHeight="22" sectionFooterHeight="22" id="ply-QN-Ppz">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="536"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
@@ -960,6 +967,6 @@ Developed by Victor Solovyev: victorsolov@gmail.com iOS version by Ramzan Umar
         <image name="about" width="114" height="131"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="qeB-GS-bMd"/>
+        <segue reference="xL7-YS-elt"/>
     </inferredMetricsTieBreakers>
 </document>

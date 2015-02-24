@@ -30,6 +30,12 @@
             [SVProgressHUD dismiss];
             _iv.image = img;
             
+            
+            self.scrollView.minimumZoomScale=0.25;
+            self.scrollView.maximumZoomScale=6.0;
+            self.scrollView.contentSize= self.iv.image.size;
+            self.scrollView.delegate=self;
+            
         });
         
         
@@ -82,7 +88,10 @@
     }
 }
 
-
+- (UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView
+{
+    return self.iv;
+}
 
 
 

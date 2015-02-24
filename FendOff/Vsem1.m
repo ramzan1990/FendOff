@@ -334,10 +334,10 @@
     
     long s3 = -999;
     if (stot > 3) s3 = [sa[3] integerValue];
-    mData = [em dvsem4:mData seed:s3];
+    //mData = [em dvsem4:mData seed:s3];
     s3 = 999;
     if (stot > 2) s3 = [sa[2] integerValue];
-    mData = [em dvsem3:mData seed:s3];
+    //mData = [em dvsem3:mData seed:s3];
     mData = [em dvsem2:mData seed:[sa[1] integerValue]];
     mData = [em dvsem1:mData seed:[sa[0] integerValue]];
     return mData;
@@ -353,10 +353,10 @@
     bouts = [em evsem2:bouts seed:[sa[1] integerValue]];
     long s3 = 999;
     if (stot > 2) s3 = [sa[2] integerValue];
-    bouts = [em evsem3:bouts seed:s3];
+    //bouts = [em evsem3:bouts seed:s3];
     s3 = -999;
     if (stot > 3) s3 = [sa[3] integerValue];
-    bouts = [em evsem4:bouts seed:s3];
+    //bouts = [em evsem4:bouts seed:s3];
     return bouts;
 }
 
