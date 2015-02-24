@@ -35,7 +35,7 @@ static NSMutableArray* imagesList;
     fileExists = [fm fileExistsAtPath: imagesFile];
     if (fileExists){
         NSData *data = [[NSData alloc] initWithContentsOfFile:imagesFile];
-        NSMutableData *decData = [Vsem1 decryptData:data passw:password];
+        NSMutableData *decData = [Vsem1 decryptData:data passw:password highSecurity:YES];
         @try{
             imagesList= [NSKeyedUnarchiver unarchiveObjectWithData:decData];
         }
@@ -87,18 +87,18 @@ static NSMutableArray* imagesList;
 + (void) addEncryptedEntry:(EncryptedEntry*) ee{
     [imagesList addObject:ee];
     NSData *data = [NSKeyedArchiver archivedDataWithRootObject:imagesList];
-    NSMutableData* mData = [Vsem1 encryptData:data passw:password];
+    NSMutableData* mData = [Vsem1 encryptData:data passw:password highSecurity:YES];
     [mData writeToFile:imagesFile atomically:YES];
 }
 
 + (void) changePassword:(NSString *) newPass{
     password = newPass;
     NSData *data = [NSKeyedArchiver archivedDataWithRootObject:imagesList];
-    NSMutableData* mData = [Vsem1 encryptData:data passw:password];
+    NSMutableData* mData = [Vsem1 encryptData:data passw:password highSecurity:YES];
     [mData writeToFile:imagesFile atomically:YES];
     
     data = [NSKeyedArchiver archivedDataWithRootObject:vaultList];
-    mData = [Vsem1 encryptData:data passw:password];
+    mData = [Vsem1 encryptData:data passw:password highSecurity:YES];
     [mData writeToFile:vaultFile atomically:YES];
     
 }

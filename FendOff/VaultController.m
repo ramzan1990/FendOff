@@ -42,7 +42,7 @@ static VaultCategory* selectedCategory;
 
 - (void) saveData{
     NSData *data = [NSKeyedArchiver archivedDataWithRootObject:vaultList];
-    NSMutableData* mData = [Vsem1 encryptData:data passw:[ViewController getPass]];
+    NSMutableData* mData = [Vsem1 encryptData:data passw:[ViewController getPass] highSecurity:YES];
     [mData writeToFile:[ViewController getVaultFile] atomically:YES];
 }
 #pragma mark - Table view data source

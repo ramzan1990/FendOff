@@ -27,7 +27,7 @@
                                     <constraint firstAttribute="width" constant="81" id="sn5-Jl-Jo7"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                <inset key="titleEdgeInsets" minX="-70" minY="100" maxX="0.0" maxY="0.0"/>
+                                <inset key="titleEdgeInsets" minX="-81" minY="100" maxX="0.0" maxY="0.0"/>
                                 <inset key="imageEdgeInsets" minX="20" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <state key="normal" title="Encrypt File" image="Encrypt"/>
                                 <userDefinedRuntimeAttributes>
@@ -46,16 +46,18 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Em9-BN-RFx">
-                                <rect key="frame" x="240" y="81" width="120" height="120"/>
+                                <rect key="frame" x="240" y="85" width="120" height="120"/>
                                 <constraints>
+                                    <constraint firstAttribute="width" constant="120" id="1WM-6y-KTe"/>
                                     <constraint firstAttribute="width" constant="76" id="MH6-LQ-wNg"/>
                                     <constraint firstAttribute="height" constant="120" id="ePQ-Un-cck"/>
                                     <constraint firstAttribute="height" constant="30" id="hFJ-ZE-mfY"/>
+                                    <constraint firstAttribute="height" constant="120" id="m5L-Vj-snP"/>
                                     <constraint firstAttribute="width" constant="120" id="u0g-Rf-RD6"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                <inset key="titleEdgeInsets" minX="-70" minY="100" maxX="0.0" maxY="0.0"/>
-                                <inset key="imageEdgeInsets" minX="20" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <inset key="titleEdgeInsets" minX="-70" minY="105" maxX="0.0" maxY="0.0"/>
+                                <inset key="imageEdgeInsets" minX="20" minY="-5" maxX="0.0" maxY="0.0"/>
                                 <state key="normal" title="Categories" image="Categories">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -65,7 +67,9 @@
                                 <variation key="default">
                                     <mask key="constraints">
                                         <exclude reference="MH6-LQ-wNg"/>
+                                        <exclude reference="ePQ-Un-cck"/>
                                         <exclude reference="hFJ-ZE-mfY"/>
+                                        <exclude reference="u0g-Rf-RD6"/>
                                     </mask>
                                 </variation>
                                 <connections>
@@ -99,7 +103,7 @@
                                     <constraint firstAttribute="height" constant="120" id="sky-vq-fgz"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                <inset key="titleEdgeInsets" minX="-70" minY="100" maxX="0.0" maxY="0.0"/>
+                                <inset key="titleEdgeInsets" minX="-81" minY="100" maxX="0.0" maxY="0.0"/>
                                 <inset key="imageEdgeInsets" minX="20" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <state key="normal" title="Decrypt File" image="Decrypt">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -137,8 +141,10 @@
                             <constraint firstAttribute="centerY" secondItem="oxe-HJ-T0n" secondAttribute="centerY" constant="-52" id="agD-Wo-csW"/>
                             <constraint firstAttribute="centerX" secondItem="Yrv-YZ-aV3" secondAttribute="centerX" id="d16-UC-m3c"/>
                             <constraint firstAttribute="trailingMargin" secondItem="oxe-HJ-T0n" secondAttribute="trailing" constant="228" id="dPJ-gd-Bja"/>
+                            <constraint firstAttribute="centerX" secondItem="Em9-BN-RFx" secondAttribute="centerX" id="eEL-ay-1nz"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Em9-BN-RFx" secondAttribute="trailing" constant="222" id="hEt-Zc-lzS"/>
                             <constraint firstAttribute="centerY" secondItem="Yrv-YZ-aV3" secondAttribute="centerY" constant="19" id="hqs-dY-rVx"/>
+                            <constraint firstAttribute="centerY" secondItem="Em9-BN-RFx" secondAttribute="centerY" constant="155" id="lFY-ei-S7W"/>
                             <constraint firstAttribute="centerX" secondItem="oxe-HJ-T0n" secondAttribute="centerX" constant="-14.5" id="laV-cv-svv"/>
                             <constraint firstItem="jfD-i1-8gQ" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" id="pFV-LA-eJ0"/>
                             <constraint firstAttribute="centerX" secondItem="Yrv-YZ-aV3" secondAttribute="centerX" id="pTn-Vf-Ikh"/>
@@ -153,7 +159,9 @@
                             <mask key="constraints">
                                 <exclude reference="L9Y-28-WrV"/>
                                 <exclude reference="M6I-s7-WP3"/>
+                                <exclude reference="YdL-S7-GqI"/>
                                 <exclude reference="hEt-Zc-lzS"/>
+                                <exclude reference="seH-Pd-Zvi"/>
                                 <exclude reference="u20-4h-vL8"/>
                                 <exclude reference="w8w-Jm-dRi"/>
                                 <exclude reference="5eQ-fi-ySq"/>
@@ -967,6 +975,6 @@ Developed by Victor Solovyev: victorsolov@gmail.com iOS version by Ramzan Umar
         <image name="about" width="114" height="131"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="xL7-YS-elt"/>
+        <segue reference="XXE-0S-IH2"/>
     </inferredMetricsTieBreakers>
 </document>

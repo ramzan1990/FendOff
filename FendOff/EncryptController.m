@@ -41,8 +41,8 @@
             
             NSString* path = [self getPath:_name.text];
             NSData* data = UIImagePNGRepresentation(_ivPickedImage.image);
-            NSString * p = [self randomStringWithLength:10];
-            NSMutableData* encData = [Vsem1 encryptData:data passw:p];
+            NSString * p = [self randomStringWithLength:32];
+            NSMutableData* encData = [Vsem1 encryptData:data passw:p highSecurity:NO];
             [encData writeToFile:path atomically:YES];
             
             UIImage *originalImage = _ivPickedImage.image;

@@ -21,7 +21,7 @@
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         
         NSData *data = [[NSData alloc] initWithContentsOfFile:[self getPath:[selectedPhoto getName]]];
-        NSMutableData *mData = [Vsem1 decryptData:data passw:[selectedPhoto getPassword]];
+        NSMutableData *mData = [Vsem1 decryptData:data passw:[selectedPhoto getPassword] highSecurity:NO];
         UIImage * img = [UIImage imageWithData:mData];
         
 

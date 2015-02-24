@@ -17,7 +17,7 @@
 - (NSMutableData *) dvsem4:(NSMutableData *)bm seed:(NSInteger)seed;
 - (NSMutableArray *) pastosd:(NSInteger)num pas:(NSString *)pas;
 + (NSMutableArray *) pass16:(NSInteger)num pas:(NSString *)pas;
-+(NSMutableData *) decryptData:(NSData *) data passw:(NSString *) passw;
-+(NSMutableData *) encryptData:(NSData *) data passw:(NSString *) passw;
++(NSMutableData *) decryptData:(NSData *) data passw:(NSString *) passw highSecurity:(BOOL) highSecurity;
++(NSMutableData *) encryptData:(NSData *) data passw:(NSString *) passw highSecurity:(BOOL) highSecurity;
 
 @end

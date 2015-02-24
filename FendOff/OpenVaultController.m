@@ -60,7 +60,7 @@
     password= _pass.text;
     if(fileExists){
         NSData *data = [[NSData alloc] initWithContentsOfFile:vaultFile];
-        NSMutableData *decData = [Vsem1 decryptData:data passw:_pass.text];
+        NSMutableData *decData = [Vsem1 decryptData:data passw:_pass.text highSecurity:YES];
         @try{
             vaultList= [NSKeyedUnarchiver unarchiveObjectWithData:decData];
             [self performSegueWithIdentifier:@"Enter" sender:self];
@@ -86,7 +86,7 @@
         vaultList[2] = [[VaultCategory alloc] initWithName:@"Emails"];
         
         NSData *data = [NSKeyedArchiver archivedDataWithRootObject:vaultList];
-        NSMutableData* mData = [Vsem1 encryptData:data passw:password];
+        NSMutableData* mData = [Vsem1 encryptData:data passw:password highSecurity:YES];
         [mData writeToFile:vaultFile atomically:YES];
         
         [self performSegueWithIdentifier:@"Enter" sender:self];
