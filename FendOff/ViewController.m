@@ -110,6 +110,11 @@ static NSMutableArray* imagesList;
     ipc= [[UIImagePickerController alloc] init];
     ipc.delegate = self;
     ipc.sourceType = UIImagePickerControllerSourceTypeSavedPhotosAlbum;
+    ipc.navigationController.navigationBar.translucent = NO;
+    ipc.navigationBar.barTintColor =  [UIColor colorWithRed:1.0 green:128.0/255.0 blue:109.0/255.0 alpha:1];
+    ipc.navigationBar.tintColor = [UIColor whiteColor];
+    ipc.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName : [UIColor whiteColor]};
+    
     if(UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPhone)
         [self presentViewController:ipc animated:YES completion:nil];
     else
@@ -118,23 +123,39 @@ static NSMutableArray* imagesList;
         [popover presentPopoverFromRect:s.frame inView:self.view permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
     }
 }
+- (void)navigationController:(UINavigationController *)navigationController
+      willShowViewController:(UIViewController *)viewController
+                    animated:(BOOL)animated
+{
+    if ([navigationController isKindOfClass:[UIImagePickerController class]])
+    {
+        [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
+        viewController.navigationController.navigationBar.translucent = NO;
+        viewController.edgesForExtendedLayout = UIRectEdgeNone;
+    }
+}
+
 
 #pragma mark - ImagePickerController Delegate
 
 -(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
     if(UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPhone) {
-        [picker dismissViewControllerAnimated:YES completion:nil];
+        [picker dismissViewControllerAnimated:YES completion:^{
+            [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
+            [self performSegueWithIdentifier:@"Encrypt" sender:self];
+        }];
     } else {
         [popover dismissPopoverAnimated:YES];
     }
     pickedImage = [info objectForKey:UIImagePickerControllerOriginalImage];
-    [self performSegueWithIdentifier:@"Encrypt" sender:self];
-}
+    }
 
 -(void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
 {
-    [picker dismissViewControllerAnimated:YES completion:nil];
+    [picker dismissViewControllerAnimated:YES completion:^{
+        [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
+    }];
 }
 
 #pragma mark - Navigation

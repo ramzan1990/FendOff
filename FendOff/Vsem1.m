@@ -322,25 +322,20 @@
 }
 
 +(NSMutableData *) decryptData:(NSData *) data passw:(NSString *) passw highSecurity:(BOOL) highSecurity{
-    
     NSMutableData *mData = [NSMutableData data];
     [mData appendData:data];
-    
     Vsem1 * em = [[Vsem1 alloc] init];
-    
     NSMutableArray* sa = [em pastosd:2 pas:passw];
-    
     long stot = [em getStot];
-    
     long s3 = -999;
+    if (stot > 3) s3 = [sa[3] integerValue];
+    mData = [em dvsem4:mData seed:s3];
+    s3 = 999;
+    if (stot > 2) s3 = [sa[2] integerValue];
+    mData = [em dvsem3:mData seed:s3];
     if(highSecurity){
-        if (stot > 3) s3 = [sa[3] integerValue];
-        mData = [em dvsem4:mData seed:s3];
-        s3 = 999;
-        if (stot > 2) s3 = [sa[2] integerValue];
-        mData = [em dvsem3:mData seed:s3];
+        mData = [em dvsem2:mData seed:[sa[1] integerValue]];
     }
-    mData = [em dvsem2:mData seed:[sa[1] integerValue]];
     mData = [em dvsem1:mData seed:[sa[0] integerValue]];
     return mData;
 }
@@ -352,15 +347,15 @@
     NSMutableArray* sa = [em pastosd:2 pas:passw];
     long stot = [em getStot];
     bouts = [em evsem1:bouts seed:[sa[0] integerValue]];
-    bouts = [em evsem2:bouts seed:[sa[1] integerValue]];
-    long s3 = 999;
     if(highSecurity){
-        if (stot > 2) s3 = [sa[2] integerValue];
-        bouts = [em evsem3:bouts seed:s3];
-        s3 = -999;
-        if (stot > 3) s3 = [sa[3] integerValue];
-        bouts = [em evsem4:bouts seed:s3];
+        bouts = [em evsem2:bouts seed:[sa[1] integerValue]];
     }
+    long s3 = 999;
+    if (stot > 2) s3 = [sa[2] integerValue];
+    bouts = [em evsem3:bouts seed:s3];
+    s3 = -999;
+    if (stot > 3) s3 = [sa[3] integerValue];
+    bouts = [em evsem4:bouts seed:s3];
     return bouts;
 }
 
