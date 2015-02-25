@@ -290,7 +290,7 @@
         ls = len;
         lsl = 0;
     }
-    NSInteger lso = ls + lsl;
+    //NSInteger lso = ls + lsl;
     NSMutableArray * spa = [[NSMutableArray alloc] init];
     NSInteger numc = num - 1;
     if (lsl == 0)

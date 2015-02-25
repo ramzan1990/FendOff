@@ -39,14 +39,14 @@
         
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
             
-            NSString* path = [self getPath:_name.text];
+            NSString* path = [ViewController getPath:_name.text];
             NSData* data = UIImagePNGRepresentation(_ivPickedImage.image);
             NSString * p = [self randomStringWithLength:12];
             NSMutableData* encData = [Vsem1 encryptData:data passw:p highSecurity:NO];
             [encData writeToFile:path atomically:YES];
             
             UIImage *originalImage = _ivPickedImage.image;
-            CGSize destinationSize = CGSizeMake(40, 40);
+            CGSize destinationSize = CGSizeMake(80, 80);
             UIGraphicsBeginImageContext(destinationSize);
             [originalImage drawInRect:CGRectMake(0,0,destinationSize.width,destinationSize.height)];
             UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
@@ -77,31 +77,6 @@
     [self performSegueWithIdentifier:@"Back" sender:self];
 }
 
-- (UIImage *)resizeImage:(UIImage*)image newSize:(CGSize)newSize {
-    CGRect newRect = CGRectIntegral(CGRectMake(0, 0, newSize.width, newSize.height));
-    CGImageRef imageRef = image.CGImage;
-    
-    UIGraphicsBeginImageContextWithOptions(newSize, NO, 0);
-    CGContextRef context = UIGraphicsGetCurrentContext();
-    
-    // Set the quality level to use when rescaling
-    CGContextSetInterpolationQuality(context, kCGInterpolationHigh);
-    CGAffineTransform flipVertical = CGAffineTransformMake(1, 0, 0, -1, 0, newSize.height);
-    
-    CGContextConcatCTM(context, flipVertical);
-    // Draw into the context; this scales the image
-    CGContextDrawImage(context, newRect, imageRef);
-    
-    // Get the resized image from the context and a UIImage
-    CGImageRef newImageRef = CGBitmapContextCreateImage(context);
-    UIImage *newImage = [UIImage imageWithCGImage:newImageRef];
-    
-    CGImageRelease(newImageRef);
-    UIGraphicsEndImageContext();
-    
-    return newImage;
-}
-
 -(NSString *) randomStringWithLength: (int) len {
     NSString *letters = @"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
     NSMutableString *randomString = [NSMutableString stringWithCapacity: len];
@@ -113,24 +88,6 @@
     return randomString;
 }
 
--(NSString *) getPath:(NSString *) name {
-    NSFileManager *fm  = [NSFileManager defaultManager];
-    NSArray *paths = NSSearchPathForDirectoriesInDomains
-    (NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString *documentsDirectory = [paths objectAtIndex:0];
-    
-    NSString *dirName = [documentsDirectory stringByAppendingPathComponent:@"EncryptedPhotos"];
-    
-    BOOL isDir;
-    if(![fm fileExistsAtPath:dirName isDirectory:&isDir])
-    {
-        [fm createDirectoryAtPath:dirName withIntermediateDirectories:YES attributes:nil error:nil];
-    }
-    
-    NSString *filePath = [documentsDirectory stringByAppendingPathComponent: @"EncryptedPhotos"];
-    filePath = [filePath stringByAppendingPathComponent: name];
-    return filePath;
-}
 
 - (void) setImage:(UIImage *) pickedImage{
     image = pickedImage;

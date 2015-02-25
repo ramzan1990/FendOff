@@ -25,5 +25,12 @@
 + (NSMutableArray *) getImagesList;
 + (void) addEncryptedEntry:(EncryptedEntry*) ee;
 + (void) changePassword:(NSString *) newPass;
++(NSString *) getPath:(NSString *) name;
++ (void) removeEncryptedEntry:(NSInteger) i;
+
+@property (weak, nonatomic) IBOutlet UIButton *button1;
+@property (weak, nonatomic) IBOutlet UIButton *button2;
+@property (weak, nonatomic) IBOutlet UIButton *button3;
+
 @end
 

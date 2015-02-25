@@ -17,7 +17,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yrv-YZ-aV3">
+                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yrv-YZ-aV3">
                                 <rect key="frame" x="240" y="241" width="120" height="120"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="PIw-5E-kvu"/>
@@ -44,7 +44,7 @@
                                     <action selector="touchedUp:" destination="vXZ-lx-hvc" eventType="touchUpOutside" id="otB-eR-qSH"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Em9-BN-RFx">
+                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Em9-BN-RFx">
                                 <rect key="frame" x="240" y="85" width="120" height="120"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="120" id="1WM-6y-KTe"/>
@@ -97,7 +97,7 @@
                                     <segue destination="aFW-UI-kYR" kind="presentation" id="8Ae-Tq-J44"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oxe-HJ-T0n">
+                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oxe-HJ-T0n">
                                 <rect key="frame" x="240" y="401" width="120" height="120"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="83" id="F61-Bq-2u8"/>
@@ -183,6 +183,9 @@
                         </variation>
                     </view>
                     <connections>
+                        <outlet property="button1" destination="Em9-BN-RFx" id="fPn-dR-yxV"/>
+                        <outlet property="button2" destination="Yrv-YZ-aV3" id="yTX-Bs-4ko"/>
+                        <outlet property="button3" destination="oxe-HJ-T0n" id="WEy-g1-hrw"/>
                         <segue destination="wuc-0C-FQ7" kind="presentation" identifier="Encrypt" id="hqU-S5-s98"/>
                     </connections>
                 </viewController>
@@ -563,6 +566,12 @@ Developed by Victor Solovyev: victorsolov@gmail.com iOS version with Ramzan Um
                                         </variation>
                                     </imageView>
                                 </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="qxw-I1-9eK" secondAttribute="trailing" id="1M7-qo-cAF"/>
+                                    <constraint firstItem="qxw-I1-9eK" firstAttribute="top" secondItem="GEN-7I-uxm" secondAttribute="top" id="4Eu-6X-UiK"/>
+                                    <constraint firstAttribute="bottom" secondItem="qxw-I1-9eK" secondAttribute="bottom" id="WLJ-lN-Xd8"/>
+                                    <constraint firstItem="qxw-I1-9eK" firstAttribute="leading" secondItem="GEN-7I-uxm" secondAttribute="leading" id="gEc-sZ-U80"/>
+                                </constraints>
                             </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -896,7 +905,6 @@ Developed by Victor Solovyev: victorsolov@gmail.com iOS version with Ramzan Um
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                <dataDetectorType key="dataDetectorTypes" phoneNumber="YES" link="YES"/>
                             </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -978,6 +986,6 @@ Developed by Victor Solovyev: victorsolov@gmail.com iOS version with Ramzan Um
         <image name="about" width="114" height="131"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="XXE-0S-IH2"/>
+        <segue reference="Bqc-Tk-1LY"/>
     </inferredMetricsTieBreakers>
 </document>

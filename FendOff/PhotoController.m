@@ -2,6 +2,7 @@
 #import "DecryptController.h"
 #import "Vsem1.h"
 #import "SVProgressHUD.h"
+#import "ViewController.h"
 
 @interface PhotoController ()<UIScrollViewDelegate>
 @end
@@ -20,7 +21,7 @@
     
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         
-        NSData *data = [[NSData alloc] initWithContentsOfFile:[self getPath:[selectedPhoto getName]]];
+        NSData *data = [[NSData alloc] initWithContentsOfFile:[ViewController getPath:[selectedPhoto getName]]];
         NSMutableData *mData = [Vsem1 decryptData:data passw:[selectedPhoto getPassword] highSecurity:NO];
         UIImage * img = [UIImage imageWithData:mData];
         
@@ -31,11 +32,15 @@
             _iv.image = img;
             
             
-            self.scrollView.minimumZoomScale=0.25;
+            CGRect screenRect = [[UIScreen mainScreen] bounds];
+            CGFloat screenWidth = screenRect.size.width;
+            //CGFloat screenHeight = screenRect.size.height;
+            
+            self.scrollView.minimumZoomScale=screenWidth/img.size.width;
             self.scrollView.maximumZoomScale=6.0;
             self.scrollView.contentSize= self.iv.image.size;
             self.scrollView.delegate=self;
-            
+            self.scrollView.zoomScale =screenWidth/img.size.width;
         });
         
         
@@ -49,24 +54,7 @@
 }
 
 
--(NSString *) getPath:(NSString *) name {
-    NSFileManager *fm  = [NSFileManager defaultManager];
-    NSArray *paths = NSSearchPathForDirectoriesInDomains
-    (NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString *documentsDirectory = [paths objectAtIndex:0];
-    
-    NSString *dirName = [documentsDirectory stringByAppendingPathComponent:@"EncryptedPhotos"];
-    
-    BOOL isDir;
-    if(![fm fileExistsAtPath:dirName isDirectory:&isDir])
-    {
-        [fm createDirectoryAtPath:dirName withIntermediateDirectories:YES attributes:nil error:nil];
-    }
-    
-    NSString *filePath = [documentsDirectory stringByAppendingPathComponent: @"EncryptedPhotos"];
-    filePath = [filePath stringByAppendingPathComponent: name];
-    return filePath;
-}
+
 
 - (IBAction)save:(id)sender {
     @try{

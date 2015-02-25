@@ -51,7 +51,7 @@
     _pass.layer.sublayerTransform = CATransform3DMakeTranslation(5, 0, 0);
     
     //[fm removeItemAtPath:vaultFile error:nil];
-   // [fm removeItemAtPath:[dirName stringByAppendingPathComponent: @"images.ff"] error:nil];
+   //[fm removeItemAtPath:[dirName stringByAppendingPathComponent: @"images.ff"] error:nil];
     //[fm removeItemAtPath:[dirName stringByAppendingPathComponent: @"EncryptedPhotos"] error:nil];
 }
 
@@ -84,7 +84,8 @@
         vaultList[0] = [[VaultCategory alloc] initWithName:@"General"];
         vaultList[1] = [[VaultCategory alloc] initWithName:@"Phones"];
         vaultList[2] = [[VaultCategory alloc] initWithName:@"Emails"];
-        
+        vaultList[3] = [[VaultCategory alloc] initWithName:@"Credit cards"];
+            
         NSData *data = [NSKeyedArchiver archivedDataWithRootObject:vaultList];
         NSMutableData* mData = [Vsem1 encryptData:data passw:password highSecurity:YES];
         [mData writeToFile:vaultFile atomically:YES];

@@ -25,27 +25,36 @@ static NSMutableArray* imagesList;
 - (void)viewDidLoad {
     [super viewDidLoad];
     if(imagesList == nil){
-    imagesList = [[NSMutableArray alloc] init];
-    NSString *docDir = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)[0];
-    NSString *dirName = [docDir stringByAppendingPathComponent:@"Vault"];
-    NSFileManager *fm = [NSFileManager defaultManager];
-    NSString * fileName = @"images.ff";
-    imagesFile = [dirName stringByAppendingPathComponent: fileName];
-    
-    fileExists = [fm fileExistsAtPath: imagesFile];
-    if (fileExists){
-        NSData *data = [[NSData alloc] initWithContentsOfFile:imagesFile];
-        NSMutableData *decData = [Vsem1 decryptData:data passw:password highSecurity:YES];
-        @try{
-            imagesList= [NSKeyedUnarchiver unarchiveObjectWithData:decData];
-        }
-        @catch(NSException *){
-            
-            
+        imagesList = [[NSMutableArray alloc] init];
+        NSString *docDir = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)[0];
+        NSString *dirName = [docDir stringByAppendingPathComponent:@"Vault"];
+        NSFileManager *fm = [NSFileManager defaultManager];
+        NSString * fileName = @"images.ff";
+        imagesFile = [dirName stringByAppendingPathComponent: fileName];
+        
+        fileExists = [fm fileExistsAtPath: imagesFile];
+        if (fileExists){
+            NSData *data = [[NSData alloc] initWithContentsOfFile:imagesFile];
+            NSMutableData *decData = [Vsem1 decryptData:data passw:password highSecurity:YES];
+            @try{
+                imagesList= [NSKeyedUnarchiver unarchiveObjectWithData:decData];
+            }
+            @catch(NSException *){
+                
+                
+            }
         }
     }
-    }
     
+    [_button1.imageView setContentMode:UIViewContentModeScaleAspectFit];
+    [_button2.imageView setContentMode:UIViewContentModeScaleAspectFit];
+    [_button3.imageView setContentMode:UIViewContentModeScaleAspectFit];
+    _button1.contentHorizontalAlignment = UIControlContentHorizontalAlignmentCenter;
+    _button1.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
+    _button2.contentHorizontalAlignment = UIControlContentHorizontalAlignmentCenter;
+    _button2.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
+    _button3.contentHorizontalAlignment = UIControlContentHorizontalAlignmentCenter;
+    _button3.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
 }
 - (IBAction)touched:(id)sender {
     UIButton* b = (UIButton*) sender;
@@ -86,6 +95,13 @@ static NSMutableArray* imagesList;
 
 + (void) addEncryptedEntry:(EncryptedEntry*) ee{
     [imagesList addObject:ee];
+    NSData *data = [NSKeyedArchiver archivedDataWithRootObject:imagesList];
+    NSMutableData* mData = [Vsem1 encryptData:data passw:password highSecurity:YES];
+    [mData writeToFile:imagesFile atomically:YES];
+}
+
++ (void) removeEncryptedEntry:(NSInteger) i{
+    [imagesList removeObjectAtIndex:i];
     NSData *data = [NSKeyedArchiver archivedDataWithRootObject:imagesList];
     NSMutableData* mData = [Vsem1 encryptData:data passw:password highSecurity:YES];
     [mData writeToFile:imagesFile atomically:YES];
@@ -135,6 +151,25 @@ static NSMutableArray* imagesList;
     }
 }
 
++(NSString *) getPath:(NSString *) name {
+    NSFileManager *fm  = [NSFileManager defaultManager];
+    NSArray *paths = NSSearchPathForDirectoriesInDomains
+    (NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsDirectory = [paths objectAtIndex:0];
+    
+    NSString *dirName = [documentsDirectory stringByAppendingPathComponent:@"EncryptedPhotos"];
+    
+    BOOL isDir;
+    if(![fm fileExistsAtPath:dirName isDirectory:&isDir])
+    {
+        [fm createDirectoryAtPath:dirName withIntermediateDirectories:YES attributes:nil error:nil];
+    }
+    
+    NSString *filePath = [documentsDirectory stringByAppendingPathComponent: @"EncryptedPhotos"];
+    filePath = [filePath stringByAppendingPathComponent: name];
+    return filePath;
+}
+
 
 #pragma mark - ImagePickerController Delegate
 
@@ -149,7 +184,7 @@ static NSMutableArray* imagesList;
         [popover dismissPopoverAnimated:YES];
     }
     pickedImage = [info objectForKey:UIImagePickerControllerOriginalImage];
-    }
+}
 
 -(void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
 {
@@ -162,9 +197,9 @@ static NSMutableArray* imagesList;
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if([segue.identifier isEqualToString:@"Encrypt"]){
-    UINavigationController* nav = (UINavigationController*)[segue destinationViewController];
-    EncryptController* ec = (EncryptController* )[nav viewControllers][0];
-    [ec setImage:pickedImage];
+        UINavigationController* nav = (UINavigationController*)[segue destinationViewController];
+        EncryptController* ec = (EncryptController* )[nav viewControllers][0];
+        [ec setImage:pickedImage];
     }
 }
 
