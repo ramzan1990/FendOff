@@ -36,7 +36,7 @@
         [alert show];
     }else{
         [SVProgressHUD showWithMaskType:SVProgressHUDMaskTypeBlack];
-        
+        [self.view endEditing:YES];
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
             
             NSString* path = [ViewController getPath:_name.text];
