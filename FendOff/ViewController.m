@@ -49,13 +49,25 @@ static NSMutableArray* imagesList;
     [_button1.imageView setContentMode:UIViewContentModeScaleAspectFit];
     [_button2.imageView setContentMode:UIViewContentModeScaleAspectFit];
     [_button3.imageView setContentMode:UIViewContentModeScaleAspectFit];
+    
     _button1.contentHorizontalAlignment = UIControlContentHorizontalAlignmentCenter;
     _button1.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
+    if([self iPhone6PlusDevice]){
+    _button1.imageEdgeInsets = UIEdgeInsetsMake(-5, 40, 0, 0);
+    _button1.titleEdgeInsets = UIEdgeInsetsMake(105, -50, 0, 0);
+    }
+    
     _button2.contentHorizontalAlignment = UIControlContentHorizontalAlignmentCenter;
     _button2.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
     _button3.contentHorizontalAlignment = UIControlContentHorizontalAlignmentCenter;
     _button3.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
 }
+
+-(BOOL)iPhone6PlusDevice{
+    if ([UIScreen mainScreen].scale > 2.9) return YES;   // Scale is only 3 when not in scaled mode for iPhone 6 Plus
+    return NO;
+}
+
 - (IBAction)touched:(id)sender {
     UIButton* b = (UIButton*) sender;
     b.alpha = 0.7;
