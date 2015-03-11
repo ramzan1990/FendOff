@@ -3,6 +3,7 @@
 
 @interface PhotoController : UIViewController <UIScrollViewDelegate>{
     EncryptedEntry* selectedPhoto;
+    UIImage * decryptedImage;
 }
 
 - (void) setEntry:(EncryptedEntry *)pEntry;

@@ -206,6 +206,32 @@
     return bm;
 }
 
+/*
+- (NSMutableData *) evsem5:(NSMutableData *)bm seed:(NSInteger)seed {
+    NSInteger len = [bm length];
+    char rb;
+    Rand2 * rnd = [[Rand2 alloc] init];
+    int jl= (int) [rnd rand:0 max:len-1];
+    char* fileBytes = (char*)[bm mutableBytes];
+    NSMutableArray* bms =[[NSMutableArray alloc] init];
+    for(int i=0;i<len;i++)	{
+        if(i+jl < len)
+            bms[i+jl]=fileBytes[i];
+        else
+            bms[i+jl-len]=fileBytes[i];
+    }
+    for(int i=0;i<len;i++)	{
+        char j= (char) ([rnd rand:0 max:256] - 128);
+        rb=(char) bms[i];
+        fileBytes[i]=   (char) (rb^j);
+    }
+
+    
+    return bm;
+}
+*/
+
+
 - (NSMutableArray *) pastosd:(NSInteger)num pas:(NSString *)pas {
     NSInteger i;
     NSInteger len = [pas length];
@@ -329,7 +355,9 @@
     long stot = [em getStot];
     long s3 = -999;
     if (stot > 3) s3 = [sa[3] integerValue];
+     if(highSecurity){
     mData = [em dvsem4:mData seed:s3];
+     }
     s3 = 999;
     if (stot > 2) s3 = [sa[2] integerValue];
     mData = [em dvsem3:mData seed:s3];
@@ -353,9 +381,11 @@
     long s3 = 999;
     if (stot > 2) s3 = [sa[2] integerValue];
     bouts = [em evsem3:bouts seed:s3];
+    if(highSecurity){
     s3 = -999;
     if (stot > 3) s3 = [sa[3] integerValue];
     bouts = [em evsem4:bouts seed:s3];
+    }
     return bouts;
 }
 

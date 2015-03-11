@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface EncryptController : UIViewController <UIAlertViewDelegate>{
+@interface EncryptController : UIViewController <UIAlertViewDelegate,  UITextFieldDelegate>{
     UIImage* image;
 }
 

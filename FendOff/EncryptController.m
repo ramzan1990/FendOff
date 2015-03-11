@@ -21,8 +21,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     _ivPickedImage.image = image;
-    
-    
+    _name.text = [NSString stringWithFormat:@"Image %lu", [[ViewController getImagesList] count] + 1];
+    [_name setDelegate:self];
 }
 
 
@@ -71,6 +71,12 @@
         });
     }
     
+}
+
+-(BOOL) textFieldShouldReturn:(UITextField *)textField{
+    
+    [textField resignFirstResponder];
+    return YES;
 }
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {

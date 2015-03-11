@@ -23,24 +23,24 @@
         
         NSData *data = [[NSData alloc] initWithContentsOfFile:[ViewController getPath:[selectedPhoto getName]]];
         NSMutableData *mData = [Vsem1 decryptData:data passw:[selectedPhoto getPassword] highSecurity:NO];
-        UIImage * img = [UIImage imageWithData:mData];
+        decryptedImage = [UIImage imageWithData:mData];
         
 
         
         dispatch_async(dispatch_get_main_queue(), ^{
             [SVProgressHUD dismiss];
-            _iv.image = img;
+            _iv.image = decryptedImage;
             
             
             CGRect screenRect = [[UIScreen mainScreen] bounds];
             CGFloat screenWidth = screenRect.size.width;
             //CGFloat screenHeight = screenRect.size.height;
             
-            self.scrollView.minimumZoomScale=screenWidth/img.size.width;
+            self.scrollView.minimumZoomScale=screenWidth/decryptedImage.size.width;
             self.scrollView.maximumZoomScale=6.0;
             self.scrollView.contentSize= self.iv.image.size;
             self.scrollView.delegate=self;
-            self.scrollView.zoomScale =screenWidth/img.size.width;
+            self.scrollView.zoomScale =screenWidth/decryptedImage.size.width;
         });
         
         
@@ -58,7 +58,7 @@
 
 - (IBAction)save:(id)sender {
     @try{
-        UIImageWriteToSavedPhotosAlbum(_iv.image,nil,nil,nil);
+        UIImageWriteToSavedPhotosAlbum(decryptedImage,nil,nil,nil);
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"FendOff"
                                                         message:@"Image placed into saved photos album."
                                                        delegate:nil

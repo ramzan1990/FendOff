@@ -51,7 +51,7 @@
     _pass.layer.sublayerTransform = CATransform3DMakeTranslation(5, 0, 0);
     
     //[fm removeItemAtPath:vaultFile error:nil];
-   //[fm removeItemAtPath:[dirName stringByAppendingPathComponent: @"images.ff"] error:nil];
+    //[fm removeItemAtPath:[dirName stringByAppendingPathComponent: @"images.ff"] error:nil];
     //[fm removeItemAtPath:[dirName stringByAppendingPathComponent: @"EncryptedPhotos"] error:nil];
 }
 
@@ -107,7 +107,7 @@
     return YES;
 }
 
-// Call this method somewhere in your view controller setup code.
+
 - (void)registerForKeyboardNotifications
 {
     [[NSNotificationCenter defaultCenter] addObserver:self
