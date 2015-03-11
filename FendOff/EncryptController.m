@@ -40,17 +40,12 @@
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
             
             NSString* path = [ViewController getPath:_name.text];
-            NSData* data = UIImagePNGRepresentation(_ivPickedImage.image);
-            NSString * p = [self randomStringWithLength:12];
+            NSData* data = UIImagePNGRepresentation(image);
+            NSString * p = [self randomStringWithLength:8];
             NSMutableData* encData = [Vsem1 encryptData:data passw:p highSecurity:NO];
             [encData writeToFile:path atomically:YES];
             
-            UIImage *originalImage = _ivPickedImage.image;
-            CGSize destinationSize = CGSizeMake(80, 80);
-            UIGraphicsBeginImageContext(destinationSize);
-            [originalImage drawInRect:CGRectMake(0,0,destinationSize.width,destinationSize.height)];
-            UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
-            UIGraphicsEndImageContext();
+            UIImage *newImage = [EncryptController generatePhotoThumbnail:image withSide:60];
             
             EncryptedEntry* ee = [[EncryptedEntry alloc] init:_name.text password:p preview:newImage];
             [ViewController addEncryptedEntry:ee];
@@ -71,6 +66,43 @@
         });
     }
     
+}
+
++ (UIImage *)generatePhotoThumbnail:(UIImage *)image withSide:(CGFloat)ratio
+{
+    // Create a thumbnail version of the image for the event object.
+    CGSize size = image.size;
+    CGSize croppedSize;
+    
+    CGFloat offsetX = 0.0;
+    CGFloat offsetY = 0.0;
+    
+    // check the size of the image, we want to make it
+    // a square with sides the size of the smallest dimension.
+    // So clip the extra portion from x or y coordinate
+    if (size.width > size.height) {
+        offsetX = (size.height - size.width) / 2;
+        croppedSize = CGSizeMake(size.height, size.height);
+    } else {
+        offsetY = (size.width - size.height) / 2;
+        croppedSize = CGSizeMake(size.width, size.width);
+    }
+    
+    // Crop the image before resize
+    CGRect clippedRect = CGRectMake(offsetX * -1, offsetY * -1, croppedSize.width, croppedSize.height);
+    CGImageRef imageRef = CGImageCreateWithImageInRect([image CGImage], clippedRect);
+    // Done cropping
+    
+    // Resize the image
+    CGRect rect = CGRectMake(0.0, 0.0, ratio, ratio);
+    
+    UIGraphicsBeginImageContext(rect.size);
+    [[UIImage imageWithCGImage:imageRef] drawInRect:rect];
+    UIImage *thumbnail = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    // Done Resizing
+    
+    return thumbnail;
 }
 
 -(BOOL) textFieldShouldReturn:(UITextField *)textField{
