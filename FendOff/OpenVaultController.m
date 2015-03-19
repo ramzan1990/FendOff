@@ -39,7 +39,7 @@
     
     [_pass setDelegate:self];
     
-  
+    
     
     UIFont *customFont = [UIFont fontWithName:@"Circe-Bold" size:48];
     _mainLabel.font = customFont;
@@ -60,8 +60,8 @@
     password= _pass.text;
     if(fileExists){
         NSData *data = [[NSData alloc] initWithContentsOfFile:vaultFile];
-        NSMutableData *decData = [Vsem1 decryptData:data passw:_pass.text highSecurity:YES];
         @try{
+            NSMutableData *decData = [Vsem1 decryptData:data passw:_pass.text highSecurity:YES];
             vaultList= [NSKeyedUnarchiver unarchiveObjectWithData:decData];
             [self performSegueWithIdentifier:@"Enter" sender:self];
         }
@@ -80,17 +80,17 @@
         }
     }else{
         if(_pass.text.length >=4){
-        vaultList = [[NSMutableArray alloc] init];
-        vaultList[0] = [[VaultCategory alloc] initWithName:@"General"];
-        vaultList[1] = [[VaultCategory alloc] initWithName:@"Phones"];
-        vaultList[2] = [[VaultCategory alloc] initWithName:@"Emails"];
-        vaultList[3] = [[VaultCategory alloc] initWithName:@"Credit cards"];
+            vaultList = [[NSMutableArray alloc] init];
+            vaultList[0] = [[VaultCategory alloc] initWithName:@"General"];
+            vaultList[1] = [[VaultCategory alloc] initWithName:@"Phones"];
+            vaultList[2] = [[VaultCategory alloc] initWithName:@"Emails"];
+            vaultList[3] = [[VaultCategory alloc] initWithName:@"Credit cards"];
             
-        NSData *data = [NSKeyedArchiver archivedDataWithRootObject:vaultList];
-        NSMutableData* mData = [Vsem1 encryptData:data passw:password highSecurity:YES];
-        [mData writeToFile:vaultFile atomically:YES];
-        
-        [self performSegueWithIdentifier:@"Enter" sender:self];
+            NSData *data = [NSKeyedArchiver archivedDataWithRootObject:vaultList];
+            NSMutableData* mData = [Vsem1 encryptData:data passw:password highSecurity:YES];
+            [mData writeToFile:vaultFile atomically:YES];
+            
+            [self performSegueWithIdentifier:@"Enter" sender:self];
         }else{
             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"FendOff"
                                                             message:@"Password should be at least 4 characters."
@@ -154,10 +154,10 @@
 #pragma mark - Navigation
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-        ViewController* vc = (ViewController* )[segue destinationViewController];
-        [vc setPass:password];
-        [vc setVaultFile:vaultFile];
-        [vc setVaultList:vaultList];
+    ViewController* vc = (ViewController* )[segue destinationViewController];
+    [vc setPass:password];
+    [vc setVaultFile:vaultFile];
+    [vc setVaultList:vaultList];
     
 }
 
