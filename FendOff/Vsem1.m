@@ -187,51 +187,50 @@
     [rnd setSeed:seed];
     char* fileBytes = (char*)[bm mutableBytes];
     NSMutableArray * bms = [[NSMutableArray alloc] init];
-    for (NSInteger i = 0; i < len; i++) {
-        char j = (char)[rnd rand:-127 max:127];
-        rb = ~fileBytes[i];
-        fileBytes[i] = (rb ^ j);
-    }
-    
-    return bm;
-}
-
-byte[] evsem_ct(byte[] bm, long seed) {
-    int len = bm.length;
-    byte rb;
-    byte bms[] = new byte[len];
-    Rand1 rnd = new Rand1();
-    rnd.setSeed(seed);
-    int jl = (int) rnd.rand(0, len - 1);
+    for (int i = 0; i < len; i++)
+        bms[i] = [NSNumber numberWithChar:0];
+    int jl = (int) [rnd rand:0 max:len-1];
     for (int i = 0; i < len; i++) {
         if (i + jl < len)
-            bms[i + jl] = bm[i];
+            bms[i + jl] = [NSNumber numberWithChar:fileBytes[i]];
         else
-            bms[i + jl - len] = bm[i];
+            bms[i + jl - len] = [NSNumber numberWithChar:fileBytes[i]];
     }
     for (int i = 0; i < len; i++) {
-        byte j = (byte) rnd.rand(-128, 127);
-        rb = (byte) bms[i];
-        bm[i] = (byte) (rb ^ j);
+        char j = (char) [rnd rand:-128 max:127];
+        rb = [bms[i] charValue];
+        fileBytes[i] = (char) (rb ^ j);
     }
     
     return bm;
 }
 
-- (NSMutableData *) dvsem4:(NSMutableData *)bm seed:(NSInteger)seed {
+
+- (NSMutableData *) dvsem_ct:(NSMutableData *)bm seed:(NSInteger)seed {
     NSInteger len = [bm length];
     char rb;
-    Rand2 * rnd = [[Rand2 alloc] init];
+    Rand1 * rnd = [[Rand1 alloc] init];
     [rnd setSeed:seed];
     char* fileBytes = (char*)[bm mutableBytes];
-    for (NSInteger i = 0; i < len; i++) {
-        char j = (char)[rnd rand:-127 max:127];
-        rb = (char)(fileBytes[i]  ^ j);
-        fileBytes[i] = ~rb;
+    int jl = (int) [rnd rand:0 max:len-1];
+    NSMutableArray * bms = [[NSMutableArray alloc] init];
+    for (int i = 0; i < len; i++)
+        bms[i] = [NSNumber numberWithChar:0];
+    for (int i = 0; i < len; i++) {
+        char j = (char) [rnd rand:-128 max:127];
+        rb = (char) fileBytes[i];
+        bms[i] = [NSNumber numberWithChar:(char) (rb ^ j)];
+    }
+    for (int i = 0; i < len; i++) {
+        if (i - jl >= 0)
+            fileBytes[i - jl] = [bms[i] charValue];
+        else
+            fileBytes[len - jl + i] = [bms[i] charValue];
     }
     
     return bm;
 }
+
 
 
 
@@ -359,9 +358,9 @@ byte[] evsem_ct(byte[] bm, long seed) {
     long stot = [em getStot];
     long s3 = -999;
     if (stot > 3) s3 = [sa[3] integerValue];
-     if(highSecurity){
-    mData = [em dvsem4:mData seed:s3];
-     }
+    if(highSecurity){
+        mData = [em dvsem_ct:mData seed:s3];
+    }
     s3 = 999;
     if (stot > 2) s3 = [sa[2] integerValue];
     mData = [em dvsem_s:mData seed:s3];
@@ -386,9 +385,9 @@ byte[] evsem_ct(byte[] bm, long seed) {
     if (stot > 2) s3 = [sa[2] integerValue];
     bouts = [em evsem_s:bouts seed:s3];
     if(highSecurity){
-    s3 = -999;
-    if (stot > 3) s3 = [sa[3] integerValue];
-    bouts = [em evsem_ct:bouts seed:s3];
+        s3 = -999;
+        if (stot > 3) s3 = [sa[3] integerValue];
+        bouts = [em evsem_ct:bouts seed:s3];
     }
     return bouts;
 }
