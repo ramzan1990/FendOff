@@ -12,8 +12,11 @@
 
 @property (weak, nonatomic) IBOutlet UITextField *oldPass;
 @property (weak, nonatomic) IBOutlet UITextField *pass;
+@property (weak, nonatomic) IBOutlet UITextField *exportName;
+@property (weak, nonatomic) IBOutlet UIButton *exportButton;
 @property (weak, nonatomic) IBOutlet UIButton *saveButton;
 @property (weak, nonatomic) IBOutlet UIView *passView;
 @property (weak, nonatomic) IBOutlet UIView *aboutView;
+@property (weak, nonatomic) IBOutlet UIView *exportView;
 
 @end

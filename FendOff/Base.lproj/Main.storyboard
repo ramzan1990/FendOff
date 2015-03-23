@@ -283,13 +283,14 @@
                         <viewControllerLayoutGuide type="bottom" id="flM-Gh-6SX"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="pEr-i0-cUw">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="536"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Vit-Rd-0rC">
                                 <rect key="frame" x="226" y="488" width="149" height="29"/>
                                 <segments>
                                     <segment title="Password"/>
+                                    <segment title="Export"/>
                                     <segment title="About"/>
                                 </segments>
                                 <color key="tintColor" red="1" green="0.50196078430000002" blue="0.42745098040000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -424,19 +425,91 @@ Developed by Victor Solovyev: victorsolov@gmail.com iOS version with Ramzan Um
                                     </mask>
                                 </variation>
                             </view>
+                            <view hidden="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Lf5-ZF-x07">
+                                <rect key="frame" x="56" y="163" width="487" height="274"/>
+                                <subviews>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Export" borderStyle="roundedRect" placeholder="Choose name" textAlignment="center" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="UtB-Fv-usD">
+                                        <rect key="frame" x="143" y="8" width="200" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="700" id="91Z-80-P9u"/>
+                                            <constraint firstAttribute="height" constant="40" id="Xvo-uM-UJC"/>
+                                            <constraint firstAttribute="width" constant="700" id="raN-eu-MrY"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="raN-eu-MrY"/>
+                                                <exclude reference="91Z-80-P9u"/>
+                                            </mask>
+                                        </variation>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ble-L4-dTv">
+                                        <rect key="frame" x="201" y="78" width="84" height="44"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="K63-cd-wlI"/>
+                                        </constraints>
+                                        <state key="normal" title="Save">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="export:" destination="hqd-dR-lo1" eventType="touchUpInside" id="luU-Ua-Z8z"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="0.96078431369999995" green="0.96078431369999995" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="UtB-Fv-usD" secondAttribute="trailing" constant="-200" id="1RH-Bf-1zf"/>
+                                    <constraint firstItem="UtB-Fv-usD" firstAttribute="top" secondItem="Lf5-ZF-x07" secondAttribute="top" constant="16" id="C5t-iG-JY5"/>
+                                    <constraint firstItem="UtB-Fv-usD" firstAttribute="leading" secondItem="Lf5-ZF-x07" secondAttribute="leading" constant="8" id="EJg-Gt-Zov"/>
+                                    <constraint firstAttribute="trailing" secondItem="UtB-Fv-usD" secondAttribute="trailing" constant="-30" id="KAC-J2-VzM"/>
+                                    <constraint firstItem="UtB-Fv-usD" firstAttribute="leading" secondItem="Lf5-ZF-x07" secondAttribute="leading" constant="-30" id="KmQ-nT-PeC"/>
+                                    <constraint firstAttribute="centerY" secondItem="UtB-Fv-usD" secondAttribute="centerY" constant="106" id="Pts-QY-KrT"/>
+                                    <constraint firstAttribute="trailing" secondItem="UtB-Fv-usD" secondAttribute="trailing" constant="-8" id="QRF-cu-hOH"/>
+                                    <constraint firstItem="UtB-Fv-usD" firstAttribute="leading" secondItem="Lf5-ZF-x07" secondAttribute="leading" constant="-200" id="VLx-EV-h5G"/>
+                                    <constraint firstItem="ble-L4-dTv" firstAttribute="leading" secondItem="Lf5-ZF-x07" secondAttribute="leading" constant="8" id="ceC-Ej-22n"/>
+                                    <constraint firstItem="UtB-Fv-usD" firstAttribute="top" secondItem="Lf5-ZF-x07" secondAttribute="top" constant="80" id="fmC-fy-rEk"/>
+                                    <constraint firstItem="UtB-Fv-usD" firstAttribute="top" secondItem="Lf5-ZF-x07" secondAttribute="top" constant="16" id="gpM-Ep-a13"/>
+                                    <constraint firstAttribute="trailing" secondItem="UtB-Fv-usD" secondAttribute="trailing" constant="8" id="kdT-dM-z2k"/>
+                                    <constraint firstAttribute="centerX" secondItem="UtB-Fv-usD" secondAttribute="centerX" constant="3" id="noQ-La-HWc"/>
+                                    <constraint firstItem="ble-L4-dTv" firstAttribute="top" secondItem="UtB-Fv-usD" secondAttribute="bottom" constant="16" id="rla-2v-ICv"/>
+                                    <constraint firstAttribute="centerX" secondItem="UtB-Fv-usD" secondAttribute="centerX" constant="3" id="xLk-Ag-95Y"/>
+                                    <constraint firstItem="UtB-Fv-usD" firstAttribute="leading" secondItem="Lf5-ZF-x07" secondAttribute="leading" constant="-8" id="xn2-A8-G4A"/>
+                                    <constraint firstAttribute="trailing" secondItem="ble-L4-dTv" secondAttribute="trailing" constant="8" id="xxT-up-ony"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="1RH-Bf-1zf"/>
+                                        <exclude reference="C5t-iG-JY5"/>
+                                        <exclude reference="EJg-Gt-Zov"/>
+                                        <exclude reference="Pts-QY-KrT"/>
+                                        <exclude reference="QRF-cu-hOH"/>
+                                        <exclude reference="VLx-EV-h5G"/>
+                                        <exclude reference="fmC-fy-rEk"/>
+                                        <exclude reference="kdT-dM-z2k"/>
+                                        <exclude reference="noQ-La-HWc"/>
+                                        <exclude reference="xLk-Ag-95Y"/>
+                                        <exclude reference="xn2-A8-G4A"/>
+                                    </mask>
+                                </variation>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="0.96078431372549022" green="0.96078431372549022" blue="0.96862745098039216" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="XFA-Lh-tSa" firstAttribute="top" secondItem="T5E-pm-Tkd" secondAttribute="bottom" id="4Sb-Qf-jZJ"/>
                             <constraint firstAttribute="trailing" secondItem="ySN-nE-bU0" secondAttribute="trailing" id="DBE-mg-reE"/>
+                            <constraint firstItem="Lf5-ZF-x07" firstAttribute="leading" secondItem="pEr-i0-cUw" secondAttribute="leading" id="GLq-f5-4Dp"/>
                             <constraint firstItem="ySN-nE-bU0" firstAttribute="leading" secondItem="pEr-i0-cUw" secondAttribute="leading" id="HFY-T1-BDR"/>
                             <constraint firstItem="ySN-nE-bU0" firstAttribute="top" secondItem="T5E-pm-Tkd" secondAttribute="bottom" id="Hzx-rR-K3H"/>
                             <constraint firstItem="Vit-Rd-0rC" firstAttribute="top" secondItem="XFA-Lh-tSa" secondAttribute="bottom" constant="10" id="Nr5-n2-b0w"/>
+                            <constraint firstAttribute="trailing" secondItem="Lf5-ZF-x07" secondAttribute="trailing" id="Rq3-SP-1fp"/>
                             <constraint firstItem="XFA-Lh-tSa" firstAttribute="leading" secondItem="pEr-i0-cUw" secondAttribute="leading" id="Vun-oe-reo"/>
+                            <constraint firstItem="Lf5-ZF-x07" firstAttribute="top" secondItem="T5E-pm-Tkd" secondAttribute="bottom" id="Wds-nh-eim"/>
                             <constraint firstAttribute="trailing" secondItem="XFA-Lh-tSa" secondAttribute="trailing" id="XZR-MA-rEg"/>
                             <constraint firstItem="flM-Gh-6SX" firstAttribute="top" secondItem="Vit-Rd-0rC" secondAttribute="bottom" constant="20" id="Yuz-vT-fbf"/>
                             <constraint firstItem="Vit-Rd-0rC" firstAttribute="top" secondItem="ySN-nE-bU0" secondAttribute="bottom" constant="10" id="aW7-Jv-0Eb"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Vit-Rd-0rC" secondAttribute="trailing" constant="8" id="gP6-YJ-2q0"/>
+                            <constraint firstItem="Vit-Rd-0rC" firstAttribute="top" secondItem="Lf5-ZF-x07" secondAttribute="bottom" constant="10" id="n8h-rx-B34"/>
                             <constraint firstItem="Vit-Rd-0rC" firstAttribute="leading" secondItem="pEr-i0-cUw" secondAttribute="leadingMargin" constant="8" id="q5N-8n-V0d"/>
                         </constraints>
                     </view>
@@ -451,6 +524,9 @@ Developed by Victor Solovyev: victorsolov@gmail.com iOS version with Ramzan Um
                     </navigationItem>
                     <connections>
                         <outlet property="aboutView" destination="ySN-nE-bU0" id="qLW-cZ-rHr"/>
+                        <outlet property="exportButton" destination="ble-L4-dTv" id="y7U-UQ-iNw"/>
+                        <outlet property="exportName" destination="UtB-Fv-usD" id="ZRU-in-ckX"/>
+                        <outlet property="exportView" destination="Lf5-ZF-x07" id="f3u-fa-VZx"/>
                         <outlet property="oldPass" destination="0pj-lc-yVg" id="HsY-Y9-nzP"/>
                         <outlet property="pass" destination="KBD-K1-ptY" id="VBB-Cd-Grd"/>
                         <outlet property="passView" destination="XFA-Lh-tSa" id="Pc6-2N-Hb9"/>
@@ -489,7 +565,7 @@ Developed by Victor Solovyev: victorsolov@gmail.com iOS version with Ramzan Um
             <objects>
                 <tableViewController storyboardIdentifier="DecryptView" id="aUC-BF-wBh" customClass="DecryptController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="79" sectionHeaderHeight="22" sectionFooterHeight="22" id="B8D-ZM-0vi">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="536"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <inset key="separatorInset" minX="60" minY="0.0" maxX="0.0" maxY="0.0"/>
@@ -845,7 +921,7 @@ Developed by Victor Solovyev: victorsolov@gmail.com iOS version with Ramzan Um
             <objects>
                 <tableViewController id="lwf-LQ-io5" customClass="VaultController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="50" sectionHeaderHeight="22" sectionFooterHeight="22" id="ply-QN-Ppz">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="536"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
@@ -986,6 +1062,6 @@ Developed by Victor Solovyev: victorsolov@gmail.com iOS version with Ramzan Um
         <image name="about" width="114" height="131"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Bqc-Tk-1LY"/>
+        <segue reference="XXE-0S-IH2"/>
     </inferredMetricsTieBreakers>
 </document>
